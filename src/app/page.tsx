@@ -1,65 +1,81 @@
-import Image from "next/image";
+import { AnimatedButton } from "@/components/AnimatedButton";
 
 export default function Home() {
+  
+  const videoPoster = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/683f70cf111c5e76dcb79a4c_Andevo%20Video%20Title%2001.webp";
+  const videoWebM = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683f7b6adab61b98cef1315b_Andevo%20Video%20Title%2001-transcode.webm";
+  const videoMp4 = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683bad68cb9ea083f2316084_Andevo%20Video%20Title%2001-transcode.mp4";
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="overflow-x-hidden">
+      {/* El <header> es la sección Hero de la página de inicio.
+        Usamos py-24 (padding top/bottom) + pt-16 (padding top por el Header fijo) 
+      */}
+      <header className="py-24 pt-40 md:pt-48 md:pb-32 px-4 md:px-8 bg-white text-black">
+        <div className="max-w-6xl mx-auto">
+          
+          {/* Breadcrumbs */}
+          <div className="mb-12 text-center">
+            <a href="/" className="text-sm">Home</a>
+          </div>
+
+          <div className="mb-24 text-center">
+            {/* Subtítulo superior */}
+            <div className="mb-4">
+              <h2 className="text-2xl md:text-3xl">¡Encantado de conocerte! 👋</h2>
+            </div>
+            
+            {/* Título principal H1 - CORRECCIÓN FINAL */}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-8 text-center">
+              Agencia de
+              <span className="font-medium italic"> Branding y Desarrollo Web </span>
+              
+              {/* Contenedor del video inline:
+                - 'inline-flex' hace que se comporte como un elemento de texto (inline)
+                - 'align-middle' lo centra verticalmente con la línea de texto
+                - 'mx-2' le da un espacio (el 'gap' que perdimos)
+              */}
+              <span className="inline-flex items-center justify-center h-12 md:h-16 lg:h-24 w-24 md:w-32 lg:w-48 rounded-full overflow-hidden align-middle mx-2 flex-shrink-0">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster={videoPoster}
+                className="w-full h-full object-cover scale-150"
+              >
+                <source src={videoWebM} type="video/webm" />
+                <source src={videoMp4} type="video/mp4" />
+              </video>
+            </span>
+            </h1>
+
+            {/* Subtítulo inferior H2 */}
+            <h2 className="text-2xl md:text-3xl max-w-4xl mx-auto">
+              Somos especialistas en branding y desarrollo web; creamos marketing 
+              digital a tu medida, mezclando creatividad y datos para hacer crecer tu marca.
+            </h2>
+          </div>
+
+          {/* Sección CTA (Call to Action) - MODIFICADO AQUÍ */}
+          <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8"> {/* Removido bg-gray-100 y rounded-3xl */}
+            <div className="md:col-span-2">
+              <h3 className="text-2xl font-medium mb-2">¿Tienes una idea en mente?</h3>
+              <p>Cuéntanos 😉, nosotros la creamos.</p>
+            </div>
+            <div className="md:text-right">
+              <AnimatedButton 
+                href="/contacto"
+                text="😎 Agendar consultoría"
+                ariaLabel="Agendar consultoría de marketing digital"
+              />
+            </div>
+          </div>
+
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </header>
+      
+      {/* ... Aquí irán las otras secciones ... */}
+    </main>
   );
 }
