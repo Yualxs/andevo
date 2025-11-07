@@ -37,6 +37,11 @@ const projectData = [
 ];
 
 export const FeaturedProjects = () => {
+  // --- AÑADE ESTAS LÍNEAS ---
+  const videoPoster = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/683f70cf2ee52d82544aeb54_Andevo%20Video%20Title%2002.webp";
+  const videoWebM = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683f7b75507630d948bae201_Andevo%20Video%20Title%2002-transcode.webm";
+  const videoMp4 = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683bad78034dacf2e76aedf3_Andevo%20Video%20Title%2002-transcode.mp4";
+  // --- FIN DE LÍNEAS A AÑADIR ---
   return (
     // SECCIÓN: Fondo negro, "scoop", z-index 50 (más alto que Servicios)
     <section 
@@ -47,9 +52,24 @@ export const FeaturedProjects = () => {
         {/* Título */}
         <div className="mb-16 md:mb-24">
           <h2 className="text-5xl md:text-7xl font-light">
-            Proyectos
-            <br />
-            <span className="italic">destacados</span>
+            <span className="inline-flex flex-wrap items-center justify-start gap-x-4">
+              Proyectos
+              {/* Contenedor del video inline (píldora) */}
+              <span className="inline-flex items-center justify-center h-16 md:h-20 lg:h-24 w-28 md:w-36 lg:w-48 rounded-full overflow-hidden align-middle flex-shrink-0">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster={videoPoster}
+                  className="w-full h-full object-cover scale-150"
+                >
+                  <source src={videoWebM} type="video/webm" />
+                  <source src={videoMp4} type="video/mp4" />
+                </video>
+              </span>
+              <span className="italic">destacados</span>
+            </span>
           </h2>
         </div>
 

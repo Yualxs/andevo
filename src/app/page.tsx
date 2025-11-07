@@ -6,6 +6,7 @@ import { IntroSection } from "@/components/IntroSection";
 import { VideoSection } from "@/components/VideoSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
+import { PhilosophySection } from "@/components/PhilosophySection";
 
 export default function Home() {
   
@@ -88,6 +89,7 @@ export default function Home() {
       <VideoSection />
       <ServicesSection />
       <FeaturedProjects />
+      <PhilosophySection />
       {/* ... Aquí irán las otras secciones ... */}
     </main>
   );
