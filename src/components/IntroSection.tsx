@@ -7,7 +7,10 @@ export const IntroSection = () => {
 
   return (
     // Esta sección tiene el fondo blanco/alterno
-    <section className="py-24 md:py-32 bg-white text-black">
+    <section 
+      className="relative z-20 py-24 md:py-32 bg-white text-black 
+                 rounded-t-[3.2rem] -mt-[3.2rem]"
+    >
       <Container>
         {/* Título */}
         <div className="mb-16 md:mb-24">
@@ -27,7 +30,7 @@ export const IntroSection = () => {
               src={simboloUrl}
               alt="Símbolo de Andevo"
               loading="lazy"
-              className="w-full h-full object-contain animate-spin-slow" 
+              className="w-full h-full object-contain rotating-image"
               // Usamos la misma animación que el botón de contacto
             />
           </div>

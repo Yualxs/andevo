@@ -34,7 +34,7 @@ export default function RootLayout({
           <img 
             src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67e9cb93fb3dead64a38cf07_Contacto%20Video.svg" 
             alt="Contacto" 
-            className="absolute inset-0 w-full h-full animate-spin-slow" // 'animate-spin-slow' lo definiremos en tailwind.config.ts
+            className="absolute inset-0 w-full h-full rotating-image"
           />
           {/* Video (centro) */}
           <div className="absolute inset-[10%] w-[80%] h-[80%] rounded-full overflow-hidden">
