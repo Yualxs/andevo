@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import Link from "next/link"; // <-- 1. Importa Link
+import Link from "next/link";
+import { Footer } from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,9 @@ export default function RootLayout({
         
         {/* Contenido principal de la página */}
         {children}
+
+        {/* --- 2. AÑADE EL FOOTER AQUÍ --- */}
+        <Footer />
 
         {/* --- 2. AÑADE EL BOTÓN DE CONTACTO PEGAJOSO --- */}
         <Link 
