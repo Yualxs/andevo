@@ -4,6 +4,7 @@ import { CustomerLogos } from "@/components/CustomerLogos";
 import Link from 'next/link';
 import { IntroSection } from "@/components/IntroSection";
 import { VideoSection } from "@/components/VideoSection";
+import { ServicesSection } from "@/components/ServicesSection";
 
 export default function Home() {
   
@@ -84,6 +85,7 @@ export default function Home() {
       <CustomerLogos />
       <IntroSection />
       <VideoSection />
+      <ServicesSection />
       {/* ... Aquí irán las otras secciones ... */}
     </main>
   );
