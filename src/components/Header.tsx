@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Container } from './Container';
 
 /**
  * REEMPLAZO FINAL (Corregido para Tailwind v4 - usando valores arbitrarios)
@@ -115,10 +116,11 @@ export default function Header() {
       
       {/* 1. La barra de navegación principal (Logo y Botón) */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-white">
-        <div className="flex items-center justify-between px-4 py-4 md:px-8">
+        {/* REEMPLAZAMOS EL DIV POR EL CONTENEDOR */}
+        <Container className="flex items-center justify-between py-4">
           
           {/* Logo */}
-          <Link href="/" aria-label="home" className="z-50"> {/* <--- CAMBIADO DE 'a' A 'Link' */}
+          <Link href="/" aria-label="home" className="z-50"> 
             <img src={logoUrl} loading="lazy" alt="Andevo Logo" className="h-8 md:h-10 w-auto" />
           </Link>
           
@@ -131,17 +133,16 @@ export default function Header() {
           >
             <span className="text-sm font-medium uppercase hidden md:block">Menu</span>
             <div className="flex flex-col space-y-[6px] justify-center w-6 h-6">
-              {/* ----- MODIFICACIÓN AQUÍ ----- */}
               <span className={`block h-0.5 w-full bg-black transition duration-300 ease-in-out
                               ${isMenuOpen ? 'rotate-45 translate-y-[4px]' : ''}`}>
               </span>
-              {/* ----- Y AQUÍ ----- */}
               <span className={`block h-0.5 w-full bg-black transition duration-300 ease-in-out
                               ${isMenuOpen ? '-rotate-45 -translate-y-[4px]' : ''}`}>
               </span>
             </div>
           </button>
-        </div>
+
+        </Container>
       </div>
 
       {/* 2. El Panel del Menú (Overlay) */}

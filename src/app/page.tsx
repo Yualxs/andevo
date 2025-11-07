@@ -1,4 +1,8 @@
 import { AnimatedButton } from "@/components/AnimatedButton";
+import { Container } from "@/components/Container";
+import { CustomerLogos } from "@/components/CustomerLogos";
+import Link from 'next/link';
+import { IntroSection } from "@/components/IntroSection";
 
 export default function Home() {
   
@@ -11,12 +15,12 @@ export default function Home() {
       {/* El <header> es la sección Hero de la página de inicio.
         Usamos py-24 (padding top/bottom) + pt-16 (padding top por el Header fijo) 
       */}
-      <header className="py-24 pt-40 md:pt-48 md:pb-32 px-4 md:px-8 bg-white text-black">
-        <div className="max-w-6xl mx-auto">
+      <header className="py-24 pt-40 md:pt-48 md:pb-32 bg-white text-black">
+        <Container>
           
           {/* Breadcrumbs */}
           <div className="mb-12 text-center">
-            <a href="/" className="text-sm">Home</a>
+            <Link href="/" className="text-sm">Home</Link> {/* <-- CAMBIO AQUÍ */}
           </div>
 
           <div className="mb-24 text-center">
@@ -72,9 +76,12 @@ export default function Home() {
             </div>
           </div>
 
-        </div>
+        </Container>
       </header>
-      
+
+      {/* --- 2. AÑADE LA NUEVA SECCIÓN AQUÍ --- */}
+      <CustomerLogos />
+      <IntroSection />
       {/* ... Aquí irán las otras secciones ... */}
     </main>
   );
