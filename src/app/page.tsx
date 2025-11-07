@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { IntroSection } from "@/components/IntroSection";
 import { VideoSection } from "@/components/VideoSection";
 import { ServicesSection } from "@/components/ServicesSection";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
 
 export default function Home() {
   
@@ -86,6 +87,7 @@ export default function Home() {
       <IntroSection />
       <VideoSection />
       <ServicesSection />
+      <FeaturedProjects />
       {/* ... Aquí irán las otras secciones ... */}
     </main>
   );

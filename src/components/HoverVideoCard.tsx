@@ -10,9 +10,17 @@ interface HoverVideoCardProps {
   subtitle: string;
   posterUrl: string;
   videoUrl: string;
+  textColor?: string;
 }
 
-export const HoverVideoCard = ({ href, title, subtitle, posterUrl, videoUrl }: HoverVideoCardProps) => {
+export const HoverVideoCard = ({ 
+  href, 
+  title, 
+  subtitle, 
+  posterUrl, 
+  videoUrl, 
+  textColor = 'text-black' // <-- 2. AÑADE ESTA LÍNEA (con el valor por defecto)
+}: HoverVideoCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleMouseOver = () => {
@@ -53,7 +61,7 @@ export const HoverVideoCard = ({ href, title, subtitle, posterUrl, videoUrl }: H
       </div>
       
       <div className="mt-4">
-        <h3 className="text-xl md:text-2xl font-light text-black"> {/* <--- LÍNEA CORREGIDA */}
+        <h3 className={`text-xl md:text-2xl font-light ${textColor}`}> {/* <--- LÍNEA CORREGIDA */}
           <span className="font-medium">{title}</span> - <span className="italic">{subtitle}</span>
         </h3>
       </div>
