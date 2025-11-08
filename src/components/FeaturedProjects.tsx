@@ -46,7 +46,7 @@ export const FeaturedProjects = () => {
     // SECCIÓN: Fondo negro, "scoop", z-index 50 (más alto que Servicios)
     <section 
       className="relative z-50 py-24 md:py-32 bg-black text-white 
-                 rounded-t-[3.2rem] -mt-[3.2rem]"
+                 rounded-t-[5rem] -mt-[5rem]"
     >
       <Container>
         {/* Título */}

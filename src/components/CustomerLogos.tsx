@@ -69,7 +69,7 @@ export const CustomerLogos = () => {
     // - Añadimos 'relative z-10' para apilarlo sobre la sección anterior.
     // - Añadimos 'rounded-t-[3.2rem]' (51.2px) para las esquinas.
     // - Añadimos '-mt-[3.2rem]' para "meterlo" debajo de la sección Hero.
-    <section className="relative z-10 py-24 md:py-32 bg-black text-white rounded-t-[3.2rem] -mt-[3.2rem]">
+    <section className="relative z-10 py-24 md:py-32 bg-black text-white rounded-t-[5rem] -mt-[5rem]">
       {/* Para que el "scoop" funcione, la sección anterior (Hero) 
         necesita tener un padding-bottom generoso, lo cual ya tiene (md:pb-32).
       */}

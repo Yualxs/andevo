@@ -91,7 +91,7 @@ export const BlogSection = () => {
     // SECCIÓN: Fondo negro, "scoop", z-index 60 (para estar sobre la sección anterior)
     <section 
       className="relative z-60 py-24 md:py-32 bg-black text-white 
-                 rounded-t-[3.2rem] -mt-[3.2rem]"
+                 rounded-t-[5rem] -mt-[5rem]"
     >
       <Container>
         {/* Título con Video (igual que Proyectos) */}

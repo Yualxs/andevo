@@ -139,7 +139,7 @@ export const VideoSection = () => {
   return (
     <section 
       className="relative z-30 py-24 md:py-32 bg-black text-white 
-                 rounded-t-[3.2rem] -mt-[3.2rem]"
+                 rounded-t-[5rem] -mt-[5rem]"
     >
       <Container>
         {/* Título de la sección (sin cambios) */}
