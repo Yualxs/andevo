@@ -13,7 +13,7 @@ import clsx from 'clsx';
  * * Reemplazamos 'ease-quint' por 'ease-[cubic-bezier(0.19,1,0.22,1)]'
  * Reemplazamos 'skew-y-7' por 'skew-y-[7deg]'
  */
-const AnimatedLink = ({ href, text, className = "" }: { href: string; text: string; className?: string }) => {
+const AnimatedLink = ({ href, text, className = "", ...rest }: { href: string; text: string; className?: string; [key: string]: any }) => {
   
   const isInternal = href.startsWith('/');
   const isExternal = href.startsWith('http');
@@ -24,7 +24,7 @@ const AnimatedLink = ({ href, text, className = "" }: { href: string; text: stri
     <>
       {/* Texto superior (visible) */}
       <span 
-        className={`block transition duration-1200ms ease-[cubic-bezier(0.19,1,0.22,1)] py-2
+        className={`block transition duration-[1000ms] ease-[cubic-bezier(0.4,0,0.2,1)] py-2
                     group-hover:-translate-y-[105%] group-hover:skew-y-[7deg]`}
       >
         {text}
@@ -32,7 +32,7 @@ const AnimatedLink = ({ href, text, className = "" }: { href: string; text: stri
       {/* Texto inferior (oculto) */}
       <span 
         className={`absolute top-[105%] left-0 block skew-y-[7deg] 
-                    transition duration-1200ms ease-[cubic-bezier(0.19,1,0.22,1)] py-2
+                  transition duration-[1000ms] ease-[cubic-bezier(0.4,0,0.2,1)] py-2
                     group-hover:-translate-y-[105%] group-hover:skew-y-0`}
       >
         {text}
@@ -42,7 +42,7 @@ const AnimatedLink = ({ href, text, className = "" }: { href: string; text: stri
   
   if (isInternal) {
     return (
-      <Link href={href} className={linkClasses}>
+      <Link href={href} className={linkClasses} {...rest}>
         {content}
       </Link>
     );
@@ -54,6 +54,7 @@ const AnimatedLink = ({ href, text, className = "" }: { href: string; text: stri
         target="_blank"
         rel="noopener noreferrer"
         className={linkClasses}
+        {...rest}
       >
         {content}
       </a>
@@ -261,19 +262,19 @@ export default function Header() {
               */}
               <ul className="mt-4 space-y-1">
                 <li>
-                  <AnimatedLink href="https://www.tiktok.com/@teamandevo" text="TikTok" className="text-lg md:text-xl font-medium" />
+                  <AnimatedLink href="https://www.tiktok.com/@teamandevo" text="TikTok" className="text-base sm:text-lg md:text-xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.instagram.com/teamandevo/" text="Instagram" className="text-lg md:text-xl font-medium" />
+                  <AnimatedLink href="https://www.instagram.com/teamandevo/" text="Instagram" className="text-base sm:text-lg md:text-xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.facebook.com/teamandevo/" text="Facebook" className="text-lg md:text-xl font-medium" />
+                  <AnimatedLink href="https://www.facebook.com/teamandevo/" text="Facebook" className="text-base sm:text-lg md:text-xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.youtube.com/@teamandevo" text="YouTube" className="text-lg md:text-xl font-medium" />
+                  <AnimatedLink href="https://www.youtube.com/@teamandevo" text="YouTube" className="text-base sm:text-lg md:text-xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.linkedin.com/company/andevo" text="LinkedIn" className="text-lg md:text-xl font-medium" />
+                  <AnimatedLink href="https://www.linkedin.com/company/andevo" text="LinkedIn" className="text-base sm:text-lg md:text-xl font-medium" />
                 </li>
               </ul>
             </div>
@@ -288,19 +289,19 @@ export default function Header() {
               */}
               <ul className="mt-4 space-y-1">
                 <li>
-                  <AnimatedLink href="/" text="Home" className="text-2xl md:text-3xl lg:text-4xl font-medium" />
+                  <AnimatedLink href="/" text="Home" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
                 </li>
                 <li>
-                  <AnimatedLink href="/nosotros" text="Nosotros" className="text-2xl md:text-3xl lg:text-4xl font-medium" />
+                  <AnimatedLink href="/nosotros" text="Nosotros" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
                 </li>
                 <li>
-                  <AnimatedLink href="/servicios" text="Servicios" className="text-2xl md:text-3xl lg:text-4xl font-medium" />
+                  <AnimatedLink href="/servicios" text="Servicios" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
                 </li>
                 <li>
-                  <AnimatedLink href="/blog" text="Blog" className="text-2xl md:text-3xl lg:text-4xl font-medium" />
+                  <AnimatedLink href="/blog" text="Blog" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
                 </li>
                 <li>
-                  <AnimatedLink href="/contacto" text="Contacto" className="text-2xl md:text-3xl lg:text-4xl font-medium" />
+                  <AnimatedLink href="/contacto" text="Contacto" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
                 </li>
               </ul>
             </div>

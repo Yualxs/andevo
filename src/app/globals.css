@@ -69,9 +69,15 @@
 /* --- ¡AQUÍ ESTÁ LA SOLUCIÓN! --- */
 
 /* 3. Estilo para "Magnético" (botones de video) */
+/* 3. Estilo para "Magnético" (pequeño: botones de video, redes sociales) */
 .mf-cursor.-pointer::before {
-  /* Escala el punto a 2.5x cuando pasa sobre un botón */
-  transform: scale(1.25) !important;
+  transform: scale(1.25) !important; /* Más pequeño */
+  transition: transform 0.2s ease-in-out !important;
+}
+
+/* NUEVO: Estilo para "Menú Principal" (grande) */
+.mf-cursor.-pointer-large::before {
+  transform: scale(1.75) !important; /* Más grande */
   transition: transform 0.2s ease-in-out !important;
 }
 
