@@ -29,7 +29,7 @@ export const CursorProvider = ({ children }: { children: React.ReactNode }) => {
       // Usamos stateDetection para añadir la clase .-pointer
       // a los botones Y a nuestro ícono de menú.
       stateDetection: {
-        '-pointer': 'a, button, .menu-icon-trigger',
+        '-pointer': 'a:not(.no-cursor-pointer), button:not(.no-cursor-pointer), .menu-icon-trigger',
       },
     };
 

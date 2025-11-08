@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Container } from './Container';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import clsx from 'clsx';
 
 
 /**
@@ -184,12 +185,21 @@ export default function Header() {
     <header className="relative z-50 w-full text-black">
       
       {/* 1. La barra de navegación principal (Logo y Botón) */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white">
-        {/* REEMPLAZAMOS EL DIV POR EL CONTENEDOR */}
-        <Container className="flex items-center justify-between py-4">
+      <div className={clsx(
+        "fixed top-0 left-0 right-0 z-50 transition-colors duration-500 flex items-center justify-between py-4 px-4 md:px-8",
+        isMenuOpen ? "bg-transparent" : "bg-white"
+      )}>
+        {/* Ya no hay un <Container> aquí */}
           
           {/* Logo */}
-          <Link href="/" aria-label="home" className="z-50"> 
+          <Link 
+            href="/" 
+            aria-label="home" 
+            className={clsx(
+              "z-50 transition-opacity duration-500",
+              isMenuOpen ? "opacity-0" : "opacity-100"
+            )}
+          >
             <img src={logoUrl} loading="lazy" alt="Andevo Logo" className="h-8 md:h-10 w-auto" />
           </Link>
           
@@ -211,17 +221,32 @@ export default function Header() {
             </div>
           </button>
 
-        </Container>
+        {/* El </Container> de aquí se ha eliminado */}
       </div>
 
       {/* 2. El Panel del Menú (Overlay) */}
       <nav 
-        className={`fixed top-0 right-0 bottom-0 w-full md:w-3/4 lg:w-[60%] h-screen bg-white z-40 
+        className={`fixed top-0 right-0 bottom-0 w-full md:w-1/2 lg:w-[40%] h-screen bg-white z-40 
                   transition duration-700 ease-in-out
                   ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         {/* Usamos un layout de flex-col para separar el contenido principal de las direcciones */}
-        <div className="h-full flex flex-col justify-between overflow-y-auto px-8 py-24 md:px-16 md:py-32">
+        {/* --- Logo interno del Menú --- */}
+        <div className="absolute top-0 left-0 right-0 z-10 bg-white">
+          <Container className="flex items-center justify-between py-4">
+            <Link href="/" aria-label="home" className="z-50"> 
+              <img 
+                src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67e6e497ca956bf81e2297aa_Logo%20Andevo%20Black.svg" 
+                loading="lazy" 
+                alt="Andevo Logo" 
+                className="h-8 md:h-10 w-auto" 
+              />
+            </Link>
+          </Container>
+        </div>
+
+        {/* --- Contenido principal del Menú --- */}
+        <div className="relative z-0 h-full flex flex-col justify-start gap-16 md:gap-24 overflow-y-auto px-8 py-32 md:px-16 md:py-40">
           
           {/* Contenido Superior: Menú y Redes */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -305,8 +330,8 @@ export default function Header() {
       {/* 3. El Fondo (Backdrop) */}
       <div 
         onClick={() => setIsMenuOpen(false)}
-        className={`fixed inset-0 bg-black/30 z-30 transition-opacity duration-700
-                   ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-30 transition-opacity duration-700
+                  ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       ></div>
     </header>
   );

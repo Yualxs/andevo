@@ -21,6 +21,7 @@ export const AnimatedButton = ({ href, text, ariaLabel, isSecondary = false }: A
     group hover:scale-x-[1.02] text-base sm:text-lg md:text-xl
     text-center
     ${isSecondary ? 'bg-black text-white' : 'bg-white text-black'}
+    no-cursor-pointer
   `;
 
   // El texto dual que se desliza
