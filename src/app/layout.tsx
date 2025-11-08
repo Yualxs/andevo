@@ -1,11 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const matterFont = localFont({
+  src: [
+    {
+      // Asumo que están en src/assets/fonts/ como te sugerí
+      path: '../assets/fonts/Matter-Regular.woff2', 
+      weight: '400', // '400' es el peso para 'Regular'
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/Matter-Medium.woff2',
+      weight: '500', // '500' es el peso para 'Medium'
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Andevo - Agencia de Marketing Digital",
@@ -19,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body className={matterFont.className}>
         <Header />
         
         {/* Contenido principal de la página */}

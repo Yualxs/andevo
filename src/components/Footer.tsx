@@ -177,7 +177,7 @@ export const Footer = () => {
   return (
     // SECCIÓN: Fondo negro, "scoop", z-index 80 (el más alto)
     <footer 
-      className="relative z-[80] bg-black text-white 
+      className="relative z-80 bg-black text-white 
                  rounded-t-[3.2rem] -mt-[3.2rem] pt-24 md:pt-32"
     >
       
@@ -188,10 +188,10 @@ export const Footer = () => {
           {[...Array(8)].map((_, i) => (
             <div 
               key={i} 
-              className="marquee-panel flex-shrink-0 flex items-center pr-8"
+              className="marquee-panel shrink-0 flex items-center pr-8"
               aria-hidden={i > 0} // Oculta los duplicados a los lectores de pantalla
             >
-              <h2 className="text-4xl md:text-5xl font-light italic uppercase">Síguenos</h2>
+              <h2 className="text-4xl md:text-5xl font-light">Síguenos</h2>
               <img 
                 src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67defed42550debdc0a4ec7b_Simbolo%20Andevo.svg" 
                 alt="" 
@@ -205,7 +205,7 @@ export const Footer = () => {
       {/* 2. Contenido Principal del Footer (Redes Sociales) */}
       <Container className="mb-16"> {/* Reducido el margen inferior */}
         <div className="mb-4">
-          <span className="text-xs uppercase text-white/70 tracking-wider">Nuestras Redes Sociales</span>
+          <span className="text-base sm:text-lg md:text-xl uppercase text-white/70 tracking-wider">Nuestras Redes Sociales</span>
       </div>
       </Container>
 
@@ -232,15 +232,15 @@ export const Footer = () => {
                 className="w-8 h-8 rotating-image" // Añadimos la clase para la rotación global
               />
             </Link>
-            <Link href="/politicas-de-privacidad" className="text-sm text-white/70 hover:text-white">
+            <Link href="/politicas-de-privacidad" className="text-base sm:text-lg md:text-xl text-white/70 hover:text-white">
               Política de Privacidad
             </Link>
           </div>
-          <div className="text-sm text-white/70">
+          <div className="text-base sm:text-lg md:text-xl text-white/70">
             © {currentYear} Andevo S.A.C. Todos los Derechos Reservados
           </div>
         </div>
-        <div className="text-center text-sm text-white/70 mt-8">
+        <div className="text-center text-base sm:text-lg md:text-xl text-white/70 mt-8">
           Desarrollado con ❤️ por <a href="https://andevo.io/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white/90 hover:text-white">Andevo</a>
         </div>
       </Container>

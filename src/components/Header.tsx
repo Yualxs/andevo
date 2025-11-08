@@ -22,7 +22,7 @@ const AnimatedLink = ({ href, text, className = "" }: { href: string; text: stri
     <>
       {/* Texto superior (visible) */}
       <span 
-        className={`block transition duration-[1200ms] ease-[cubic-bezier(0.19,1,0.22,1)] py-2
+        className={`block transition duration-1200ms ease-[cubic-bezier(0.19,1,0.22,1)] py-2
                     group-hover:-translate-y-[105%] group-hover:skew-y-[7deg]`}
       >
         {text}
@@ -30,7 +30,7 @@ const AnimatedLink = ({ href, text, className = "" }: { href: string; text: stri
       {/* Texto inferior (oculto) */}
       <span 
         className={`absolute top-[105%] left-0 block skew-y-[7deg] 
-                    transition duration-[1200ms] ease-[cubic-bezier(0.19,1,0.22,1)] py-2
+                    transition duration-1200ms ease-[cubic-bezier(0.19,1,0.22,1)] py-2
                     group-hover:-translate-y-[105%] group-hover:skew-y-0`}
       >
         {text}
@@ -69,7 +69,7 @@ const AnimatedLink = ({ href, text, className = "" }: { href: string; text: stri
  */
 const AddressLink = ({ href, flagSrc, flagAlt, text }: { href: string; flagSrc: string; flagAlt: string; text: string }) => (
   <a href={href} className="flex items-center space-x-3 group">
-    <img src={flagSrc} alt={flagAlt} className="w-6 flex-shrink-0" />
+    <img src={flagSrc} alt={flagAlt} className="w-6 shrink-0" />
     <span className="text-sm relative">
       {text}
       {/* Línea de fondo estática */}
@@ -200,12 +200,12 @@ export default function Header() {
             aria-expanded={isMenuOpen}
           >
             <span className="text-sm font-medium uppercase hidden md:block">Menu</span>
-            <div className="flex flex-col space-y-[6px] justify-center w-6 h-6">
+            <div className="flex flex-col space-y-1.5 justify-center w-6 h-6">
               <span className={`block h-0.5 w-full bg-black transition duration-300 ease-in-out
-                              ${isMenuOpen ? 'rotate-45 translate-y-[4px]' : ''}`}>
+                              ${isMenuOpen ? 'rotate-45 translate-y-1' : ''}`}>
               </span>
               <span className={`block h-0.5 w-full bg-black transition duration-300 ease-in-out
-                              ${isMenuOpen ? '-rotate-45 -translate-y-[4px]' : ''}`}>
+                              ${isMenuOpen ? '-rotate-45 -translate-y-1' : ''}`}>
               </span>
             </div>
           </button>

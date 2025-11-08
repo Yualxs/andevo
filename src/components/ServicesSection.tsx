@@ -39,9 +39,8 @@ export const ServicesSection = () => {
         
         {/* --- 1. BLOQUE DE TÍTULO Y DESCRIPCIÓN (ARRIBA) --- */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-light mb-8">
-            Nuestros
-            <span className="italic">Servicios</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
+            Nuestros servicios
           </h2>
         </div>
 
@@ -54,7 +53,7 @@ export const ServicesSection = () => {
             
             {/* CÉLULA 1: Descripción */}
             <div className="md:pr-8">
-              <p className="text-xl leading-relaxed text-black/70">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-black/70">
                 Desde diseño de movimiento hasta productos impulsados por IA,
                 diseñamos y construimos interfaces para el futuro.
               </p>

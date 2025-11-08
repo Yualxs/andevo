@@ -14,8 +14,8 @@ export const CtaBlock = ({ line1, line2 }: CtaBlockProps) => {
       {/* Columna de Texto */}
       <div className="md:col-span-2">
         {/* Modificamos los props para usar las nuevas clases */}
-        {React.cloneElement(line1 as React.ReactElement, { className: "text-lg text-black/70 mb-2" })}
-        {React.cloneElement(line2 as React.ReactElement, { className: "text-2xl md:text-3xl font-medium" })}
+        {React.cloneElement(line1 as React.ReactElement, { className: "text-lg sm:text-xl md:text-2xl font-medium text-black mb-2" })}
+        {React.cloneElement(line2 as React.ReactElement, { className: "text-base sm:text-lg md:text-xl font-regular" })}
       </div>
       
       {/* Columna del Botón (siempre es igual) */}

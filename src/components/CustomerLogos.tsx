@@ -59,7 +59,6 @@ const logoData = [
   { alt: "Peru Hikers", white: "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/680c42cd7c49075223a086ef_Peru%20Hikers%20White.svg", color: "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/680c42cedba1dd9ee387aba3_Peru%20Hikers%20Color.svg" },
   { alt: "Salkantay Explorer", white: "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/680ac14c9a8adcdde894c362_Salkantay%20Explorer%20White.svg", color: "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/680ac14cde55f2214abd188a_Salkantay%20Explorer%20Color.svg" },
   { alt: "Action Valley", white: "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/680ac146de55f2214abd15bd_Action%20Valley%20White.svg", color: "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/680ac14608d861c7d9c3eb13_Action%20Valley%20Color.svg" },
-  { alt: "Ukumari", white: "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/680c450ab7075cbfe0725bd9_Ukumari%20White.svg", color: "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/680c450aff3e7d8260214a21_Ukumari%20Color.svg" },
 ];
 
 // El componente principal de la sección
@@ -77,7 +76,7 @@ export const CustomerLogos = () => {
       <Container>
         {/* Título de la sección */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-light">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
             <span className="italic">Hemos trabajado</span> con
           </h2>
         </div>

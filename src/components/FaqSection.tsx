@@ -55,10 +55,8 @@ export const FaqSection = () => {
       <Container>
         {/* Título (sin cambios) */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-5xl md:text-7xl font-light">
-            Preguntas
-            <br />
-            <span className="italic">frecuentes</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
+            Preguntas frecuentes
           </h2>
         </div>
 

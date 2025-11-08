@@ -14,7 +14,7 @@ export const IntroSection = () => {
       <Container>
         {/* Título */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-light">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
             Construimos
             <br />
             <span className="italic">Marcas</span>
@@ -37,7 +37,7 @@ export const IntroSection = () => {
 
           {/* Columna 2: Texto y Botón */}
           <div className="max-w-md">
-            <p className="text-xl md:text-2xl mb-12 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl mb-12 leading-relaxed">
               Tu marca tiene una historia única y el mundo necesita escucharla. 
               En Andevo combinamos estrategia, creatividad y tecnología para 
               conectar con las personas correctas y generar impacto real.

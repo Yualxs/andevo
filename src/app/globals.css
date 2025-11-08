@@ -26,18 +26,17 @@
   /* Ahora `bg-brand-green` SÍ funcionará */
 
   /* === Tipografía (fontFamily) -> Namespace: --font-* === */
-  --font-sans: 'var(--font-inter)', sans-serif;
-  /* Ahora `font-sans` SÍ usará Inter */
+  --font-sans: "Matter", sans-serif;
 
   /* === Tamaño de Fuente (fontSize) -> Namespace: --text-* === */
-  --text-sm: 0.707rem;
+  --text-sm: 0.75rem;
   --text-base: 1rem;
-  --text-lg: 1.414rem;
-  --text-xl: 1.999rem;
-  --text-2xl: 2.827rem;
-  --text-3xl: 3.998rem;
-  --text-4xl: 5.653rem;
-  --text-5xl: 7.993rem;
+  --text-lg: 1.333rem;
+  --text-xl: 1.777rem;
+  --text-2xl: 2.369rem;
+  --text-3xl: 3.157rem;
+  --text-4xl: 4.209rem;
+  --text-5xl: 5.61rem;
   /* Ahora `text-5xl` SÍ usará 7.993rem */
   
   /* === Animaciones (animation) -> Namespace: --animate-* === */

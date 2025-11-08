@@ -21,10 +21,8 @@ export const PhilosophySection = () => {
       <Container>
         {/* Título (CAMBIADO) */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-light">
-            Nuestra
-            <br />
-            <span className="italic">filosofía</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
+            Nuestra filosofía
           </h2>
         </div>
 
@@ -49,7 +47,7 @@ export const PhilosophySection = () => {
 
           {/* Columna 2: Texto (CAMBIADO) */}
           <div className="max-w-md">
-            <p className="text-xl md:text-2xl leading-relaxed text-black/70">
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed text-black/70">
               Estamos impulsados por el diseño centrado en el usuario que 
               impulsa la productividad y aumenta los ingresos. Nuestra 
               experiencia e ingenio son notables, pero siempre nos 

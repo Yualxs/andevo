@@ -15,25 +15,20 @@ export const HeroSection = () => {
         
         {/* Breadcrumbs */}
         <div className="mb-12 text-center">
-          <Link href="/" className="text-sm">Home</Link>
+          <Link href="/" className="text-base">Home</Link>
         </div>
 
         <div className="mb-24 text-center">
           {/* Subtítulo superior */}
           <div className="mb-4">
-            <h2 className="text-xl md:text-2xl">¡Encantado de conocerte! 👋</h2>
+            <p className="text-lg sm:text-xl md:text-2xl">¡Encantado de conocerte! 👋</p>
           </div>
           
           {/* Título principal H1 */}
-          <div className="p-4">
-        <h1 className="bg-red-500 text-white">Test 1: Default Tailwind (rojo)</h1>
-        <h1 className="bg-brand-green text-white">Test 2: Custom Theme (verde)</h1>
-      </div> 
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-8 text-center">
-            Agencia de
-            <span className="font-medium italic"> Branding y Desarrollo Web </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight mb-8 text-center">
+            Agencia de Branding y Desarrollo Web
             
-            <span className="inline-flex items-center justify-center h-12 md:h-16 lg:h-24 w-24 md:w-32 lg:w-48 rounded-full overflow-hidden align-middle mx-2 flex-shrink-0">
+            <span className="inline-flex items-center justify-center h-12 md:h-16 lg:h-24 w-24 md:w-32 lg:w-48 rounded-full overflow-hidden align-middle mx-2 shrink-0">
               <video
                 autoPlay
                 loop
@@ -49,9 +44,8 @@ export const HeroSection = () => {
           </h1>
 
           {/* Subtítulo inferior H2 */}
-          <h2 className="text-xl md:text-2xl max-w-4xl mx-auto">
-            Somos especialistas en branding y desarrollo web; creamos marketing 
-            digital a tu medida, mezclando creatividad y datos para hacer crecer tu marca.
+          <h2 className="text-base sm:text-lg md:text-xl max-w-4xl mx-auto">
+            Somos especialistas en branding y desarrollo web; creamos marketing digital a tu medida, mezclando creatividad y datos para hacer crecer tu marca.
           </h2>
         </div>
 
