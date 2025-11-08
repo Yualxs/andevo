@@ -76,8 +76,7 @@
 }
 
 /* 4. Estilo para "Absorber" (botón de menú) */
-.mf-cursor.-stick {
-  /* Oculta el cursor cuando está "pegado" */
+.menu-icon-trigger.is-stick-stuck ~ .mf-cursor.-stick {
   opacity: 0 !important;
   transition: opacity 0.2s ease-in-out !important;
 }

@@ -25,9 +25,10 @@ export const CursorProvider = ({ children }: { children: React.ReactNode }) => {
 
     // Inicializa el cursor
     const cursorOptions = {
-      skewing: 1,
-      // Usamos stateDetection para añadir la clase .-pointer
-      // a los botones Y a nuestro ícono de menú.
+      skewing: 1, // Esto permite el efecto "pegajoso"
+      stickDelta: 0.15, // Esta es la "fuerza" del efecto pegajoso
+
+      // Esto detecta botones y links para el efecto de "escala"
       stateDetection: {
         '-pointer': 'a:not(.no-cursor-pointer), button:not(.no-cursor-pointer), .menu-icon-trigger',
       },

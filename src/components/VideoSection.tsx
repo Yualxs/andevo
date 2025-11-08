@@ -1,11 +1,13 @@
 // EN: src/components/VideoSection.tsx
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react'; // <-- Se fueron GSAP y useCallback
+// 1. Importaciones de React (incluyendo useCallback)
+import { useState, useEffect, useRef, useCallback } from 'react';
+// 2. Importación de GSAP
+import { gsap } from 'gsap';
 import { Container } from './Container';
 import Player from '@vimeo/player';
 import { Volume2, Play, Pause } from 'lucide-react';
-// (No hay importación de GSAP)
 
 export const VideoSection = () => {
   const videoContainerRef = useRef<HTMLDivElement>(null); 
@@ -15,9 +17,52 @@ export const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isActivated, setIsActivated] = useState(false); 
 
-  // (Ya no necesitamos los refs para los contenedores de los botones)
+  // 3. Refs para los contenedores de los botones (para GSAP)
+  const unmuteButtonContainerRef = useRef<HTMLDivElement>(null);
+  const playPauseButtonContainerRef = useRef<HTMLDivElement>(null);
 
-  // --- Hook de Efecto (Vimeo Player) ---
+  // 4. Función del efecto magnético (restaurada)
+  const applyMagneticEffect = useCallback((container: HTMLElement | null, strength: number = 0.4) => {
+    if (!container) return;
+    
+    const element = container.children[0] as HTMLElement;
+    if (!element) return;
+
+    const onMouseMove = (e: MouseEvent) => {
+      const { left, top, width, height } = container.getBoundingClientRect();
+      const centerX = left + width / 2;
+      const centerY = top + height / 2;
+      const deltaX = e.clientX - centerX;
+      const deltaY = e.clientY - centerY;
+
+      gsap.to(element, {
+        x: deltaX * strength,
+        y: deltaY * strength,
+        ease: "power2.out",
+        duration: 0.5
+      });
+    };
+
+    const onMouseLeave = () => {
+      gsap.to(element, {
+        x: 0,
+        y: 0,
+        ease: "elastic.out(1, 0.5)",
+        duration: 0.8
+      });
+    };
+
+    container.addEventListener('mousemove', onMouseMove);
+    container.addEventListener('mouseleave', onMouseLeave);
+
+    return () => {
+      container.removeEventListener('mousemove', onMouseMove);
+      container.removeEventListener('mouseleave', onMouseLeave);
+      gsap.to(element, { x: 0, y: 0, ease: "power2.out", duration: 0.3 });
+    };
+  }, []);
+
+  // 5. Hook de Efecto (Vimeo Player) - sin cambios
   useEffect(() => {
     if (videoContainerRef.current && !playerRef.current) {
       const options = {
@@ -48,9 +93,24 @@ export const VideoSection = () => {
     }
   }, [vimeoVideoId]);
 
-  // --- (Se eliminó toda la lógica del efecto magnético de GSAP) ---
+  // 6. Hook de Efecto (Magnético) - restaurado
+  useEffect(() => {
+    let cleanupUnmute: (() => void) | undefined;
+    let cleanupPlayPause: (() => void) | undefined;
+    
+    if (isActivated) {
+      cleanupPlayPause = applyMagneticEffect(playPauseButtonContainerRef.current);
+    } else {
+      cleanupUnmute = applyMagneticEffect(unmuteButtonContainerRef.current);
+    }
+    
+    return () => {
+      cleanupUnmute?.();
+      cleanupPlayPause?.();
+    };
+  }, [isActivated, applyMagneticEffect]);
 
-  // --- Handlers ---
+  // 7. Handlers - sin cambios
   const handleUnmute = () => {
     if (playerRef.current) {
       playerRef.current.setMuted(false);
@@ -75,10 +135,10 @@ export const VideoSection = () => {
   return (
     <section 
       className="relative z-30 py-24 md:py-32 bg-black text-white 
-                 rounded-t-[5rem] -mt-20" // <-- Corregido con el boleado de 5rem
+                 rounded-t-[5rem] -mt-20"
     >
       <Container>
-        {/* Título de la sección (sin cambios) */}
+        {/* Título */}
         <div className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl font-light">
             ¡Transforma <span className="italic">tu marca</span>
@@ -87,7 +147,7 @@ export const VideoSection = () => {
           </h2>
         </div>
         
-        {/* --- Contenedor Principal del Video --- */}
+        {/* Contenedor Principal del Video */}
         <div 
           ref={videoContainerRef}
           className="relative w-full aspect-video rounded-3xl overflow-hidden"
@@ -100,11 +160,9 @@ export const VideoSection = () => {
             onClick={handleUnmute}
           />
 
-          {/* --- Botones Personalizados --- */}
-          
-          {/* Contenedor del Botón de Sonido (Centrado) */}
+          {/* Botón de Sonido (con ref en el div) */}
           <div 
-            // ref={unmuteButtonContainerRef} <-- Ya no se necesita
+            ref={unmuteButtonContainerRef}
             className={`absolute inset-0 flex items-center justify-center z-20
                         transition-opacity duration-500
                         ${isActivated ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
@@ -112,16 +170,16 @@ export const VideoSection = () => {
             <button
               onClick={handleUnmute}
               aria-label="Activar sonido"
-              className="w-20 h-20 rounded-full bg-white/20 text-white flex items-center justify-center
-                         backdrop-blur-sm magnetic"
+              className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center
+                         backdrop-blur-sm no-cursor-pointer"
             >
               <Volume2 size={32} />
             </button>
           </div>
 
-          {/* Contenedor del Botón de Play/Pausa (Arriba a la derecha) */}
+          {/* Botón de Play/Pausa (con ref en el div) */}
           <div 
-            // ref={playPauseButtonContainerRef} <-- Ya no se necesita
+            ref={playPauseButtonContainerRef}
             className={`absolute top-6 right-6 z-20
                         transition-opacity duration-500 delay-200
                         ${isActivated ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
@@ -129,8 +187,8 @@ export const VideoSection = () => {
             <button
               onClick={handlePlayPause}
               aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
-              className="w-14 h-14 rounded-full bg-white/20 text-white flex items-center justify-center
-                         backdrop-blur-sm magnetic"
+              className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center
+                     backdrop-blur-sm no-cursor-pointer"
             >
               {isPlaying ? <Pause size={24} /> : <Play size={24} />}
             </button>
