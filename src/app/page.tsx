@@ -45,8 +45,7 @@ export default function Home() {
       <CustomerLogos />
       <MediaContentSection
         zIndex="z-20"
-        titleLine1="Construimos"
-        titleLine2="Marcas"
+        title="Construimos Marcas"
         description="Tu marca tiene una historia única y el mundo necesita escucharla. En Andevo combinamos estrategia, creatividad y tecnología para conectar con las personas correctas y generar impacto real."
         mediaContent={introMedia}
         buttonHref="/nosotros"
@@ -58,8 +57,7 @@ export default function Home() {
       <FeaturedProjects />
       <MediaContentSection
         zIndex="z-50"
-        titleLine1="Nuestra"
-        titleLine2="filosofía"
+        title="Nuestra filosofía"
         description="Estamos impulsados por el diseño centrado en el usuario que impulsa la productividad y aumenta los ingresos. Nuestra experiencia e ingenio son notables, pero siempre nos esforzamos en mejorar en cada proyecto."
         mediaContent={philosophyMedia}
         // (No pasamos props de botón, por lo que no se renderizará)

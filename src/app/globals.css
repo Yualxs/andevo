@@ -81,6 +81,12 @@
   transition: transform 0.2s ease-in-out !important;
 }
 
+/* NUEVO: Estilo para "Blog Cards" (Triple) */
+.mf-cursor.-pointer-blog::before {
+  transform: scale(1.5) !important; /* El tamaño "triple" que pediste */
+  transition: transform 0.2s ease-in-out !important;
+}
+
 /* 4. Estilo para "Absorber" (botón de menú) */
 .menu-icon-trigger.is-stick-stuck ~ .mf-cursor.-stick {
   opacity: 0 !important;

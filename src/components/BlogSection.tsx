@@ -44,7 +44,7 @@ const videoMp4 = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F
 
 // --- Sub-componente: Tarjeta de Blog ---
 const BlogCard = ({ post }: { post: typeof blogData[0] }) => (
-  <Link href={post.href} className="block group">
+  <Link href={post.href} className="block group" data-cursor="-pointer-blog">
     <div className="relative aspect-video w-full rounded-2xl overflow-hidden">
       <img
         src={post.imgSrc}
@@ -55,7 +55,7 @@ const BlogCard = ({ post }: { post: typeof blogData[0] }) => (
       <div className="absolute inset-0 w-full h-full bg-black/10 transition-opacity duration-300 group-hover:opacity-0" />
     </div>
     <div className="mt-4">
-      <h3 className="text-xl md:text-2xl font-light text-white">
+      <h3 className="text-xl sm:text-2xl md:text-3xl font-medium text-white">
         {post.title}
       </h3>
     </div>
@@ -139,8 +139,8 @@ export const BlogSection = () => {
             slidesPerView={1}
             spaceBetween={30}
             breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
+              768: { slidesPerView: 1 },
+              1024: { slidesPerView: 2 },
             }}
             className="overflow-visible!" // Permite que los botones externos funcionen
           >

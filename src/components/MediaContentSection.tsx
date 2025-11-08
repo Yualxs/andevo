@@ -1,13 +1,11 @@
-// EN: src/components/MediaContentSection.tsx
 import { Container } from "./Container";
 import { AnimatedButton } from "./AnimatedButton";
 import clsx from 'clsx';
 import React from 'react';
 
-// 1. Definimos las Props que nuestro componente aceptará
+// 1. Definimos las Props (MODIFICADO)
 interface MediaContentSectionProps {
-  titleLine1: string;
-  titleLine2: string; // La línea en itálica
+  title: React.ReactNode; // <-- CAMBIO: Se unifica el título
   description: string;
   mediaContent: React.ReactNode; // Pasaremos el <img /> o <video /> como un hijo
   zIndex: string; // 'z-20' o 'z-50'
@@ -18,8 +16,7 @@ interface MediaContentSectionProps {
 }
 
 export const MediaContentSection = ({
-  titleLine1,
-  titleLine2,
+  title, // <-- CAMBIO
   description,
   mediaContent,
   zIndex,
@@ -29,7 +26,7 @@ export const MediaContentSection = ({
   buttonAriaLabel
 }: MediaContentSectionProps) => {
 
-  // 2. Definimos las columnas como variables para poder reordenarlas
+  // 2. Definimos las columnas (sin cambios)
   const mediaColumn = (
     <div className="flex items-center justify-center h-64 md:h-96">
       {mediaContent}
@@ -42,7 +39,7 @@ export const MediaContentSection = ({
         {description}
       </p>
       
-      {/* 3. Renderizado condicional del botón */}
+      {/* 3. Renderizado condicional del botón (sin cambios) */}
       {buttonHref && buttonText && (
         <AnimatedButton
           href={buttonHref}
@@ -54,7 +51,7 @@ export const MediaContentSection = ({
   );
 
   return (
-    // 4. Usamos 'clsx' para aplicar el zIndex y el boleado de 5rem
+    // 4. Usamos 'clsx' (sin cambios)
     <section 
       className={clsx(
         "relative py-24 md:py-32 bg-white text-black rounded-t-[5rem] -mt-20",
@@ -62,19 +59,17 @@ export const MediaContentSection = ({
       )}
     >
       <Container>
-        {/* Título (ahora dinámico) */}
+        {/* Título (MODIFICADO) */}
         <div className="mb-16 md:mb-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
-            {titleLine1}
-            <br />
-            {titleLine2}
+            {title} {/* <-- CAMBIO: Título en una sola línea, sin <br> */}
           </h2>
         </div>
 
-        {/* Layout de 2 columnas (con orden dinámico) */}
+        {/* Layout de 2 columnas (sin cambios) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           
-          {/* 5. Ordenamos las columnas según 'mediaPosition' */}
+          {/* 5. Ordenamos las columnas (sin cambios) */}
           <div className={clsx(mediaPosition === 'right' && 'md:order-last')}>
             {mediaColumn}
           </div>
