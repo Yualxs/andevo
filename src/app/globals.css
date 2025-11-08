@@ -1,6 +1,5 @@
 /* 1. Importa TODO Tailwind (la forma de v4) */
 @import "tailwindcss";
-
 /* 2. Define tus keyframes (animaciones) */
 /* El documento dice que esto puede ir en @theme O fuera. Lo dejamos fuera. */
 @layer base {
@@ -43,3 +42,43 @@
   --animate-spin-slow: spin 15s linear infinite;
   /* Ahora `animate-spin-slow` SÍ funcionará */
 }
+
+/* --- INICIO: Estilos de Mouse Follower (Corregidos) --- */
+
+/* 1. Estado base (inversión de color) */
+.mf-cursor {
+  mix-blend-mode: difference !important;
+  background: white !important;
+  filter: none !important;
+}
+.mf-cursor::before {
+  background: white !important;
+}
+
+/* 2. Estado de Texto (cuando aparece "Ver más") */
+.mf-cursor.-text {
+  mix-blend-mode: normal !important;
+  background: white !important;
+  border: 1px solid #e0e0e0;
+}
+.mf-cursor-text {
+  color: black !important;
+  font-weight: 500 !important;
+}
+
+/* --- ¡AQUÍ ESTÁ LA SOLUCIÓN! --- */
+
+/* 3. Estilo para "Magnético" (botones de video) */
+.mf-cursor.-pointer::before {
+  /* Escala el punto a 2.5x cuando pasa sobre un botón */
+  transform: scale(1.25) !important;
+  transition: transform 0.2s ease-in-out !important;
+}
+
+/* 4. Estilo para "Absorber" (botón de menú) */
+.mf-cursor.-stick {
+  /* Oculta el cursor cuando está "pegado" */
+  opacity: 0 !important;
+  transition: opacity 0.2s ease-in-out !important;
+}
+/* --- FIN: Estilos de Mouse Follower --- */

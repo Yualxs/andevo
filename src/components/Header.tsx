@@ -1,10 +1,11 @@
 'use client'; // <-- Necesario porque usa hooks (useState, useEffect)
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Container } from './Container';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 
 /**
  * REEMPLAZO FINAL (Corregido para Tailwind v4 - usando valores arbitrarios)
@@ -200,7 +201,7 @@ export default function Header() {
             aria-expanded={isMenuOpen}
           >
             <span className="text-sm font-medium uppercase hidden md:block">Menu</span>
-            <div className="flex flex-col space-y-1.5 justify-center w-6 h-6">
+            <div className="flex flex-col space-y-1.5 justify-center w-6 h-6 menu-icon-trigger">
               <span className={`block h-0.5 w-full bg-black transition duration-300 ease-in-out
                               ${isMenuOpen ? 'rotate-45 translate-y-1' : ''}`}>
               </span>

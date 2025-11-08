@@ -91,7 +91,7 @@ export const BlogSection = () => {
     // SECCIÓN: Fondo negro, "scoop", z-index 60 (para estar sobre la sección anterior)
     <section 
       className="relative z-60 py-24 md:py-32 bg-black text-white 
-                 rounded-t-[5rem] -mt-[5rem]"
+                 rounded-t-[5rem] -mt-20"
     >
       <Container>
         {/* Título con Video (igual que Proyectos) */}
@@ -99,7 +99,7 @@ export const BlogSection = () => {
           <h2 className="text-3xl md:text-4xl font-light">
             <span className="inline-flex flex-wrap items-center justify-start gap-x-4">
               Artículos
-              <span className="inline-flex items-center justify-center h-16 md:h-20 lg:h-24 w-28 md:w-36 lg:w-48 rounded-full overflow-hidden align-middle flex-shrink-0">
+              <span className="inline-flex items-center justify-center h-16 md:h-20 lg:h-24 w-28 md:w-36 lg:w-48 rounded-full overflow-hidden align-middle shrink-0">
                 <video
                   autoPlay
                   loop
@@ -159,7 +159,7 @@ export const BlogSection = () => {
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
-            className="!overflow-visible" // Permite que los botones externos funcionen
+            className="overflow-visible!" // Permite que los botones externos funcionen
           >
             {blogData.map((post) => (
               <SwiperSlide key={post.title}>

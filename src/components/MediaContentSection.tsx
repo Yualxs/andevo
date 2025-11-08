@@ -57,7 +57,7 @@ export const MediaContentSection = ({
     // 4. Usamos 'clsx' para aplicar el zIndex y el boleado de 5rem
     <section 
       className={clsx(
-        "relative py-24 md:py-32 bg-white text-black rounded-t-[5rem] -mt-[5rem]",
+        "relative py-24 md:py-32 bg-white text-black rounded-t-[5rem] -mt-20",
         zIndex // Aplicamos el z-index ('z-20' o 'z-50')
       )}
     >
