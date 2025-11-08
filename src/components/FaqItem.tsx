@@ -24,7 +24,7 @@ export const FaqItem = ({ question, answer, isOpen, onToggle }: FaqItemProps) =>
         onClick={onToggle} // Usa la prop 'onToggle'
         className="flex justify-between items-center w-full p-6 text-left gap-4"
       >
-        <span className="text-xl md:text-2xl font-medium">{question}</span> {/* Usa la prop 'question' */}
+        <span className="text-lg md:text-xl font-medium">{question}</span> {/* Usa la prop 'question' */}
         <ChevronDown 
           size={24} 
           className={`flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`} // Usa la prop 'isOpen'
@@ -37,7 +37,7 @@ export const FaqItem = ({ question, answer, isOpen, onToggle }: FaqItemProps) =>
         style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }} // Usa la prop 'isOpen'
       >
         <div className="overflow-hidden">
-          <p className="px-6 pb-6 text-lg text-black/70 max-w-prose">
+          <p className="px-6 pb-6 text-base text-black/70 max-w-prose">
             {answer} {/* Usa la prop 'answer' */}
           </p>
         </div>

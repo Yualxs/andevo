@@ -39,7 +39,7 @@ export const ServicesSection = () => {
         
         {/* --- 1. BLOQUE DE TÍTULO Y DESCRIPCIÓN (ARRIBA) --- */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-5xl md:text-7xl font-light mb-8">
+          <h2 className="text-3xl md:text-4xl font-light mb-8">
             Nuestros
             <span className="italic">Servicios</span>
           </h2>

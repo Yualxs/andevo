@@ -14,7 +14,7 @@ export const IntroSection = () => {
       <Container>
         {/* Título */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-5xl md:text-7xl font-light">
+          <h2 className="text-3xl md:text-4xl font-light">
             Construimos
             <br />
             <span className="italic">Marcas</span>

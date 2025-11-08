@@ -51,7 +51,7 @@ export const FeaturedProjects = () => {
       <Container>
         {/* Título */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-5xl md:text-7xl font-light">
+          <h2 className="text-3xl md:text-4xl font-light">
             <span className="inline-flex flex-wrap items-center justify-start gap-x-4">
               Proyectos
               {/* Contenedor del video inline (píldora) */}

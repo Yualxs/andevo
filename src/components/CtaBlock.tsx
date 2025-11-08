@@ -1,4 +1,5 @@
 // EN: src/components/CtaBlock.tsx
+import React from 'react'; // <-- LÍNEA AÑADIDA
 import { AnimatedButton } from "./AnimatedButton";
 
 interface CtaBlockProps {
@@ -12,8 +13,9 @@ export const CtaBlock = ({ line1, line2 }: CtaBlockProps) => {
       
       {/* Columna de Texto */}
       <div className="md:col-span-2">
-        {line1}
-        {line2}
+        {/* Modificamos los props para usar las nuevas clases */}
+        {React.cloneElement(line1 as React.ReactElement, { className: "text-lg text-black/70 mb-2" })}
+        {React.cloneElement(line2 as React.ReactElement, { className: "text-2xl md:text-3xl font-medium" })}
       </div>
       
       {/* Columna del Botón (siempre es igual) */}

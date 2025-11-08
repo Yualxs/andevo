@@ -96,7 +96,7 @@ export const BlogSection = () => {
       <Container>
         {/* Título con Video (igual que Proyectos) */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-5xl md:text-7xl font-light">
+          <h2 className="text-3xl md:text-4xl font-light">
             <span className="inline-flex flex-wrap items-center justify-start gap-x-4">
               Artículos
               <span className="inline-flex items-center justify-center h-16 md:h-20 lg:h-24 w-28 md:w-36 lg:w-48 rounded-full overflow-hidden align-middle flex-shrink-0">

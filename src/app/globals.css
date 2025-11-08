@@ -1,26 +1,46 @@
+/* 1. Importa TODO Tailwind (la forma de v4) */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 2. Define tus keyframes (animaciones) */
+/* El documento dice que esto puede ir en @theme O fuera. Lo dejamos fuera. */
+@layer base {
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 3. Define TODAS tus personalizaciones de tema aquí
+   CON LOS PREFIJOS CORRECTOS
+*/
+@theme {
+  
+  /* === Colores (colors) -> Namespace: --color-* === */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-dark: #0e0e0e;
+  --color-gray: #262626;
+  --color-light: #f5f5f5;
+  --color-brand-green: #05381A;
+  --color-brand-green-light: #C5F1D8;
+  /* Ahora `bg-brand-green` SÍ funcionará */
+
+  /* === Tipografía (fontFamily) -> Namespace: --font-* === */
+  --font-sans: 'var(--font-inter)', sans-serif;
+  /* Ahora `font-sans` SÍ usará Inter */
+
+  /* === Tamaño de Fuente (fontSize) -> Namespace: --text-* === */
+  --text-sm: 0.707rem;
+  --text-base: 1rem;
+  --text-lg: 1.414rem;
+  --text-xl: 1.999rem;
+  --text-2xl: 2.827rem;
+  --text-3xl: 3.998rem;
+  --text-4xl: 5.653rem;
+  --text-5xl: 7.993rem;
+  /* Ahora `text-5xl` SÍ usará 7.993rem */
+  
+  /* === Animaciones (animation) -> Namespace: --animate-* === */
+  --animate-spin-slow: spin 15s linear infinite;
+  /* Ahora `animate-spin-slow` SÍ funcionará */
 }

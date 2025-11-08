@@ -61,7 +61,7 @@ export const HoverVideoCard = ({
       </div>
       
       <div className="mt-4">
-        <h3 className={`text-xl md:text-2xl font-light ${textColor}`}> {/* <--- LÍNEA CORREGIDA */}
+        <h3 className={`text-lg md:text-xl font-light ${textColor}`}> {/* <-- CAMBIO DE TAMAÑO */}
           <span className="font-medium">{title}</span> - <span className="italic">{subtitle}</span>
         </h3>
       </div>

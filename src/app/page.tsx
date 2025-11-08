@@ -16,10 +16,10 @@ export default function Home() {
 
   return (
     <main className="overflow-x-hidden">
-      
+         
       {/* 3. Reemplazamos todo el bloque <header> con esto: */}
       <HeroSection /> 
-      
+
       {/* El resto de tus secciones (sin cambios) */}
       <CustomerLogos />
       <IntroSection />

@@ -235,19 +235,19 @@ export default function Header() {
               */}
               <ul className="mt-4 space-y-1">
                 <li>
-                  <AnimatedLink href="https://www.tiktok.com/@teamandevo" text="TikTok" className="text-xl md:text-2xl font-medium" />
+                  <AnimatedLink href="https://www.tiktok.com/@teamandevo" text="TikTok" className="text-lg md:text-xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.instagram.com/teamandevo/" text="Instagram" className="text-xl md:text-2xl font-medium" />
+                  <AnimatedLink href="https://www.instagram.com/teamandevo/" text="Instagram" className="text-lg md:text-xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.facebook.com/teamandevo/" text="Facebook" className="text-xl md:text-2xl font-medium" />
+                  <AnimatedLink href="https://www.facebook.com/teamandevo/" text="Facebook" className="text-lg md:text-xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.youtube.com/@teamandevo" text="YouTube" className="text-xl md:text-2xl font-medium" />
+                  <AnimatedLink href="https://www.youtube.com/@teamandevo" text="YouTube" className="text-lg md:text-xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.linkedin.com/company/andevo" text="LinkedIn" className="text-xl md:text-2xl font-medium" />
+                  <AnimatedLink href="https://www.linkedin.com/company/andevo" text="LinkedIn" className="text-lg md:text-xl font-medium" />
                 </li>
               </ul>
             </div>
@@ -262,19 +262,19 @@ export default function Header() {
               */}
               <ul className="mt-4 space-y-1">
                 <li>
-                  <AnimatedLink href="/" text="Home" className="text-4xl md:text-5xl lg:text-6xl font-medium" />
+                  <AnimatedLink href="/" text="Home" className="text-2xl md:text-3xl lg:text-4xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="/nosotros" text="Nosotros" className="text-4xl md:text-5xl lg:text-6xl font-medium" />
+                  <AnimatedLink href="/nosotros" text="Nosotros" className="text-2xl md:text-3xl lg:text-4xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="/servicios" text="Servicios" className="text-4xl md:text-5xl lg:text-6xl font-medium" />
+                  <AnimatedLink href="/servicios" text="Servicios" className="text-2xl md:text-3xl lg:text-4xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="/blog" text="Blog" className="text-4xl md:text-5xl lg:text-6xl font-medium" />
+                  <AnimatedLink href="/blog" text="Blog" className="text-2xl md:text-3xl lg:text-4xl font-medium" />
                 </li>
                 <li>
-                  <AnimatedLink href="/contacto" text="Contacto" className="text-4xl md:text-5xl lg:text-6xl font-medium" />
+                  <AnimatedLink href="/contacto" text="Contacto" className="text-2xl md:text-3xl lg:text-4xl font-medium" />
                 </li>
               </ul>
             </div>

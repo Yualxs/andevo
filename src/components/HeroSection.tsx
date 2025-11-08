@@ -21,11 +21,15 @@ export const HeroSection = () => {
         <div className="mb-24 text-center">
           {/* Subtítulo superior */}
           <div className="mb-4">
-            <h2 className="text-2xl md:text-3xl">¡Encantado de conocerte! 👋</h2>
+            <h2 className="text-xl md:text-2xl">¡Encantado de conocerte! 👋</h2>
           </div>
           
           {/* Título principal H1 */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-8 text-center">
+          <div className="p-4">
+        <h1 className="bg-red-500 text-white">Test 1: Default Tailwind (rojo)</h1>
+        <h1 className="bg-brand-green text-white">Test 2: Custom Theme (verde)</h1>
+      </div> 
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-8 text-center">
             Agencia de
             <span className="font-medium italic"> Branding y Desarrollo Web </span>
             
@@ -45,7 +49,7 @@ export const HeroSection = () => {
           </h1>
 
           {/* Subtítulo inferior H2 */}
-          <h2 className="text-2xl md:text-3xl max-w-4xl mx-auto">
+          <h2 className="text-xl md:text-2xl max-w-4xl mx-auto">
             Somos especialistas en branding y desarrollo web; creamos marketing 
             digital a tu medida, mezclando creatividad y datos para hacer crecer tu marca.
           </h2>

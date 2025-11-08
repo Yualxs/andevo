@@ -144,7 +144,7 @@ export const VideoSection = () => {
       <Container>
         {/* Título de la sección (sin cambios) */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-5xl md:text-7xl font-light">
+          <h2 className="text-3xl md:text-4xl font-light">
             ¡Transforma <span className="italic">tu marca</span>
             <br />
             con nosotros!

@@ -85,7 +85,7 @@ const SocialLink = ({ href, name }: { href: string; name: string }) => {
       <Container className="flex justify-between items-center py-6">
         <span 
           ref={textRef}
-          className="text-4xl md:text-5xl lg:text-6xl font-medium"
+          className="text-2xl md:text-3xl lg:text-4xl font-medium"
           style={{ color: '#FFFFFF' }} // Estado inicial
         >
           {name}
@@ -113,62 +113,65 @@ export const Footer = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const marqueePanels = gsap.utils.toArray<HTMLElement>('.marquee-panel');
-    
-    if (marqueePanels.length > 0) {
-      
-      // 1. Crea la animación de la cinta (duration: 20 para ser más rápida)
-      const marqueeTimeline = gsap.fromTo(marqueePanels, 
-        { xPercent: 0 },
-        { 
-          xPercent: -100,
-          duration: 20, // <-- Velocidad base
-          ease: 'none',
-          repeat: -1,
-        }
-      );
+    const marquee = marqueeRef.current;
+    if (!marquee) return;
 
-      // 2. Crea el ScrollTrigger (LÓGICA CORREGIDA)
-      let scrollTimeout: NodeJS.Timeout;
-      const st = ScrollTrigger.create({
-        trigger: 'body',
-        start: 'top top',
-        end: 'bottom bottom',
-        onUpdate: (self) => {
-          const direction = self.direction;
-          const velocity = Math.abs(self.getVelocity() / 700); // <-- Sensibilidad aumentada
+    // 1. Calculamos el ancho de la MITAD de los paneles
+    // (Necesitamos 2 copias idénticas para el bucle)
+    // scrollWidth es el ancho total de todos los hijos (que serán 8)
+    // Dividimos por 2 para obtener el ancho de una copia (4 paneles)
+    const loopWidth = marquee.scrollWidth / 2;
 
-          // 3. Calcula la nueva velocidad (Dirección * (1 + Velocidad))
-          const newTimeScale = direction * (1 + velocity);
+    // 2. Esta es la animación de bucle
+    const marqueeTimeline = gsap.fromTo(marquee,
+      { x: 0 }, // Empezar en x: 0
+      { 
+        x: -loopWidth, // Moverse a la izquierda el ancho de una copia
+        duration: 30,  // <-- Velocidad base (puedes bajarla si la quieres más rápida)
+        ease: 'none',
+        repeat: -1,
+      }
+    );
 
-          // 4. Aplica la nueva velocidad
+    // 3. Este es el control de scroll (MÁS SENSIBLE)
+    let scrollTimeout: NodeJS.Timeout;
+    const st = ScrollTrigger.create({
+      trigger: 'body',
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        const direction = self.direction;
+        // CAMBIO: Dividimos por 500 (antes 700) para más sensibilidad
+        const velocity = Math.abs(self.getVelocity() / 500); 
+        const newTimeScale = direction * (1 + velocity);
+
+        gsap.to(marqueeTimeline, {
+          timeScale: newTimeScale,
+          duration: 0.3,
+          ease: 'power1.out',
+          overwrite: true,
+        });
+
+        // 4. Reseteo de velocidad (sin cambios)
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
           gsap.to(marqueeTimeline, {
-            timeScale: newTimeScale,
-            duration: 0.3,
-            ease: 'power1.out',
+            timeScale: direction,
+            duration: 1.5,
+            ease: 'power2.out',
             overwrite: true,
           });
+        }, 150);
+      },
+    });
 
-          // 5. Resetea la velocidad a 1 (o -1) cuando el scroll se detiene
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(() => {
-            gsap.to(marqueeTimeline, {
-              timeScale: direction, // Vuelve a la velocidad base (manteniendo la dirección)
-              duration: 1.5,
-              ease: 'power2.out',
-              overwrite: true,
-            });
-          }, 150);
-        },
-      });
-
-      // Función de limpieza
-      return () => {
-        st.kill();
-        marqueeTimeline.kill();
-        clearTimeout(scrollTimeout); // Limpia el timeout
-      };
-    }
+    // 5. Limpieza
+    return () => {
+      st.kill();
+      marqueeTimeline.kill();
+      clearTimeout(scrollTimeout);
+    };
+    
   }, []); // El array vacío [] asegura que esto solo se ejecute UNA VEZ
 
   return (
@@ -182,13 +185,13 @@ export const Footer = () => {
       <div className="overflow-hidden mb-16">
         <div ref={marqueeRef} className="flex whitespace-nowrap">
           {/* Replicamos el panel 4 veces para un bucle suave */}
-          {[...Array(4)].map((_, i) => (
+          {[...Array(8)].map((_, i) => (
             <div 
               key={i} 
               className="marquee-panel flex-shrink-0 flex items-center pr-8"
               aria-hidden={i > 0} // Oculta los duplicados a los lectores de pantalla
             >
-              <h2 className="text-7xl md:text-9xl font-light italic uppercase">Síguenos</h2>
+              <h2 className="text-4xl md:text-5xl font-light italic uppercase">Síguenos</h2>
               <img 
                 src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67defed42550debdc0a4ec7b_Simbolo%20Andevo.svg" 
                 alt="" 
