@@ -1,7 +1,8 @@
 // EN: src/components/FeaturedProjects.tsx
 import { Container } from "./Container";
 import { AnimatedButton } from "./AnimatedButton";
-import { HoverVideoCard } from "./HoverVideoCard"; // Importamos nuestra tarjeta reutilizable
+import { HoverVideoCard } from "./HoverVideoCard";
+import { SectionTitleWithVideo } from './SectionTitleWithVideo';
 
 // Data extraída del HTML original de Andevo (Proyectos Destacados)
 const projectData = [
@@ -37,11 +38,6 @@ const projectData = [
 ];
 
 export const FeaturedProjects = () => {
-  // --- AÑADE ESTAS LÍNEAS ---
-  const videoPoster = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/683f70cf2ee52d82544aeb54_Andevo%20Video%20Title%2002.webp";
-  const videoWebM = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683f7b75507630d948bae201_Andevo%20Video%20Title%2002-transcode.webm";
-  const videoMp4 = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683bad78034dacf2e76aedf3_Andevo%20Video%20Title%2002-transcode.mp4";
-  // --- FIN DE LÍNEAS A AÑADIR ---
   return (
     // SECCIÓN: Fondo negro, "scoop", z-index 50 (más alto que Servicios)
     <section 
@@ -49,29 +45,15 @@ export const FeaturedProjects = () => {
                  rounded-t-[5rem] -mt-[5rem]"
     >
       <Container>
-        {/* Título */}
-        <div className="mb-16 md:mb-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
-            <span className="inline-flex flex-wrap items-center justify-start gap-x-4">
-              Proyectos
-              {/* Contenedor del video inline (píldora) */}
-              <span className="inline-flex items-center justify-center h-16 md:h-20 lg:h-24 w-28 md:w-36 lg:w-48 rounded-full overflow-hidden align-middle shrink-0">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  poster={videoPoster}
-                  className="w-full h-full object-cover scale-150"
-                >
-                  <source src={videoWebM} type="video/webm" />
-                  <source src={videoMp4} type="video/mp4" />
-                </video>
-              </span>
-              destacados
-            </span>
-          </h2>
-        </div>
+        {/* 3. Reemplaza el <div> y <h2> por esto: */}
+        <SectionTitleWithVideo
+          line1Text="Proyectos"
+          line2Text="destacados"
+          videoPoster="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/683f70cf2ee52d82544aeb54_Andevo%20Video%20Title%2002.webp"
+          videoWebM="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683f7b75507630d948bae201_Andevo%20Video%20Title%2002-transcode.webm"
+          videoMp4="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683bad78034dacf2e76aedf3_Andevo%20Video%20Title%2002-transcode.mp4"
+          className="mb-16 md:mb-24"
+        />
 
         {/* --- CONTENEDOR FLEX (DOS COLUMNAS) --- */}
         <div className="flex flex-col md:flex-row gap-x-12 gap-y-16">

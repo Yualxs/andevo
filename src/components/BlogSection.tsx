@@ -5,18 +5,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Container } from './Container';
 import { AnimatedButton } from './AnimatedButton';
 import Link from 'next/link';
-
-// 1. Importa los componentes y módulos de Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperCore } from 'swiper';
 import { Navigation } from 'swiper/modules';
-
-// 2. Importa los estilos CSS de Swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
-
-// 3. Importa los iconos para las flechas
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { SectionTitleWithVideo } from './SectionTitleWithVideo';
 
 // --- Data Ficticia (Hardcoded) para el Blog ---
 const blogData = [
@@ -94,28 +89,16 @@ export const BlogSection = () => {
                  rounded-t-[5rem] -mt-20"
     >
       <Container>
-        {/* Título con Video (igual que Proyectos) */}
-        <div className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl font-light">
-            <span className="inline-flex flex-wrap items-center justify-start gap-x-4">
-              Artículos
-              <span className="inline-flex items-center justify-center h-16 md:h-20 lg:h-24 w-28 md:w-36 lg:w-48 rounded-full overflow-hidden align-middle shrink-0">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  poster={videoPoster}
-                  className="w-full h-full object-cover scale-150"
-                >
-                  <source src={videoWebM} type="video/webm" />
-                  <source src={videoMp4} type="video/mp4" />
-                </video>
-              </span>
-              <span className="italic">destacados</span>
-            </span>
-          </h2>
-        </div>
+        {/* 3. Reemplaza el <div> y <h2> por esto: */}
+        <SectionTitleWithVideo
+          line1Text="Artículos"
+          line2Text={<span className="italic">destacados</span>} // Pasamos JSX
+          videoPoster={videoPoster}
+          videoWebM={videoWebM}
+          videoMp4={videoMp4}
+          className="mb-16 md:mb-24" // Pasa el margen
+          fontWeight="font-light" // Especificamos el font-light
+        />
 
         {/* Contenedor del Slider (para posicionar las flechas) */}
         <div className="relative">

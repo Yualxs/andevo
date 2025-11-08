@@ -42,7 +42,7 @@ export const HoverVideoCard = ({
       aria-label={`Ver servicio: ${title}`}
       data-cursor-text="Ver más"
     >
-      <div className="relative aspect-4/5 w-full rounded-2xl overflow-hidden">
+      <div className="relative aspect-4/5 w-full rounded-4xl overflow-hidden">
         <video
           ref={videoRef}
           src={videoUrl}
