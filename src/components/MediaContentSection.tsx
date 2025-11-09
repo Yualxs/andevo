@@ -54,13 +54,13 @@ export const MediaContentSection = ({
     // 4. Usamos 'clsx' (sin cambios)
     <section 
       className={clsx(
-        "relative pt-32 pb-52 bg-white text-black rounded-t-[5rem] -mt-20", // <-- CAMBIO AQUÍ
+        "relative pt-16 pb-36 lg:pt-32 lg:pb-52 bg-white text-black rounded-t-[5rem] -mt-20", // <-- CAMBIO AQUÍ
         zIndex 
       )}
     >
       <Container>
         {/* Título (MODIFICADO) */}
-        <div className="mb-16 md:mb-24">
+        <div className="mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
             {title} {/* <-- CAMBIO: Título en una sola línea, sin <br> */}
           </h2>

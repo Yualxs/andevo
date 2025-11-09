@@ -10,15 +10,15 @@ export const HeroSection = () => {
   const videoMp4 = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683bad68cb9ea083f2316084_Andevo%20Video%20Title%2001-transcode.mp4";
 
   return (
-    <header className="py-24 pt-28 md:pt-32 md:pb-32 bg-white text-black">
-      <Container>
+    <header className="min-h-[calc(100svh-5rem)] lg:min-h-screen bg-white text-black flex flex-col">
+      <Container className="flex-grow flex flex-col justify-center pt-28 md:pt-32 pb-52">
         
         {/* Breadcrumbs */}
-        <div className="mb-12 text-center">
+        <div className="mb-8 md:mb-12 text-center">
           <Link href="/" className="text-base">Home</Link>
         </div>
 
-        <div className="mb-24 text-center">
+        <div className="mb-16 md:mb-24 text-center">
           {/* Subtítulo superior */}
           <div className="mb-4">
             <p className="text-lg sm:text-xl md:text-2xl">¡Encantado de conocerte! 👋</p>

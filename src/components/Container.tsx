@@ -11,7 +11,7 @@ export const Container = ({ children, className }: ContainerProps) => {
   return (
     <div className={clsx(
       // Estas son las clases base de nuestro "container-large"
-      "w-full max-w-6xl mx-auto px-4 md:px-8", 
+      "w-full max-w-6xl mx-auto px-6 md:px-8", 
       
       // Aquí se fusionan las clases extra que pasemos
       className 

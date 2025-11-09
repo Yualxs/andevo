@@ -32,13 +32,13 @@ export const ServicesSection = () => {
   return (
     // SECCIÓN: Fondo blanco, "scoop", z-index 40
     <section 
-      className="relative z-40 pt-32 pb-52 bg-white text-black 
+      className="relative z-40 pt-16 pb-36 lg:pt-32 lg:pb-52 bg-white text-black 
                  rounded-t-[5rem] -mt-20"
     >
       <Container>
         
         {/* --- 1. BLOQUE DE TÍTULO Y DESCRIPCIÓN (ARRIBA) --- */}
-        <div className="mb-16 md:mb-24">
+        <div className="mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
             Nuestros servicios
           </h2>

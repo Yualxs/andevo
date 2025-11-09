@@ -88,7 +88,7 @@ export const BlogSection = () => {
   return (
     // SECCIÓN: Fondo negro, "scoop", z-index 60 (para estar sobre la sección anterior)
     <section 
-      className="relative z-60 pt-32 pb-52 bg-black text-white 
+      className="relative z-60 pt-16 pb-36 lg:pt-32 lg:pb-52 bg-black text-white 
                  rounded-t-[5rem] -mt-20"
     >
       <Container>
@@ -99,7 +99,7 @@ export const BlogSection = () => {
           videoPoster={videoPoster}
           videoWebM={videoWebM}
           videoMp4={videoMp4}
-          className="mb-16 md:mb-24" // Pasa el margen
+          className="mb-12 lg:mb-16" // Pasa el margen
           fontWeight="font-light" // Especificamos el font-light
         />
 

@@ -134,12 +134,12 @@ export const VideoSection = () => {
 
   return (
     <section 
-      className="relative z-30 pt-32 pb-52 bg-black text-white 
+      className="relative z-30 pt-16 pb-36 lg:pt-32 lg:pb-52 bg-black text-white 
                  rounded-t-[5rem] -mt-20"
     >
       <Container>
         {/* Título */}
-        <div className="mb-16 md:mb-24">
+        <div className="mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
             ¡Transforma tu marca con nosotros!
           </h2>

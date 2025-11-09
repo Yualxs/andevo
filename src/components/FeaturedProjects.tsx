@@ -41,7 +41,7 @@ export const FeaturedProjects = () => {
   return (
     // SECCIÓN: Fondo negro, "scoop", z-index 50 (más alto que Servicios)
     <section 
-      className="relative z-50 pt-32 pb-52 bg-black text-white 
+      className="relative z-50 pt-16 pb-36 lg:pt-32 lg:pb-52 bg-black text-white 
                  rounded-t-[5rem] -mt-[5rem]"
     >
       <Container>
@@ -52,7 +52,7 @@ export const FeaturedProjects = () => {
           videoPoster="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/683f70cf2ee52d82544aeb54_Andevo%20Video%20Title%2002.webp"
           videoWebM="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683f7b75507630d948bae201_Andevo%20Video%20Title%2002-transcode.webm"
           videoMp4="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683bad78034dacf2e76aedf3_Andevo%20Video%20Title%2002-transcode.mp4"
-          className="mb-16 md:mb-24"
+          className="mb-12 lg:mb-16"
         />
 
         {/* --- CONTENEDOR FLEX (DOS COLUMNAS) --- */}
