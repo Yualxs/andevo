@@ -2,11 +2,10 @@
 'use client'; // <-- Es un Componente de Cliente para las animaciones
 
 import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import { Container } from './Container';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react'; // Icono para los enlaces
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 
 // Data para los enlaces de redes sociales
@@ -104,76 +103,9 @@ const SocialLink = ({ href, name }: { href: string; name: string }) => {
 
 
 export const Footer = () => {
-  // Ref para la cinta (marquee)
-  const marqueeRef = useRef<HTMLDivElement>(null);
   
   // Obtiene el año actual dinámicamente
   const currentYear = new Date().getFullYear();
-
-  // Hook para la animación de la cinta (marquee)
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const marquee = marqueeRef.current;
-    if (!marquee) return;
-
-    // 1. Calculamos el ancho de la MITAD de los paneles
-    // (Necesitamos 2 copias idénticas para el bucle)
-    // scrollWidth es el ancho total de todos los hijos (que serán 8)
-    // Dividimos por 2 para obtener el ancho de una copia (4 paneles)
-    const loopWidth = marquee.scrollWidth / 2;
-
-    // 2. Esta es la animación de bucle
-    const marqueeTimeline = gsap.fromTo(marquee,
-      { x: 0 }, // Empezar en x: 0
-      { 
-        x: -loopWidth, // Moverse a la izquierda el ancho de una copia
-        duration: 30,  // <-- Velocidad base (puedes bajarla si la quieres más rápida)
-        ease: 'none',
-        repeat: -1,
-      }
-    );
-
-    // 3. Este es el control de scroll (MÁS SENSIBLE)
-    let scrollTimeout: NodeJS.Timeout;
-    const st = ScrollTrigger.create({
-      trigger: 'body',
-      start: 'top top',
-      end: 'bottom bottom',
-      onUpdate: (self) => {
-        const direction = self.direction;
-        // CAMBIO: Dividimos por 500 (antes 700) para más sensibilidad
-        const velocity = Math.abs(self.getVelocity() / 500); 
-        const newTimeScale = direction * (1 + velocity);
-
-        gsap.to(marqueeTimeline, {
-          timeScale: newTimeScale,
-          duration: 0.3,
-          ease: 'power1.out',
-          overwrite: true,
-        });
-
-        // 4. Reseteo de velocidad (sin cambios)
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          gsap.to(marqueeTimeline, {
-            timeScale: direction,
-            duration: 1.5,
-            ease: 'power2.out',
-            overwrite: true,
-          });
-        }, 150);
-      },
-    });
-
-    // 5. Limpieza
-    return () => {
-      st.kill();
-      marqueeTimeline.kill();
-      clearTimeout(scrollTimeout);
-    };
-    
-  }, []); // El array vacío [] asegura que esto solo se ejecute UNA VEZ
 
   return (
     // SECCIÓN: Fondo negro, "scoop", z-index 80 (el más alto)
@@ -184,7 +116,7 @@ export const Footer = () => {
       
       {/* 1. Marquee "Síguenos" */}
       <div className="overflow-hidden mb-16">
-        <div ref={marqueeRef} className="flex whitespace-nowrap">
+        <div className="flex whitespace-nowrap global-marquee-wrapper">
           {/* Replicamos el panel 4 veces para un bucle suave */}
           {[...Array(8)].map((_, i) => (
             <div 

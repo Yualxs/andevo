@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Container } from './Container';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import clsx from 'clsx';
 import Image from 'next/image';
 
@@ -115,72 +114,6 @@ export default function Header() {
       document.body.style.overflow = 'unset';
     };
   }, [isMenuOpen]); // Este efecto se ejecuta cada vez que 'isMenuOpen' cambia.
-
-  // --- 3. AÑADE ESTE NUEVO HOOK PARA LA ANIMACIÓN GLOBAL DE SCROLL ---
-    useEffect(() => {
-      // Registra el plugin de ScrollTrigger
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Selecciona TODAS las imágenes que queremos que roten
-      const rotatingImages = gsap.utils.toArray('.rotating-image');
-      
-      if (rotatingImages.length > 0) {
-        // 1. Crea una línea de tiempo (timeline) base que rota 360 grados en 15s, infinitamente
-        const rotationTimeline = gsap.timeline({ repeat: -1 });
-        rotationTimeline.to(rotatingImages, {
-          rotation: 360,
-          duration: 15,
-          ease: 'none',
-        });
-
-        // 2. Crea el ScrollTrigger que escucha el scroll de la página
-        let scrollTimeout: NodeJS.Timeout;
-        ScrollTrigger.create({
-          trigger: 'body',
-          start: 'top top',
-          end: 'bottom bottom',
-          // 'onUpdate' se dispara cada vez que el usuario hace scroll
-          onUpdate: (self) => {
-            // 1. Obtiene la dirección (1 = abajo, -1 = arriba)
-            const direction = self.direction;
-
-            // 2. Obtiene la velocidad (siempre positiva) y la normaliza
-            const velocity = Math.abs(self.getVelocity() / 2000);
-
-            // 3. Calcula el nuevo timeScale: (1 + velocidad) * dirección
-            // Scroll abajo: (1 + 0.5) * 1 = 1.5 (sentido horario, rápido)
-            // Scroll arriba: (1 + 0.5) * -1 = -1.5 (sentido antihorario, rápido)
-            const newTimeScale = direction * (1 + velocity);
-
-            gsap.to(rotationTimeline, {
-              timeScale: newTimeScale,
-              duration: 0.3,
-              ease: 'power1.out',
-              overwrite: true, // Evita animaciones conflictivas
-            });
-
-            // 4. Resetea la velocidad a la dirección base (1 o -1) cuando el scroll se detiene
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-              gsap.to(rotationTimeline, {
-                timeScale: direction, // Vuelve a velocidad 1 (o -1)
-                duration: 1.5,
-                ease: 'power2.out',
-                overwrite: true,
-              });
-            }, 150);
-          },
-        });
-
-        // Función de limpieza: se ejecuta si el componente se desmonta
-        return () => {
-          rotationTimeline.kill();
-          ScrollTrigger.getAll().forEach(t => t.kill());
-          clearTimeout(scrollTimeout);
-        };
-      }
-    }, []); // El array vacío [] asegura que esto solo se ejecute UNA VEZ
-    // --- FIN DEL NUEVO HOOK ---
 
   // URLs de los assets (logos, banderas) tomadas del código original.
   const logoUrl = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/68f3e09aa04559817c8e3342_New%20logo%20andevo.svg";

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContactButton } from "@/components/FloatingContactButton";
 import { CursorProvider } from '@/components/CursorContext';
+import { GlobalScrollAnimations } from '@/components/GlobalScrollAnimations';
 
 const matterFont = localFont({
   src: [
@@ -38,15 +39,16 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning>
       <body className={matterFont.className}>
         <CursorProvider>
-        <Header />
-        
-        {/* Contenido principal de la página */}
-        {children}
+          <GlobalScrollAnimations />
+          <Header />
+          
+          {/* Contenido principal de la página */}
+          {children}
 
-        {/* --- 2. AÑADE EL FOOTER AQUÍ --- */}
-        <Footer />
+          {/* --- 2. AÑADE EL FOOTER AQUÍ --- */}
+          <Footer />
 
-        <FloatingContactButton />
+          <FloatingContactButton />
         </CursorProvider>
       </body>
     </html>
