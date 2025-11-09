@@ -1,4 +1,3 @@
-// EN: src/components/GlobalScrollAnimations.tsx
 'use client';
 
 import { useEffect } from 'react';
@@ -8,54 +7,59 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export const GlobalScrollAnimations = () => {
   
   useEffect(() => {
-    // 1. Registrar el plugin una sola vez
     gsap.registerPlugin(ScrollTrigger);
 
-    // --- Lógica de Rotación (de Header.tsx) ---
+    // --- Lógica de Rotación ---
     const rotatingImages = gsap.utils.toArray('.rotating-image');
-    let rotationTimeline: gsap.core.Timeline | null = null;
+    // 1. CORRECCIÓN DE TIPO: Debe ser 'Timeline'
+    let rotationTimeline: gsap.core.Timeline | null = null; 
 
     if (rotatingImages.length > 0) {
-      rotationTimeline = gsap.timeline({ repeat: -1 });
-      rotationTimeline.to(rotatingImages, {
+      rotationTimeline = gsap.timeline({ repeat: -1 }); // .timeline() devuelve una Timeline
+      rotationTimeline.to(rotatingImages, { // .to() SÍ existe en Timeline
         rotation: 360,
         duration: 15,
         ease: 'none',
       });
     }
 
-    // --- Lógica de Marquee (de Footer.tsx) ---
+    // --- Lógica de Marquee ---
     const marquee = document.querySelector<HTMLDivElement>('.global-marquee-wrapper');
-    let marqueeTimeline: gsap.core.Timeline | null = null;
+    // 1. CORRECCIÓN DE TIPO: Este SÍ es un 'Tween'
+    let marqueeTimeline: gsap.core.Tween | null = null; 
 
     if (marquee) {
-      // Calculamos el ancho de la MITAD de los paneles
       const loopWidth = marquee.scrollWidth / 2;
-      marqueeTimeline = gsap.fromTo(marquee,
+      marqueeTimeline = gsap.fromTo(marquee, // .fromTo() devuelve un Tween
         { x: 0 },
         { 
           x: -loopWidth,
-          duration: 30, // Velocidad base
+          duration: 30,
           ease: 'none',
           repeat: -1,
         }
       );
     }
 
-    // --- Disparador de Scroll ÚNICO (Consolidado) ---
+    // --- Lógica de Ocultar Header ---
+    const headerBar = document.querySelector<HTMLDivElement>('.global-header-bar');
+    const headerQuickTo = headerBar ? gsap.quickTo(headerBar, "y", { duration: 0.5, ease: "power2.out" }) : null;
+    let lastDirection = 0;
+
+    // --- Disparador de Scroll ÚNICO ---
     let scrollTimeout: NodeJS.Timeout;
     
     const st = ScrollTrigger.create({
       trigger: 'body',
       start: 'top top',
       end: 'bottom bottom',
+      
       onUpdate: (self) => {
         const direction = self.direction;
-        // Usamos la sensibilidad de 500 que teníamos en el Footer
         const velocity = Math.abs(self.getVelocity() / 500); 
         const newTimeScale = direction * (1 + velocity);
 
-        // 1. Actualiza el timeline de rotación
+        // 1. Actualiza Rotación
         if (rotationTimeline) {
           gsap.to(rotationTimeline, {
             timeScale: newTimeScale,
@@ -65,7 +69,7 @@ export const GlobalScrollAnimations = () => {
           });
         }
         
-        // 2. Actualiza el timeline del marquee
+        // 2. Actualiza Marquee
         if (marqueeTimeline) {
           gsap.to(marqueeTimeline, {
             timeScale: newTimeScale,
@@ -75,7 +79,27 @@ export const GlobalScrollAnimations = () => {
           });
         }
 
-        // Reseteo de velocidad (para ambos)
+        // 3. Actualiza Header
+        if (headerQuickTo && headerBar) {
+          const isMenuOpen = headerBar.classList.contains('bg-transparent');
+          
+          if (direction !== lastDirection && !isMenuOpen) {
+            
+            // 2. CORRECCIÓN DE MÉTODO (Sigue siendo correcta)
+            if (self.scroll() <= 100) { // <-- self.scroll()
+              headerQuickTo(0); 
+            } 
+            else if (direction === 1) {
+              headerQuickTo(-headerBar.offsetHeight); 
+            } 
+            else if (direction === -1) {
+              headerQuickTo(0); 
+            }
+            lastDirection = direction;
+          }
+        }
+
+        // Reseteo de velocidad
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(() => {
           if (rotationTimeline) {
@@ -106,7 +130,7 @@ export const GlobalScrollAnimations = () => {
       clearTimeout(scrollTimeout);
     };
     
-  }, []); // El array vacío [] asegura que esto solo se ejecute UNA VEZ
+  }, []); 
 
-  return null; // Este componente no renderiza nada
+  return null;
 };

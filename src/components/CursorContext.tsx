@@ -20,6 +20,15 @@ export const CursorProvider = ({ children }: { children: React.ReactNode }) => {
   const [cursor, setCursor] = useState<MouseFollower | null>(null);
 
   useEffect(() => {
+    
+    // --- 1. AÑADE ESTA CONDICIÓN ---
+    // 1024px es el breakpoint 'lg' de Tailwind, un estándar para tablets.
+    // Si la pantalla es menor o igual a 1024px, no inicialices el cursor.
+    if (window.innerWidth <= 1024) {
+      return; // Salir del hook
+    }
+    // --- FIN DE LA CONDICIÓN ---
+
     // Registra GSAP
     MouseFollower.registerGSAP(gsap);
 

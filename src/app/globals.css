@@ -92,4 +92,12 @@
   opacity: 0 !important;
   transition: opacity 0.2s ease-in-out !important;
 }
+
+@media (max-width: 1024px) {
+  
+  /* Oculta el cursor personalizado */
+  .mf-cursor {
+    display: none !important;
+  }
+}
 /* --- FIN: Estilos de Mouse Follower --- */

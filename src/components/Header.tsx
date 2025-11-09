@@ -71,7 +71,7 @@ const AnimatedLink = ({ href, text, className = "", ...rest }: { href: string; t
  * Componente de enlace para las direcciones (Corregido para Tailwind v4)
  */
 const AddressLink = ({ href, flagSrc, flagAlt, text }: { href: string; flagSrc: string; flagAlt: string; text: string }) => (
-  <a href={href} className="flex items-center space-x-3 group">
+  <a href={href} className="flex items-center space-x-3 group no-cursor-pointer">
     <Image 
       src={flagSrc} 
       alt={flagAlt} 
@@ -127,7 +127,8 @@ export default function Header() {
       
       {/* 1. La barra de navegación principal (Logo y Botón) */}
       <div className={clsx(
-        "fixed top-0 left-0 right-0 z-50 transition-colors duration-500 flex items-center justify-between py-4 px-4 md:px-8",
+        "fixed top-0 left-0 right-0 z-85 transition-colors duration-500 flex items-center justify-between py-4 px-4 md:px-8",
+        "global-header-bar will-change-transform", // <-- AÑADE ESTO
         isMenuOpen ? "bg-transparent" : "bg-white"
       )}>
         {/* Ya no hay un <Container> aquí */}
@@ -174,7 +175,7 @@ export default function Header() {
 
       {/* 2. El Panel del Menú (Overlay) */}
       <nav 
-        className={`fixed top-0 right-0 bottom-0 w-full md:w-1/2 lg:w-[40%] h-screen bg-white z-40 
+        className={`fixed top-0 right-0 bottom-0 w-full md:w-1/2 lg:w-[33%] h-screen bg-white z-40 
                   transition duration-700 ease-in-out
                   ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
