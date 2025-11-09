@@ -134,7 +134,7 @@ export const VideoSection = () => {
 
   return (
     <section 
-      className="relative z-30 py-24 md:py-32 bg-black text-white 
+      className="relative z-30 pt-32 pb-52 bg-black text-white 
                  rounded-t-[5rem] -mt-20"
     >
       <Container>

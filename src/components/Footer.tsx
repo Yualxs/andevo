@@ -111,11 +111,11 @@ export const Footer = () => {
     // SECCIÓN: Fondo negro, "scoop", z-index 80 (el más alto)
     <footer 
       className="relative z-80 bg-black text-white 
-                 rounded-t-[5rem] -mt-20 pt-24 md:pt-32"
+                 rounded-t-[5rem] -mt-20 pt-32"
     >
       
       {/* 1. Marquee "Síguenos" */}
-      <div className="overflow-hidden mb-16">
+      <div className="overflow-hidden mb-32">
         <div className="flex whitespace-nowrap global-marquee-wrapper">
           {/* Replicamos el panel 4 veces para un bucle suave */}
           {[...Array(8)].map((_, i) => (

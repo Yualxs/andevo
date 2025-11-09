@@ -32,7 +32,7 @@ export const ServicesSection = () => {
   return (
     // SECCIÓN: Fondo blanco, "scoop", z-index 40
     <section 
-      className="relative z-40 py-24 md:py-32 bg-white text-black 
+      className="relative z-40 pt-32 pb-52 bg-white text-black 
                  rounded-t-[5rem] -mt-20"
     >
       <Container>

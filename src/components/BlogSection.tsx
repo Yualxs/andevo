@@ -88,7 +88,7 @@ export const BlogSection = () => {
   return (
     // SECCIÓN: Fondo negro, "scoop", z-index 60 (para estar sobre la sección anterior)
     <section 
-      className="relative z-60 py-24 md:py-32 bg-black text-white 
+      className="relative z-60 pt-32 pb-52 bg-black text-white 
                  rounded-t-[5rem] -mt-20"
     >
       <Container>

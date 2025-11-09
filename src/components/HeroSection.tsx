@@ -10,7 +10,7 @@ export const HeroSection = () => {
   const videoMp4 = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683bad68cb9ea083f2316084_Andevo%20Video%20Title%2001-transcode.mp4";
 
   return (
-    <header className="py-24 pt-40 md:pt-48 md:pb-32 bg-white text-black">
+    <header className="py-24 pt-28 md:pt-32 md:pb-32 bg-white text-black">
       <Container>
         
         {/* Breadcrumbs */}

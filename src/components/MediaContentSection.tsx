@@ -54,8 +54,8 @@ export const MediaContentSection = ({
     // 4. Usamos 'clsx' (sin cambios)
     <section 
       className={clsx(
-        "relative py-24 md:py-32 bg-white text-black rounded-t-[5rem] -mt-20",
-        zIndex // Aplicamos el z-index ('z-20' o 'z-50')
+        "relative pt-32 pb-52 bg-white text-black rounded-t-[5rem] -mt-20", // <-- CAMBIO AQUÍ
+        zIndex 
       )}
     >
       <Container>

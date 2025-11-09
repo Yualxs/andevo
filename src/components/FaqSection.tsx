@@ -49,7 +49,7 @@ export const FaqSection = () => {
 
   return (
     <section 
-      className="relative z-70 py-24 md:py-32 bg-white text-black 
+      className="relative z-70 pt-32 pb-52 bg-white text-black 
                  rounded-t-[5rem] -mt-20"
     >
       <Container>
