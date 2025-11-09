@@ -1,5 +1,6 @@
 // EN: src/components/CustomerLogos.tsx
 import { Container } from "./Container";
+import Image from 'next/image';
 
 // Un sub-componente interno solo para este archivo, que maneja el efecto de hover.
 const LogoItem = ({ imgWhite, imgColor, alt }: { imgWhite: string; imgColor: string; alt: string; }) => {
@@ -8,26 +9,28 @@ const LogoItem = ({ imgWhite, imgColor, alt }: { imgWhite: string; imgColor: str
     <div className="relative group flex items-center justify-center h-16 md:h-20">
       
       {/* 1. Logo Blanco (visible por defecto) */}
-      <img
+      <Image
         src={imgWhite}
         alt={alt}
-        loading="lazy"
-        className="h-full w-auto max-w-full object-contain
+        fill
+        className="object-contain
                    transition-opacity duration-300 ease-in-out
-                   group-hover:opacity-0" // Desaparece en hover
+                   group-hover:opacity-0"
+        sizes="(max-width: 768px) 50vw, 16.6vw"
       />
       
       {/* 2. Logo de Color (oculto por defecto) 
          - CORRECCIÓN: Se quitó 'p-2'.
          - 'm-auto' lo centra perfectamente sobre el otro logo.
       */}
-      <img
+      <Image
         src={imgColor}
         alt={alt}
-        loading="lazy"
-        className="absolute inset-0 h-full w-auto max-w-full m-auto object-contain
+        fill
+        className="object-contain
                    opacity-0 transition-opacity duration-300 ease-in-out
-                   group-hover:opacity-100" // Aparece en hover
+                   group-hover:opacity-100"
+        sizes="(max-width: 768px) 50vw, 16.6vw"
       />
     </div>
   );

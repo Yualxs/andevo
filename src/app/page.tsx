@@ -1,23 +1,43 @@
 // EN: src/app/page.tsx
-// Fíjate cómo se han reducido las importaciones
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+
+// Importaciones estáticas (ligeras)
 import { CustomerLogos } from "@/components/CustomerLogos";
 import { MediaContentSection } from "@/components/MediaContentSection";
-import { VideoSection } from "@/components/VideoSection";
 import { ServicesSection } from "@/components/ServicesSection";
-import { FeaturedProjects } from "@/components/FeaturedProjects";
-import { BlogSection } from "@/components/BlogSection";
-import { FaqSection } from "@/components/FaqSection";
-import { HeroSection } from "@/components/HeroSection"; // <-- 1. Importa el Hero
+import { HeroSection } from "@/components/HeroSection";
+
+// --- IMPORTACIONES DINÁMICAS (PESADAS) ---
+// Estas se cargarán solo cuando estén cerca de ser visibles
+
+const VideoSection = dynamic(() => 
+  import('@/components/VideoSection').then(mod => mod.VideoSection),
+  { loading: () => <div className="h-96" /> } // El 'loading' está bien
+);
+
+const FeaturedProjects = dynamic(() => 
+  import('@/components/FeaturedProjects').then(mod => mod.FeaturedProjects)
+);
+
+const BlogSection = dynamic(() => 
+  import('@/components/BlogSection').then(mod => mod.BlogSection)
+);
+
+const FaqSection = dynamic(() => 
+  import('@/components/FaqSection').then(mod => mod.FaqSection)
+);
 
 export default function Home() {
   
   // 2. Ya no necesitamos las constantes de video aquí (se movieron)
   const introMedia = (
-    <img
+    <Image
       src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67defed42550debdc0a4ec7b_Simbolo%20Andevo.svg"
       alt="Símbolo de Andevo"
-      loading="lazy"
+      fill // Usamos 'fill' para que llene el contenedor (que ya tiene tamaño)
       className="w-full h-full object-contain rotating-image"
+      priority={true} // Esta imagen está "above the fold", la priorizamos
     />
   );
 
@@ -29,6 +49,7 @@ export default function Home() {
       playsInline
       poster="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/683f74cd134ebd745b447606_Andevo%20Video%203D.webp"
       className="w-full h-full object-contain"
+      loading="lazy"
     >
       <source src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683f7b894ac34ccefcb02bee_Andevo%20Video%203D-transcode.webm" type="video/webm" />
       <source src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F67cf689adf6efcbb3ed11493_2-transcode.mp4" type="video/mp4" />

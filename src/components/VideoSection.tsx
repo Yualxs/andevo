@@ -148,7 +148,7 @@ export const VideoSection = () => {
         {/* Contenedor Principal del Video */}
         <div 
           ref={videoContainerRef}
-          className="relative w-full aspect-video rounded-3xl overflow-hidden"
+          className="relative w-full aspect-video rounded-4xl overflow-hidden"
         >
           {/* Overlay */}
           <div 

@@ -6,6 +6,7 @@ import { Container } from './Container';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import clsx from 'clsx';
+import Image from 'next/image';
 
 
 /**
@@ -72,7 +73,13 @@ const AnimatedLink = ({ href, text, className = "", ...rest }: { href: string; t
  */
 const AddressLink = ({ href, flagSrc, flagAlt, text }: { href: string; flagSrc: string; flagAlt: string; text: string }) => (
   <a href={href} className="flex items-center space-x-3 group">
-    <img src={flagSrc} alt={flagAlt} className="w-6 shrink-0" />
+    <Image 
+      src={flagSrc} 
+      alt={flagAlt} 
+      width={24}
+      height={16}
+      className="w-6 shrink-0" 
+    />
     <span className="text-sm relative">
       {text}
       {/* Línea de fondo estática */}
@@ -201,7 +208,14 @@ export default function Header() {
               isMenuOpen ? "opacity-0" : "opacity-100"
             )}
           >
-            <img src={logoUrl} loading="lazy" alt="Andevo Logo" className="h-8 md:h-10 w-auto" />
+            <Image 
+              src={logoUrl} 
+              alt="Andevo Logo" 
+              width={180}
+              height={40}
+              className="h-8 md:h-10 w-auto" 
+              priority={true} 
+            />
           </Link>
           
           {/* Botón de Menú (Hamburguesa) */}
@@ -236,11 +250,13 @@ export default function Header() {
         <div className="absolute top-0 left-0 right-0 z-10 bg-white">
           <Container className="flex items-center justify-between py-4">
             <Link href="/" aria-label="home" className="z-50"> 
-              <img 
-                src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67e6e497ca956bf81e2297aa_Logo%20Andevo%20Black.svg" 
-                loading="lazy" 
+              <Image 
+                src={logoUrl} 
                 alt="Andevo Logo" 
+                width={180}
+                height={40}
                 className="h-8 md:h-10 w-auto" 
+                priority={true} 
               />
             </Link>
           </Container>

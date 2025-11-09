@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { SectionTitleWithVideo } from './SectionTitleWithVideo';
+import Image from 'next/image';
 
 // --- Data Ficticia (Hardcoded) para el Blog ---
 const blogData = [
@@ -46,11 +47,13 @@ const videoMp4 = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F
 const BlogCard = ({ post }: { post: typeof blogData[0] }) => (
   <Link href={post.href} className="block group" data-cursor="-pointer-blog">
     <div className="relative aspect-video w-full rounded-2xl overflow-hidden">
-      <img
+      <Image
         src={post.imgSrc}
         alt={post.title}
-        loading="lazy"
+        fill // 'fill' es perfecto aquí porque el div padre tiene 'aspect-video'
         className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+        // 'sizes' ayuda a Next.js a cargar la imagen correcta
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
       />
       <div className="absolute inset-0 w-full h-full bg-black/10 transition-opacity duration-300 group-hover:opacity-0" />
     </div>

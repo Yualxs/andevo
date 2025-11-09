@@ -70,10 +70,13 @@ export const MediaContentSection = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           
           {/* 5. Ordenamos las columnas (sin cambios) */}
-          <div className={clsx(mediaPosition === 'right' && 'md:order-last')}>
+          <div className={clsx(
+            "relative z-0", // <-- AÑADE ESTO
+            mediaPosition === 'right' && 'md:order-last'
+          )}>
             {mediaColumn}
           </div>
-          <div>
+          <div className="relative z-10">
             {textColumn}
           </div>
 

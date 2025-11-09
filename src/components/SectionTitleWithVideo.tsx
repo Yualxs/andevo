@@ -43,6 +43,7 @@ export const SectionTitleWithVideo = ({
             playsInline
             poster={videoPoster}
             className="w-full h-full object-cover scale-150"
+            loading="lazy"
           >
             <source src={videoWebM} type="video/webm" /> 
             <source src={videoMp4} type="video/mp4" /> 

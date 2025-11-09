@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react'; // Icono para los enlaces
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 
 // Data para los enlaces de redes sociales
 const socialLinks = [
@@ -192,10 +193,12 @@ export const Footer = () => {
               aria-hidden={i > 0} // Oculta los duplicados a los lectores de pantalla
             >
               <h2 className="text-4xl md:text-5xl font-light">Síguenos</h2>
-              <img 
+              <Image
                 src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67defed42550debdc0a4ec7b_Simbolo%20Andevo.svg" 
                 alt="" 
-                className="w-20 h-20 md:w-28 md:h-28 mx-8 rotating-image" // Añadimos la clase para la rotación global
+                width={112} // de md:w-28
+                height={112} // de md:h-28
+                className="w-20 h-20 md:w-28 md:h-28 mx-8 rotating-image"
               />
             </div>
           ))}
@@ -226,10 +229,12 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-8">
           <div className="flex items-center gap-4">
             <Link href="/" aria-label="Home">
-              <img 
+              <Image 
                 src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67defed42550debdc0a4ec7b_Simbolo%20Andevo.svg" 
                 alt="Símbolo Andevo" 
-                className="w-8 h-8 rotating-image" // Añadimos la clase para la rotación global
+                width={32} // de w-8
+                height={32} // de h-8
+                className="w-8 h-8 rotating-image"
               />
             </Link>
             <Link href="/politicas-de-privacidad" className="text-base sm:text-lg md:text-xl text-white/70 hover:text-white">
