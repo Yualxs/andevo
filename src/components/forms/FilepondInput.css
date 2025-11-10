@@ -1,0 +1,18 @@
+/* Estiliza Filepond para que coincida con el CSS de Webflow */
+.filepond--root {
+  font-family: inherit;
+  font-size: 16px;
+  color: #000;
+}
+
+.filepond--drop-label {
+  background-color: #eeeeee !important; /* Coincide con el HTML */
+  border-radius: 12px;
+  border: 2px dashed #c0c0c0;
+}
+
+.filepond--label-action {
+  text-decoration: underline !important;
+  text-decoration-color: #000000 !important; /* Coincide con el HTML */
+  color: #000 !important;
+}

@@ -29,7 +29,7 @@ export const FloatingContactButton = () => {
 
   return (
     <Link 
-      href="/contacto" 
+      href="/contact" 
       ref={buttonRef} // <-- 6. Asignar el ref
       className="fixed bottom-8 right-8 z-90 w-36 h-36 rounded-full overflow-hidden group hidden md:block
                  opacity-0 scale-90" // <-- 7. Estado inicial (oculto)
@@ -51,7 +51,6 @@ export const FloatingContactButton = () => {
           muted
           playsInline
           className="w-full h-full object-cover scale-125"
-          loading="lazy" // <-- 8. Mantenemos el lazy load (por si acaso)
         />
       </div>
     </Link>

@@ -251,7 +251,7 @@ export default function Header() {
                   <AnimatedLink href="/blog" text="Blog" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
                 </li>
                 <li>
-                  <AnimatedLink href="/contacto" text="Contacto" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
+                  <AnimatedLink href="/contact" text="Contacto" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
                 </li>
               </ul>
             </div>

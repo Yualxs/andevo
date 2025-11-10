@@ -2,17 +2,29 @@
 import Link from 'next/link';
 
 interface AnimatedButtonProps {
-  href: string;
+  href?: string;
   text: string;
   ariaLabel?: string;
   isSecondary?: boolean; // Para botones negros (como en el blog)
+  as?: 'link' | 'button'; // <-- 1. AÑADIR PROP 'as'
+  type?: 'button' | 'submit' | 'reset'; // <-- 2. AÑADIR PROP 'type'
+  onClick?: () => void; // <-- 3. AÑADIR PROP 'onClick'
+  disabled?: boolean;
 }
 
 /**
  * Réplica del botón animado de Webflow
  */
-export const AnimatedButton = ({ href, text, ariaLabel, isSecondary = false }: AnimatedButtonProps) => {
-  const isInternal = href.startsWith('/');
+export const AnimatedButton = ({ 
+  href, 
+  text, 
+  ariaLabel, 
+  isSecondary = false, 
+  as = 'link', // Valor por defecto 'link'
+  type,
+  onClick,
+  disabled
+}: AnimatedButtonProps) => {
 
   // Clases base del botón
   const buttonClasses = `
@@ -66,17 +78,54 @@ export const AnimatedButton = ({ href, text, ariaLabel, isSecondary = false }: A
     </>
   );
 
-  if (isInternal) {
+  // --- LÓGICA DE RENDERIZADO CORREGIDA ---
+
+  // 1. Si el prop 'as' fuerza un botón, renderiza un botón.
+  if (as === 'button') {
     return (
-      <Link href={href} className={buttonClasses} aria-label={ariaLabel}>
+      <button 
+        type={type || 'button'} 
+        className={buttonClasses} 
+        aria-label={ariaLabel}
+        onClick={onClick}
+        disabled={disabled}
+      >
         {buttonContent}
-      </Link>
+      </button>
     );
   }
 
+  // 2. Si 'href' SÍ existe, renderiza un link.
+  //    (Este 'if' actúa como un type guard, asegurando que 'href' es un string)
+  if (href) {
+    const isInternal = href.startsWith('/');
+    
+    if (isInternal) {
+      return (
+        <Link href={href} className={buttonClasses} aria-label={ariaLabel}>
+          {buttonContent}
+        </Link>
+      );
+    } else {
+      return (
+        <a href={href} className={buttonClasses} aria-label={ariaLabel} target="_blank" rel="noopener noreferrer">
+          {buttonContent}
+        </a>
+      );
+    }
+  }
+
+  // 3. Fallback: Si 'as' no es 'button' Y 'href' no existe,
+  //    renderiza un botón por defecto.
   return (
-    <a href={href} className={buttonClasses} aria-label={ariaLabel} target="_blank" rel="noopener noreferrer">
+    <button 
+      type={type || 'button'} 
+      className={buttonClasses} 
+      aria-label={ariaLabel}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {buttonContent}
-    </a>
+    </button>
   );
 };

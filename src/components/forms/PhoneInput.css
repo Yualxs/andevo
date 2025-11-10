@@ -1,0 +1,25 @@
+/* Arregla el dropdown de intl-tel-input */
+body .iti__country-list {
+  max-height: 200px !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+  z-index: 99999 !important; /* por encima de todo */
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body .iti__country-list .iti__country-name,
+body .iti__country-list .iti__dial-code {
+  display: inline !important;
+  color: #000 !important;
+}
+
+body .iti__country-list .iti__flag-box {
+  margin-right: 8px !important;
+}
+
+body .iti__country-list .iti__country.iti__highlight {
+  background-color: #f0f0f0 !important;
+}

@@ -45,7 +45,7 @@ export const CtaBlock = ({ line1, line2 }: CtaBlockProps) => {
       {/* Columna del Botón (con tu centrado de mobile) */}
       <div className="text-center md:text-right">
         <AnimatedButton 
-          href="/contacto"
+          href="/contact"
           text="😎 Agendar consultoría"
           ariaLabel="Agendar consultoría de marketing digital"
         />

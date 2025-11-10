@@ -49,7 +49,6 @@ export default function Home() {
       playsInline
       poster="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/683f74cd134ebd745b447606_Andevo%20Video%203D.webp"
       className="w-full h-full object-contain"
-      loading="lazy"
     >
       <source src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683f7b894ac34ccefcb02bee_Andevo%20Video%203D-transcode.webm" type="video/webm" />
       <source src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F67cf689adf6efcbb3ed11493_2-transcode.mp4" type="video/mp4" />
