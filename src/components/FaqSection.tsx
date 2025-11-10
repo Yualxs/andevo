@@ -4,7 +4,8 @@
 import { useState, useEffect, useRef } from 'react'; // <-- Importamos hooks
 import { Container } from "./Container";
 import { CtaBlock } from "./CtaBlock"; // Importamos el CTA
-import { FaqItem } from "./FaqItem"; 
+import { FaqItem } from "./FaqItem";
+import { AnimateOnScroll } from './AnimateOnScroll';
 
 // Data de las preguntas frecuentes (sin cambios)
 const faqData = [
@@ -54,14 +55,17 @@ export const FaqSection = () => {
     >
       <Container>
         {/* Título (sin cambios) */}
-        <div className="mb-16 md:mb-24">
+        <AnimateOnScroll className="mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
             Preguntas frecuentes
           </h2>
-        </div>
+        </AnimateOnScroll>
 
         {/* Lista de FAQs (MODIFICADA) */}
-        <div className="mb-24 md:mb-32 flex flex-col gap-4" ref={faqContainerRef}> {/* <-- CAMBIO AQUÍ */}
+        <AnimateOnScroll 
+          className="mb-24 md:mb-32 flex flex-col gap-4" 
+          delay={0.1}
+        >
           {faqData.map((item, index) => (
             <FaqItem 
               key={index} 
@@ -71,13 +75,15 @@ export const FaqSection = () => {
               onToggle={() => handleToggle(index)} 
             />
           ))}
-        </div>
+        </AnimateOnScroll>
 
         {/* --- Sección CTA (Sin cambios) --- */}
-        <CtaBlock
-          line1={<p className="text-xl text-black/70 mb-2">No seas un extraño, hablemos 👄</p>}
-          line2={<h3 className="text-3xl md:text-4xl font-medium">¿Tienes una idea en mente?</h3>}
-        />
+        <AnimateOnScroll delay={0.2}>
+          <CtaBlock
+            line1={<p className="text-xl text-black/70 mb-2">No seas un extraño, hablemos 👄</p>}
+            line2={<h3 className="text-3xl md:text-4xl font-medium">¿Tienes una idea en mente?</h3>}
+          />
+        </AnimateOnScroll>
       </Container>
     </section>
   );

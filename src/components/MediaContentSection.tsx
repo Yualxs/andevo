@@ -1,5 +1,9 @@
+// EN: src/components/MediaContentSection.tsx
+'use client'; // <-- 1. Asegúrate de que sea un 'client component'
+
 import { Container } from "./Container";
 import { AnimatedButton } from "./AnimatedButton";
+import { AnimateOnScroll } from "./AnimateOnScroll";
 import clsx from 'clsx';
 import React from 'react';
 
@@ -59,26 +63,37 @@ export const MediaContentSection = ({
       )}
     >
       <Container>
-        {/* Título (MODIFICADO) */}
-        <div className="mb-12 lg:mb-16">
+        
+        {/* 3. ENVUELVE EL TÍTULO */}
+        <AnimateOnScroll className="mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
-            {title} {/* <-- CAMBIO: Título en una sola línea, sin <br> */}
+            {title}
           </h2>
-        </div>
+        </AnimateOnScroll>
 
-        {/* Layout de 2 columnas (sin cambios) */}
+        {/* 4. ENVUELVE EL GRID DE 2 COLUMNAS */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           
-          {/* 5. Ordenamos las columnas (sin cambios) */}
-          <div className={clsx(
-            "relative z-0", // <-- AÑADE ESTO
-            mediaPosition === 'right' && 'md:order-last'
-          )}>
+          {/* 5. ENVUELVE LA COLUMNA DE MEDIA 
+              (con un delay condicional) */}
+          <AnimateOnScroll 
+            className={clsx(
+              "relative z-0",
+              mediaPosition === 'right' && 'md:order-last'
+            )}
+            delay={mediaPosition === 'left' ? 0.1 : 0.2} // Se anima un poco después del texto si está a la derecha
+          >
             {mediaColumn}
-          </div>
-          <div className="relative z-10">
+          </AnimateOnScroll>
+          
+          {/* 6. ENVUELVE LA COLUMNA DE TEXTO 
+              (con un delay condicional) */}
+          <AnimateOnScroll 
+            className="relative z-10"
+            delay={mediaPosition === 'left' ? 0.2 : 0.1} // Se anima un poco después del texto si está a la izquierda
+          >
             {textColumn}
-          </div>
+          </AnimateOnScroll>
 
         </div>
       </Container>

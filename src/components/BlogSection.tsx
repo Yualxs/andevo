@@ -13,6 +13,7 @@ import 'swiper/css/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { SectionTitleWithVideo } from './SectionTitleWithVideo';
 import Image from 'next/image';
+import { AnimateOnScroll } from './AnimateOnScroll';
 
 // --- Data Ficticia (Hardcoded) para el Blog ---
 const blogData = [
@@ -93,77 +94,79 @@ export const BlogSection = () => {
     >
       <Container>
         {/* 3. Reemplaza el <div> y <h2> por esto: */}
-        <SectionTitleWithVideo
-          line1Text="Artículos"
-          line2Text={<span className="italic">destacados</span>} // Pasamos JSX
-          videoPoster={videoPoster}
-          videoWebM={videoWebM}
-          videoMp4={videoMp4}
-          className="mb-12 lg:mb-16" // Pasa el margen
-          fontWeight="font-light" // Especificamos el font-light
-        />
+        <AnimateOnScroll className="mb-12 lg:mb-16">
+          <SectionTitleWithVideo
+            line1Text="Artículos"
+            line2Text={<span className="italic">destacados</span>} // Pasamos JSX
+            videoPoster={videoPoster}
+            videoWebM={videoWebM}
+            videoMp4={videoMp4}
+            fontWeight="font-light" // Especificamos el font-light
+          />
+        </AnimateOnScroll>
 
         {/* Contenedor del Slider (para posicionar las flechas) */}
-        <div className="relative">
-          
-          {/* Botones de Navegación (fuera del Swiper) */}
-          <div className="absolute top-1/2 -left-6 -translate-y-1/2 hidden md:block z-10">
-            <button
-              ref={prevRef}
-              aria-label="Previous slide"
-              className="w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center
-                         transition-colors hover:bg-white hover:text-black"
-            >
-              <ArrowLeft size={24} />
-            </button>
-          </div>
-          <div className="absolute top-1/2 -right-6 -translate-y-1/2 hidden md:block z-10">
-            <button
-              ref={nextRef}
-              aria-label="Next slide"
-              className="w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center
-                         transition-colors hover:bg-white hover:text-black"
-            >
-              <ArrowRight size={24} />
-            </button>
-          </div>
+        <AnimateOnScroll delay={0.1}>
+          <div className="relative">
+            
+            {/* Botones de Navegación (fuera del Swiper) */}
+            <div className="absolute top-1/2 -left-6 -translate-y-1/2 hidden md:block z-10">
+              <button
+                ref={prevRef}
+                aria-label="Previous slide"
+                className="w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center
+                          transition-colors hover:bg-white hover:text-black"
+              >
+                <ArrowLeft size={24} />
+              </button>
+            </div>
+            <div className="absolute top-1/2 -right-6 -translate-y-1/2 hidden md:block z-10">
+              <button
+                ref={nextRef}
+                aria-label="Next slide"
+                className="w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center
+                          transition-colors hover:bg-white hover:text-black"
+              >
+                <ArrowRight size={24} />
+              </button>
+            </div>
 
-          {/* El Slider de Swiper */}
-          <Swiper
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            modules={[Navigation]}
-            navigation={isMounted ? { // Solo asigna los refs si el componente está montado
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            } : false}
-            loop={true}
-            slidesPerView={1}
-            spaceBetween={30}
-            breakpoints={{
-              768: { slidesPerView: 1 },
-              1024: { slidesPerView: 2 },
-            }}
-            className="overflow-visible!" // Permite que los botones externos funcionen
-          >
-            {blogData.map((post) => (
-              <SwiperSlide key={post.title}>
-                <BlogCard post={post} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-
+            {/* El Slider de Swiper */}
+            <Swiper
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              modules={[Navigation]}
+              navigation={isMounted ? { // Solo asigna los refs si el componente está montado
+                prevEl: prevRef.current,
+                nextEl: nextRef.current,
+              } : false}
+              loop={true}
+              slidesPerView={1}
+              spaceBetween={30}
+              breakpoints={{
+                768: { slidesPerView: 1 },
+                1024: { slidesPerView: 2 },
+              }}
+              className="overflow-visible!" // Permite que los botones externos funcionen
+            >
+              {blogData.map((post) => (
+                <SwiperSlide key={post.title}>
+                  <BlogCard post={post} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </AnimateOnScroll>
         {/* Botón CTA (Secundario) */}
-        <div className="text-center mt-24">
+        <AnimateOnScroll className="text-center mt-24" delay={0.2}>
           <AnimatedButton
             href="/blog"
             text="Ver más Artículos"
             ariaLabel="Ver todos los artículos del blog"
             isSecondary={true} // <-- Estilo negro con texto blanco
           />
-        </div>
+        </AnimateOnScroll>
       </Container>
     </section>
   );

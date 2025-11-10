@@ -1,7 +1,10 @@
 // EN: src/components/ServicesSection.tsx
+'use client';
+
 import { Container } from "./Container";
 import { AnimatedButton } from "./AnimatedButton";
 import { HoverVideoCard } from "./HoverVideoCard"; // Asegúrate de que este esté importado
+import { AnimateOnScroll } from "./AnimateOnScroll";
 
 // Data para los 3 servicios (sin cambios)
 const servicesData = [
@@ -38,11 +41,11 @@ export const ServicesSection = () => {
       <Container>
         
         {/* --- 1. BLOQUE DE TÍTULO Y DESCRIPCIÓN (ARRIBA) --- */}
-        <div className="mb-12 lg:mb-16">
+        <AnimateOnScroll className="mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
             Nuestros servicios
           </h2>
-        </div>
+        </AnimateOnScroll>
 
         {/* --- 2. CONTENEDOR FLEX (DOS COLUMNAS) --- */}
         {/* Usamos flexbox para crear las dos columnas principales */}
@@ -52,15 +55,15 @@ export const ServicesSection = () => {
           <div className="flex flex-col w-full md:w-1/2 gap-y-16">
             
             {/* CÉLULA 1: Descripción */}
-            <div className="md:pr-8">
+            <AnimateOnScroll className="md:pr-8" delay={0.1}>
               <p className="text-base sm:text-lg md:text-xl leading-relaxed text-black/70">
                 Desde diseño de movimiento hasta productos impulsados por IA,
                 diseñamos y construimos interfaces para el futuro.
               </p>
-            </div>
+            </AnimateOnScroll>
 
             {/* CÉLULA 2: Servicio 2 (Branding) */}
-            <div>
+            <AnimateOnScroll delay={0.3}>
               <HoverVideoCard
                 href={servicesData[1].href} // Índice 1 = Branding
                 title={servicesData[1].title}
@@ -68,14 +71,14 @@ export const ServicesSection = () => {
                 posterUrl={servicesData[1].posterUrl}
                 videoUrl={servicesData[1].videoUrl}
               />
-            </div>
+            </AnimateOnScroll>
           </div>
 
           {/* COLUMNA 2: Marketing Digital y Desarrollo Web */}
           <div className="flex flex-col w-full md:w-1/2 gap-y-16">
             
             {/* CÉLULA 3: Servicio 1 (Marketing Digital) */}
-            <div className="md:pt-24">
+            <AnimateOnScroll className="md:pt-24" delay={0.2}>
               <HoverVideoCard
                 href={servicesData[0].href} // Índice 0 = Marketing Digital
                 title={servicesData[0].title}
@@ -83,10 +86,10 @@ export const ServicesSection = () => {
                 posterUrl={servicesData[0].posterUrl}
                 videoUrl={servicesData[0].videoUrl}
               />
-            </div>
+            </AnimateOnScroll>
 
             {/* CÉLULA 4: Servicio 3 (Desarrollo Web) */}
-            <div>
+            <AnimateOnScroll delay={0.4}>
               <HoverVideoCard
                 href={servicesData[2].href} // Índice 2 = Desarrollo Web
                 title={servicesData[2].title}
@@ -94,21 +97,21 @@ export const ServicesSection = () => {
                 posterUrl={servicesData[2].posterUrl}
                 videoUrl={servicesData[2].videoUrl}
               />
-            </div>
+            </AnimateOnScroll>
           </div>
 
         </div>
         {/* --- FIN DEL FLEX --- */}
 
         {/* --- 3. BOTÓN (CENTRADO) --- */}
-        <div className="text-center mt-24">
+        <AnimateOnScroll className="text-center mt-24">
           <AnimatedButton
             href="/servicios"
             text="Ver todos los servicios"
             ariaLabel="Ver todos nuestros servicios"
             // Se usa el estilo primario (fondo blanco, hover negro)
           />
-        </div>
+        </AnimateOnScroll>
       </Container>
     </section>
   );

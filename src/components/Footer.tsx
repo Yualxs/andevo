@@ -7,6 +7,7 @@ import { Container } from './Container';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react'; // Icono para los enlaces
 import Image from 'next/image';
+import { AnimateOnScroll } from './AnimateOnScroll';
 
 // Data para los enlaces de redes sociales
 const socialLinks = [
@@ -115,7 +116,7 @@ export const Footer = () => {
     >
       
       {/* 1. Marquee "Síguenos" */}
-      <div className="overflow-hidden mb-32">
+      <AnimateOnScroll className="overflow-hidden mb-32">
         <div className="flex whitespace-nowrap global-marquee-wrapper">
           {/* Replicamos el panel 4 veces para un bucle suave */}
           {[...Array(8)].map((_, i) => (
@@ -135,17 +136,21 @@ export const Footer = () => {
             </div>
           ))}
         </div>
-      </div>
+      </AnimateOnScroll>
 
       {/* 2. Contenido Principal del Footer (Redes Sociales) */}
-      <Container className="mb-16"> {/* Reducido el margen inferior */}
-        <div className="mb-4">
-          <span className="text-base sm:text-lg md:text-xl uppercase text-white/70 tracking-wider">Nuestras Redes Sociales</span>
-      </div>
-      </Container>
-
+      <AnimateOnScroll delay={0.1}>
+        <Container className="mb-16"> {/* Reducido el margen inferior */}
+          <div className="mb-4">
+            <span className="text-base sm:text-lg md:text-xl uppercase text-white/70 tracking-wider">Nuestras Redes Sociales</span>
+        </div>
+        </Container>
+      </AnimateOnScroll>
       {/* Lista de enlaces sociales (AHORA FUERA DEL CONTAINER) */}
-      <div className="flex flex-col border-t border-white/20 mb-24">
+      <AnimateOnScroll 
+        className="flex flex-col border-t border-white/20 mb-24"
+        delay={0.2}
+      >
         {/* Usamos el nuevo componente animado */}
         {socialLinks.map((link) => (
           <SocialLink 
@@ -154,33 +159,35 @@ export const Footer = () => {
             name={link.name}
           />
         ))}
-      </div>
+      </AnimateOnScroll>
 
       {/* 3. Bottom Footer (Copyright y Logo) */}
-      <Container className="pb-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-8">
-          <div className="flex items-center gap-4">
-            <Link href="/" aria-label="Home">
-              <Image 
-                src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67defed42550debdc0a4ec7b_Simbolo%20Andevo.svg" 
-                alt="Símbolo Andevo" 
-                width={32} // de w-8
-                height={32} // de h-8
-                className="w-8 h-8 rotating-image"
-              />
-            </Link>
-            <Link href="/politicas-de-privacidad" className="text-base sm:text-lg md:text-xl text-white/70 hover:text-white">
-              Política de Privacidad
-            </Link>
+      <AnimateOnScroll delay={0.3}>
+        <Container className="pb-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-8">
+            <div className="flex items-center gap-4">
+              <Link href="/" aria-label="Home">
+                <Image 
+                  src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67defed42550debdc0a4ec7b_Simbolo%20Andevo.svg" 
+                  alt="Símbolo Andevo" 
+                  width={32} // de w-8
+                  height={32} // de h-8
+                  className="w-8 h-8 rotating-image"
+                />
+              </Link>
+              <Link href="/politicas-de-privacidad" className="text-base sm:text-lg md:text-xl text-white/70 hover:text-white">
+                Política de Privacidad
+              </Link>
+            </div>
+            <div className="text-base sm:text-lg md:text-xl text-white/70">
+              © {currentYear} Andevo S.A.C. Todos los Derechos Reservados
+            </div>
           </div>
-          <div className="text-base sm:text-lg md:text-xl text-white/70">
-            © {currentYear} Andevo S.A.C. Todos los Derechos Reservados
+          <div className="text-center text-base sm:text-lg md:text-xl text-white/70 mt-8">
+            Desarrollado con ❤️ por <a href="https://andevo.io/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white/90 hover:text-white">Andevo</a>
           </div>
-        </div>
-        <div className="text-center text-base sm:text-lg md:text-xl text-white/70 mt-8">
-          Desarrollado con ❤️ por <a href="https://andevo.io/" target="_blank" rel="noopener noreferrer" className="font-semibold text-white/90 hover:text-white">Andevo</a>
-        </div>
-      </Container>
+        </Container>
+      </AnimateOnScroll>
     </footer>
   );
 };

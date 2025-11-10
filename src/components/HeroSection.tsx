@@ -2,6 +2,7 @@
 import { Container } from "./Container";
 import { CtaBlock } from "./CtaBlock"; // Importamos el CTA
 import Link from 'next/link';
+import { StaggeredEntryAnimation } from './StaggeredEntryAnimation';
 
 export const HeroSection = () => {
   // Las constantes del video ahora viven dentro de este componente
@@ -11,50 +12,50 @@ export const HeroSection = () => {
 
   return (
     <header className="min-h-[calc(100svh-5rem)] lg:min-h-screen bg-white text-black flex flex-col">
-      <Container className="flex-grow flex flex-col justify-center pt-28 md:pt-32 pb-52">
-        
-        {/* Breadcrumbs */}
-        <div className="mb-8 md:mb-12 text-center">
-          <Link href="/" className="text-base">Home</Link>
-        </div>
-
-        <div className="mb-16 md:mb-24 text-center">
-          {/* Subtítulo superior */}
-          <div className="mb-4">
-            <p className="text-lg sm:text-xl md:text-2xl">¡Encantado de conocerte! 👋</p>
+      <Container className="flex-grow flex flex-col justify-center pt-28 pb-32 md:pt-32 md:pb-52">
+        <StaggeredEntryAnimation> 
+          {/* Breadcrumbs */}
+          <div className="mb-8 md:mb-12 text-center">
+            <Link href="/" className="text-base">Home</Link>
           </div>
-          
-          {/* Título principal H1 */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight mb-8 text-center">
-            Agencia de Branding y Desarrollo Web
+
+          <div className="mb-16 md:mb-24 text-center">
+            {/* Subtítulo superior */}
+            <div className="mb-4">
+              <p className="text-lg sm:text-xl md:text-2xl">¡Encantado de conocerte! 👋</p>
+            </div>
             
-            <span className="inline-flex items-center justify-center h-[0.85em] aspect-[2/1] rounded-full overflow-hidden align-middle mx-2 shrink-0">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                poster={videoPoster}
-                className="w-full h-full object-cover scale-150"
-              >
-                <source src={videoWebM} type="video/webm" />
-                <source src={videoMp4} type="video/mp4" />
-              </video>
-            </span>
-          </h1>
+            {/* Título principal H1 */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight mb-8 text-center">
+              Agencia de Branding y Desarrollo Web
+              
+              <span className="inline-flex items-center justify-center h-[0.85em] aspect-[2/1] rounded-full overflow-hidden align-middle mx-2 shrink-0">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster={videoPoster}
+                  className="w-full h-full object-cover scale-150"
+                >
+                  <source src={videoWebM} type="video/webm" />
+                  <source src={videoMp4} type="video/mp4" />
+                </video>
+              </span>
+            </h1>
 
-          {/* Subtítulo inferior H2 */}
-          <h2 className="text-base sm:text-lg md:text-xl max-w-4xl mx-auto">
-            Somos especialistas en branding y desarrollo web; creamos marketing digital a tu medida, mezclando creatividad y datos para hacer crecer tu marca.
-          </h2>
-        </div>
+            {/* Subtítulo inferior H2 */}
+            <h2 className="text-base sm:text-lg md:text-xl max-w-4xl mx-auto">
+              Somos especialistas en branding y desarrollo web; creamos marketing digital a tu medida, mezclando creatividad y datos para hacer crecer tu marca.
+            </h2>
+          </div>
 
-        {/* Sección CTA (reutilizando el componente) */}
-        <CtaBlock
-          line1={<h3 className="text-2xl font-medium mb-2">¿Tienes una idea en mente?</h3>}
-          line2={<p>Cuéntanos 😉, nosotros la creamos.</p>}
-        />
-
+          {/* Sección CTA (reutilizando el componente) */}
+          <CtaBlock
+            line1={<h3 className="text-2xl font-medium mb-2">¿Tienes una idea en mente?</h3>}
+            line2={<p>Cuéntanos 😉, nosotros la creamos.</p>}
+          />
+        </StaggeredEntryAnimation>
       </Container>
     </header>
   );

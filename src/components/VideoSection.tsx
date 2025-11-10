@@ -8,6 +8,7 @@ import { gsap } from 'gsap';
 import { Container } from './Container';
 import Player from '@vimeo/player';
 import { Volume2, Play, Pause } from 'lucide-react';
+import { AnimateOnScroll } from './AnimateOnScroll';
 
 export const VideoSection = () => {
   const videoContainerRef = useRef<HTMLDivElement>(null); 
@@ -139,60 +140,62 @@ export const VideoSection = () => {
     >
       <Container>
         {/* Título */}
-        <div className="mb-12 lg:mb-16">
+        <AnimateOnScroll className="mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
             ¡Transforma tu marca con nosotros!
           </h2>
-        </div>
-        
+        </AnimateOnScroll>
+
         {/* Contenedor Principal del Video */}
-        <div 
-          ref={videoContainerRef}
-          className="relative w-full aspect-video rounded-4xl overflow-hidden"
-        >
-          {/* Overlay */}
+        <AnimateOnScroll delay={0.1}>
           <div 
-            className={`absolute inset-0 bg-black/30 cursor-pointer z-10
-                        transition-opacity duration-500 ease-in-out
-                        ${isActivated ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-            onClick={handleUnmute}
-          />
-
-          {/* Botón de Sonido (con ref en el div) */}
-          <div 
-            ref={unmuteButtonContainerRef}
-            className={`absolute inset-0 flex items-center justify-center z-20
-                        transition-opacity duration-500
-                        ${isActivated ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+            ref={videoContainerRef}
+            className="relative w-full aspect-video rounded-4xl overflow-hidden"
           >
-            <button
+            {/* Overlay */}
+            <div 
+              className={`absolute inset-0 bg-black/30 cursor-pointer z-10
+                          transition-opacity duration-500 ease-in-out
+                          ${isActivated ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
               onClick={handleUnmute}
-              aria-label="Activar sonido"
-              className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center
-                         backdrop-blur-sm no-cursor-pointer"
-            >
-              <Volume2 size={32} />
-            </button>
-          </div>
+            />
 
-          {/* Botón de Play/Pausa (con ref en el div) */}
-          <div 
-            ref={playPauseButtonContainerRef}
-            className={`absolute top-6 right-6 z-20
-                        transition-opacity duration-500 delay-200
-                        ${isActivated ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-          >
-            <button
-              onClick={handlePlayPause}
-              aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
-              className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center
-                     backdrop-blur-sm no-cursor-pointer"
+            {/* Botón de Sonido (con ref en el div) */}
+            <div 
+              ref={unmuteButtonContainerRef}
+              className={`absolute inset-0 flex items-center justify-center z-20
+                          transition-opacity duration-500
+                          ${isActivated ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
             >
-              {isPlaying ? <Pause size={24} /> : <Play size={24} />}
-            </button>
-          </div>
+              <button
+                onClick={handleUnmute}
+                aria-label="Activar sonido"
+                className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center
+                          backdrop-blur-sm no-cursor-pointer"
+              >
+                <Volume2 size={32} />
+              </button>
+            </div>
 
-        </div> {/* Fin del contenedor Principal del Video */}
+            {/* Botón de Play/Pausa (con ref en el div) */}
+            <div 
+              ref={playPauseButtonContainerRef}
+              className={`absolute top-6 right-6 z-20
+                          transition-opacity duration-500 delay-200
+                          ${isActivated ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            >
+              <button
+                onClick={handlePlayPause}
+                aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
+                className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center
+                      backdrop-blur-sm no-cursor-pointer"
+              >
+                {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+              </button>
+            </div>
+
+          </div> {/* Fin del contenedor Principal del Video */}
+        </AnimateOnScroll>
       </Container>
     </section>
   );
