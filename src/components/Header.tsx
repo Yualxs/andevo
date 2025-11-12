@@ -116,7 +116,7 @@ export default function Header() {
   }, [isMenuOpen]); // Este efecto se ejecuta cada vez que 'isMenuOpen' cambia.
 
   // URLs de los assets (logos, banderas) tomadas del código original.
-  const logoUrl = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/68f3e09aa04559817c8e3342_New%20logo%20andevo.svg";
+  const logoUrl = "/andevo.svg";
   const flagUsaUrl = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67e4b85148c0623345fc0cc6_Estados%20Unidos%20Bandera.svg";
   const flagPeruUrl = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/67e4b851cb4badab8c1b185f_Per%C3%BA%20Bandera.svg";
 
@@ -147,7 +147,7 @@ export default function Header() {
               alt="Andevo Logo" 
               width={180}
               height={40}
-              className="h-8 md:h-10 w-auto" 
+              className="h-[26px] w-auto" 
               priority={true} 
             />
           </Link>
@@ -189,7 +189,7 @@ export default function Header() {
                 alt="Andevo Logo" 
                 width={180}
                 height={40}
-                className="h-8 md:h-10 w-auto" 
+                className="h-[26px] w-auto" 
                 priority={true} 
               />
             </Link>

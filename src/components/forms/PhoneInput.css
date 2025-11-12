@@ -1,25 +1,54 @@
-/* Arregla el dropdown de intl-tel-input */
-body .iti__country-list {
-  max-height: 200px !important;
-  overflow-y: auto !important;
-  box-sizing: border-box !important;
-  z-index: 99999 !important; /* por encima de todo */
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* EN: src/components/forms/PhoneInput.css */
+
+/* Estiliza el contenedor de la nueva librería para que
+  coincida con nuestros AnimatedInput
+*/
+.phone-input-wrapper {
+  position: relative;
+  /* La "línea" ahora es un borde simple */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
 }
 
-body .iti__country-list .iti__country-name,
-body .iti__country-list .iti__dial-code {
-  display: inline !important;
+/* Línea roja cuando hay error */
+.phone-input-wrapper.has-error {
+  border-bottom-color: #DC2626; /* red-600 */
+}
+
+/* Línea negra más gruesa al enfocar */
+.phone-input-wrapper:focus-within {
+  border-bottom-color: #000;
+}
+
+/* Resetea los estilos del input de la librería
+  para que coincida con nuestro diseño de 3xl
+*/
+.PhoneInput,
+.PhoneInputInput {
+  font-size: 1.875rem !important; /* 3xl */
+  line-height: 2.25rem !important; /* 3xl */
   color: #000 !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  padding: 1rem 0 !important; /* py-4 */
+  box-shadow: none !important;
 }
 
-body .iti__country-list .iti__flag-box {
-  margin-right: 8px !important;
+/* Estilo del placeholder */
+.PhoneInputInput::placeholder {
+  color: rgba(0, 0, 0, 0.3) !important;
 }
 
-body .iti__country-list .iti__country.iti__highlight {
-  background-color: #f0f0f0 !important;
+/* Estilo del selector de país (bandera)
+*/
+.PhoneInputCountry {
+  margin-right: 0.75rem; /* separa la bandera del número */
+}
+
+.PhoneInputCountrySelect {
+  /* Resetea estilos de la flecha */
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
