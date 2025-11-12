@@ -305,20 +305,17 @@ export default function ContactPage() {
   console.log('[CLIENT] Validación OK. Entrando a TRY...');
 
   try {
-    console.log('[CLIENT] OMITIENDO reCAPTCHA para prueba...');
+      console.log('[CLIENT] Obteniendo token de reCAPTCHA (Clásico v2)...');
       
-      // --- INICIO DE LA PRUEBA ---
-      // Comentamos la llamada real y enviamos un token falso
-      // if (!recaptchaRef.current) {
-      //   throw new Error("Error de reCAPTCHA: La referencia es nula.");
-      // }
-      // const token = await recaptchaRef.current.executeAsync();
-      
-      const token = "TEST_TOKEN_OMITIR_RECAPTCHA"; // <-- Nuestro token falso
-      // --- FIN DE LA PRUEBA ---
+      // --- CÓDIGO DE reCAPTCHA RESTAURADO ---
+      if (!recaptchaRef.current) {
+        throw new Error("Error de reCAPTCHA: La referencia es nula.");
+      }
+      const token = await recaptchaRef.current.executeAsync();
+      // --- FIN DE LA RESTAURACIÓN ---
       
       if (!token) {
-        throw new Error("El token falso no se generó (error de código).");
+        throw new Error("Falló la verificación (token nulo). Revisa tu Site Key.");
       }
 
     console.log('[CLIENT] Token OK. Enviando a /api/contact...');
@@ -370,7 +367,13 @@ export default function ContactPage() {
           </StaggeredEntryAnimation>
 
           {/* Título (Correcto) */}
-          
+          <StaggeredEntryAnimation delay={0.1}>
+            <div className="mb-24">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium">
+                <span className="italic">¡Hola!</span> Cuéntanoslo todo 👋
+              </h1>
+            </div>
+          </StaggeredEntryAnimation>
 
           {/* --- INICIO DE LA LÓGICA CORREGIDA --- */}
 

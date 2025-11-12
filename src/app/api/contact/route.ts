@@ -36,31 +36,22 @@ export async function POST(request: Request) {
     const { token, ...formData } = validation.data;
 
     // 4. VERIFICACIÓN DE reCAPTCHA (Método Clásico 'fetch')
-    // Esto reemplaza el código de "createAssessment"
-    if (token === "TEST_TOKEN_OMITIR_RECAPTCHA") {
-      
-      console.log('[SERVER] OMITIENDO verificación de reCAPTCHA (Modo de Prueba).');
+    console.log('[SERVER] Verificando reCAPTCHA v2 (Clásico)...');
     
-    } else {
-      
-      // --- Lógica de reCAPTCHA normal ---
-      console.log('[SERVER] Verificando reCAPTCHA v2 (Clásico)...');
-      const recaptchaResponse = await fetch(
-        'https://www.google.com/recaptcha/api/siteverify',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-        }
-      );
-      
-      const recaptchaData = await recaptchaResponse.json();
-
-      if (!recaptchaData.success) {
-        console.error('--- [SERVER] ERROR: reCAPTCHA fallido ---', recaptchaData['error-codes']);
-        return NextResponse.json({ message: 'Verificación Anti-Spam fallida' }, { status: 403 });
+    const recaptchaResponse = await fetch(
+      'https://www.google.com/recaptcha/api/siteverify',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
       }
-      // --- Fin de la lógica normal ---
+    );
+    
+    const recaptchaData = await recaptchaResponse.json();
+
+    if (!recaptchaData.success) {
+      console.error('--- [SERVER] ERROR: reCAPTCHA fallido ---', recaptchaData['error-codes']);
+      return NextResponse.json({ message: 'Verificación Anti-Spam fallida' }, { status: 403 });
     }
 
     // 5. Envío de Correos (sin cambios)
