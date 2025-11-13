@@ -18,7 +18,7 @@ export const AboutValuesSection = () => {
           
           {/* Columna 1: Título (Nuestro objetivo) */}
           <AnimateOnScroll delay={0.1}>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-medium uppercase tracking-wider text-black">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-wider text-black">
               Nuestro objetivo
             </h2>
           </AnimateOnScroll>

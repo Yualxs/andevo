@@ -12,7 +12,7 @@ export const AboutDetailsSection = () => {
         
         {/* 1. Título Principal (H2) */}
         <AnimateOnScroll className="mb-24 max-w-5xl">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
             <span className="italic">Nos atrevemos<br/>a hacer</span>
             <br/>lo que otros<br/>no hacen
           </h2>

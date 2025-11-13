@@ -369,7 +369,7 @@ export default function ContactPage() {
           {/* Título (Correcto) */}
           <StaggeredEntryAnimation delay={0.1}>
             <div className="mb-24">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium">
                 <span className="italic">¡Hola!</span> Cuéntanoslo todo 👋
               </h1>
             </div>
