@@ -212,19 +212,19 @@ export default function Header() {
               */}
               <ul className="mt-4 space-y-1">
                 <li>
-                  <AnimatedLink href="https://www.tiktok.com/@teamandevo" text="TikTok" className="text-base sm:text-lg md:text-xl font-medium" />
+                  <AnimatedLink href="https://www.tiktok.com/@teamandevo" text="TikTok" className="text-base sm:text-lg md:text-xl font-medium" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.instagram.com/teamandevo/" text="Instagram" className="text-base sm:text-lg md:text-xl font-medium" />
+                  <AnimatedLink href="https://www.instagram.com/teamandevo/" text="Instagram" className="text-base sm:text-lg md:text-xl font-medium" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.facebook.com/teamandevo/" text="Facebook" className="text-base sm:text-lg md:text-xl font-medium" />
+                  <AnimatedLink href="https://www.facebook.com/teamandevo/" text="Facebook" className="text-base sm:text-lg md:text-xl font-medium" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.youtube.com/@teamandevo" text="YouTube" className="text-base sm:text-lg md:text-xl font-medium" />
+                  <AnimatedLink href="https://www.youtube.com/@teamandevo" text="YouTube" className="text-base sm:text-lg md:text-xl font-medium" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.linkedin.com/company/andevo" text="LinkedIn" className="text-base sm:text-lg md:text-xl font-medium" />
+                  <AnimatedLink href="https://www.linkedin.com/company/andevo" text="LinkedIn" className="text-base sm:text-lg md:text-xl font-medium" onClick={() => setIsMenuOpen(false)} />
                 </li>
               </ul>
             </div>
@@ -239,19 +239,19 @@ export default function Header() {
               */}
               <ul className="mt-4 space-y-1">
                 <li>
-                  <AnimatedLink href="/" text="Home" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
+                  <AnimatedLink href="/" text="Home" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="/nosotros" text="Nosotros" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
+                  <AnimatedLink href="/about" text="Nosotros" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="/servicios" text="Servicios" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
+                  <AnimatedLink href="#" text="Servicios" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="/blog" text="Blog" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
+                  <AnimatedLink href="#" text="Blog" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="/contact" text="Contacto" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large"/>
+                  <AnimatedLink href="/contact" text="Contacto" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
               </ul>
             </div>

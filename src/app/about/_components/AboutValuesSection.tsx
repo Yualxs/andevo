@@ -18,7 +18,7 @@ export const AboutValuesSection = () => {
           
           {/* Columna 1: Título (Nuestro objetivo) */}
           <AnimateOnScroll delay={0.1}>
-            <h2 className="text-base font-medium uppercase tracking-wider text-black">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-medium uppercase tracking-wider text-black">
               Nuestro objetivo
             </h2>
           </AnimateOnScroll>
@@ -28,7 +28,7 @@ export const AboutValuesSection = () => {
             {/* Este texto es más grande que un párrafo estándar.
               Usamos text-2xl/3xl para darle la importancia que tiene en el diseño.
             */}
-            <p className="text-xl md:text-2xl lg:text-3xl text-black/90 leading-snug">
+            <p className="text-base sm:text-lg md:text-xl text-black/90 leading-snug">
               Desde nuestra fundación en Andevo, hemos acompañado a nuestros clientes 
               en la búsqueda de soluciones digitales, forjando marcas sólidas y 
               productos innovadores. A lo largo de los años, nuestra experiencia 

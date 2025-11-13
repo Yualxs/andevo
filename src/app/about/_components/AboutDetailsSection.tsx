@@ -23,7 +23,7 @@ export const AboutDetailsSection = () => {
           
           {/* Columna Izquierda (Título secundario) */}
           <AnimateOnScroll delay={0.1}>
-            <h3 className="text-base font-medium uppercase tracking-wider text-black">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-medium uppercase tracking-wider text-black">
               En pocas palabras, nos encanta lo que hacemos
             </h3>
           </AnimateOnScroll>
@@ -33,7 +33,7 @@ export const AboutDetailsSection = () => {
             
             {/* Bloque de Texto */}
             <AnimateOnScroll delay={0.2}>
-              <div className="text-xl md:text-2xl text-black/90 leading-snug space-y-6 mb-16">
+              <div className="text-base sm:text-lg md:text-xl text-black/90 leading-snug space-y-6 mb-16">
                 <p>
                   Somos increíbles creando ecosistemas digitales y marcas únicas. Andevo 
                   es un equipo unido de expertos listo para resolver los desafíos 
@@ -60,7 +60,7 @@ export const AboutDetailsSection = () => {
                 {/* Stat 1 */}
                 <div>
                   <span className="block text-5xl md:text-7xl font-medium">10+</span>
-                  <span className="block text-sm text-black/70 mt-2">
+                  <span className="block text-base sm:text-lg md:text-xl text-black/70 mt-2">
                     Creativos y Analistas
                   </span>
                 </div>
@@ -68,7 +68,7 @@ export const AboutDetailsSection = () => {
                 {/* Stat 2 */}
                 <div>
                   <span className="block text-5xl md:text-7xl font-medium">60+</span>
-                  <span className="block text-sm text-black/70 mt-2">
+                  <span className="block text-base sm:text-lg md:text-xl text-black/70 mt-2">
                     Proyectos<br/>Completados
                   </span>
                 </div>
@@ -76,7 +76,7 @@ export const AboutDetailsSection = () => {
                 {/* Stat 3 */}
                 <div>
                   <span className="block text-5xl md:text-7xl font-medium">8+</span>
-                  <span className="block text-sm text-black/70 mt-2">
+                  <span className="block text-base sm:text-lg md:text-xl text-black/70 mt-2">
                     Años de Experiencia
                   </span>
                 </div>

@@ -1,3 +1,4 @@
+// EN: src/components/AnimateOnScroll.tsx
 'use client';
 
 import React, { useRef, useEffect } from 'react';
@@ -5,9 +6,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import clsx from 'clsx';
 
-// Ya registramos ScrollTrigger en GlobalScrollAnimations, 
-// pero es buena práctica registrarlo aquí también 
-// para que el componente sea 100% independiente.
 gsap.registerPlugin(ScrollTrigger);
 
 interface AnimateOnScrollProps {
@@ -27,33 +25,38 @@ export const AnimateOnScroll = ({
     const el = ref.current;
     if (!el) return;
 
-    // 1. ESTADO INICIAL (Oculto)
-    // Lo ponemos aquí (y no con CSS) para evitar "flashes"
-    gsap.set(el, { 
-      opacity: 0, 
-      y: 50 // Desplazado 50px hacia abajo
-    });
+    // Declaramos 'anim' aquí para que sea accesible en la limpieza
+    let anim: gsap.core.Tween | null = null; 
 
-    // 2. LA ANIMACIÓN DE REVELADO
-    const anim = gsap.to(el, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      delay: delay,
-      ease: 'power2.out',
-      // 3. EL DISPARADOR (ScrollTrigger)
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%', // Animar cuando el 85% superior entre en la pantalla
-        toggleActions: 'play none none none', // Ejecutar la animación UNA SOLA VEZ
-      },
-    });
+    // Usamos setTimeout para esperar el "tick" del navegador
+    const timeout = setTimeout(() => {
+      // Lógica 'fadeInUp' (la única que debe tener este componente)
+      gsap.set(el, { 
+        opacity: 0, 
+        y: 50 
+      });
+      
+      anim = gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: delay,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el, 
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      });
+    }, 100); // 100ms de retraso seguro
 
-    // 4. Limpieza al desmontar el componente
+    // Función de limpieza unificada
     return () => {
-      anim.kill(); // <-- GSAP se encarga de matar el trigger asociado
+      clearTimeout(timeout); // Limpia el timeout
+      anim?.kill(); // Limpia la animación (esto también mata el ScrollTrigger)
     };
-  }, [ref, delay]);
+
+  }, [ref, delay]); // Array de dependencias limpio
 
   return (
     <div ref={ref} className={className}>
