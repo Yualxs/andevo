@@ -62,7 +62,15 @@ export default function Home() {
       <HeroSection /> 
 
       {/* El resto de tus secciones (sin cambios) */}
-      <CustomerLogos />
+      <CustomerLogos 
+        title={
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
+            Hemos trabajado con
+          </h2>
+        }
+        zIndex="z-10"
+        showCta={false} // <-- Oculto en el Home
+      />
       <MediaContentSection
         zIndex="z-20"
         title="Construimos Marcas"

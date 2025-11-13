@@ -1,35 +1,52 @@
 // EN: src/components/CtaBlock.tsx
-import React, { ReactElement } from 'react'; // <-- 1. Importa ReactElement
+import React, { ReactElement } from 'react';
 import { AnimatedButton } from "./AnimatedButton";
-import clsx from 'clsx'; // <-- 2. Importa clsx
+import clsx from 'clsx';
 
-// 3. Define la "forma" de las props que el elemento debe tener
-interface ElementProps {
+// 1. Exporta la interfaz para que CustomerLogos.tsx pueda usarla
+export interface ElementProps {
   className?: string;
   // Añade cualquier otra prop que los elementos puedan tener
 }
 
-// 4. Cambia la interface para que acepte ReactElement
+// 2. Define la interfaz de CtaBlockProps (UNA SOLA VEZ)
 interface CtaBlockProps {
   line1: ReactElement<ElementProps>;
   line2: ReactElement<ElementProps>;
+  buttonText?: string;
+  buttonAriaLabel?: string;
+  isSecondary?: boolean;
 }
 
-export const CtaBlock = ({ line1, line2 }: CtaBlockProps) => {
+// 3. Exporta el componente
+export const CtaBlock = ({ 
+  line1, 
+  line2,
+  // Valores por defecto para no romper la Home
+  buttonText = "😎 Agendar consultoría",
+  buttonAriaLabel = "Agendar consultoría de marketing digital",
+  isSecondary = false
+}: CtaBlockProps) => { // <-- El error 'Cannot find name' se soluciona
   
-  // 5. Clona 'line1' y fusiona sus props/clases
+  // 1. Modificamos 'line1WithClass'
   const line1WithClass = React.cloneElement(line1, {
     className: clsx(
-      line1.props.className, // <-- Obtiene las clases de page.tsx (ej. "text-2xl...")
-      "text-lg sm:text-xl md:text-2xl font-medium text-black mb-2" // <-- Añade las clases base de CtaBlock
+      line1.props.className, 
+      // Mantenemos las clases de tipografía/layout de la Home
+      "text-lg sm:text-xl md:text-2xl font-medium mb-2", 
+      // ARREGLO: Hacemos el color condicional
+      isSecondary ? 'text-white' : 'text-black' 
     )
   });
-
-  // 6. Clona 'line2' y fusiona sus props/clases
+  
+  // 2. Modificamos 'line2WithClass'
   const line2WithClass = React.cloneElement(line2, {
     className: clsx(
-      line2.props.className, // <-- Obtiene las clases de page.tsx
-      "text-base sm:text-lg md:text-xl font-regular" // <-- Añade las clases base de CtaBlock
+      line2.props.className, 
+      // Mantenemos las clases de tipografía/layout de la Home
+      "text-base sm:text-lg md:text-xl font-regular", 
+      // ARREGLO: Hacemos el color condicional (con opacidad para el subtítulo)
+      isSecondary ? 'text-white/70' : 'text-black'
     )
   });
 
@@ -38,16 +55,17 @@ export const CtaBlock = ({ line1, line2 }: CtaBlockProps) => {
       
       {/* Columna de Texto */}
       <div className="text-center md:text-left md:col-span-2">
-        {line1WithClass} {/* <-- 7. Renderiza el nuevo elemento */}
-        {line2WithClass} {/* <-- 7. Renderiza el nuevo elemento */}
+        {line1WithClass}
+        {line2WithClass}
       </div>
       
-      {/* Columna del Botón (con tu centrado de mobile) */}
+      {/* Columna del Botón (flexible) */}
       <div className="text-center md:text-right">
         <AnimatedButton 
           href="/contact"
-          text="😎 Agendar consultoría"
-          ariaLabel="Agendar consultoría de marketing digital"
+          text={buttonText}
+          ariaLabel={buttonAriaLabel}
+          isSecondary={isSecondary}
         />
       </div>
     </div>
