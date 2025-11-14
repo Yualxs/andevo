@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { BlogPost, urlFor } from '@/lib/sanity.client';
+import { BlogPost, urlFor } from '@/lib/sanity.client'; 
 import { AnimateOnScroll } from '@/components/AnimateOnScroll';
 
 interface BlogCardProps {
@@ -18,7 +18,8 @@ export const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
         <div className="relative aspect-video w-full rounded-2xl overflow-hidden">
           <Image
             src={urlFor(post.mainImage).width(800).height(450).url()}
-            alt={post.title}
+            // --- ¡AQUÍ ESTÁ LA CORRECCIÓN! ---
+            alt={post.title || 'Artículo de blog'} 
             fill
             className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -27,10 +28,10 @@ export const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
         </div>
         <div className="mt-4">
           <h3 className="text-2xl font-medium text-black line-clamp-2">
-            {post.title}
+            {post.title || 'Artículo sin título'}
           </h3>
           <div className="text-base text-black/60 capitalize mt-1">
-            {post.category}
+            {post.category || 'General'}
           </div>
         </div>
       </Link>

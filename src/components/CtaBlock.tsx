@@ -33,7 +33,7 @@ export const CtaBlock = ({
     className: clsx(
       line1.props.className, 
       // Mantenemos las clases de tipografía/layout de la Home
-      "text-lg sm:text-xl md:text-2xl font-medium mb-2", 
+      "text-lg sm:text-xl md:text-2xl font-semibold mb-2", 
       // ARREGLO: Hacemos el color condicional
       isSecondary ? 'text-white' : 'text-black' 
     )

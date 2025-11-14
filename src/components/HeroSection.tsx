@@ -26,7 +26,7 @@ export const HeroSection = () => {
             </div>
             
             {/* Título principal H1 */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight mb-8 text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-8 text-center">
               Agencia de Branding y Desarrollo Web
               
               <span className="inline-flex items-center justify-center h-[0.85em] aspect-[2/1] rounded-full overflow-hidden align-middle mx-2 shrink-0">
@@ -52,7 +52,7 @@ export const HeroSection = () => {
 
           {/* Sección CTA (reutilizando el componente) */}
           <CtaBlock
-            line1={<h3 className="text-2xl font-medium mb-2">¿Tienes una idea en mente?</h3>}
+            line1={<h3 className="text-2xl font-semibold mb-2">¿Tienes una idea en mente?</h3>}
             line2={<p>Cuéntanos 😉, nosotros la creamos.</p>}
           />
         </StaggeredEntryAnimation>

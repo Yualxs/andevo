@@ -4,7 +4,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from './Container';
 import { AnimatedButton } from './AnimatedButton';
-import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperCore } from 'swiper';
 import { Navigation } from 'swiper/modules';
@@ -12,44 +11,22 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { SectionTitleWithVideo } from './SectionTitleWithVideo';
-import Image from 'next/image';
 import { AnimateOnScroll } from './AnimateOnScroll';
 
 // --- 1. IMPORTAR TIPOS DE SANITY ---
-import { BlogPost, urlFor } from '@/lib/sanity.client'; 
+import { BlogPost } from '@/lib/sanity.client'; 
+// --- 2. ¡IMPORTAR EL COMPONENTE BlogCard! ---
+import { BlogCard } from '@/app/blog/_components/BlogCard';
+
+// --- 3. ELIMINAR `blogData` y la definición de `BlogCard` interna ---
 
 // URLs del video del título (sin cambios)
 const videoPoster = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/683f70cff057f3c927e658ec_Andevo%20Video%20Title%2003.webp";
 const videoWebM = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683f7b82f9805d31ef82b4ed_Andevo%20Video%20Title%2003-transcode.webm";
 const videoMp4 = "https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683bad80f14bc69995d3aa3b_Andevo%20Video%20Title%2003-transcode.mp4";
 
-// --- 3. ACTUALIZAR SUB-COMPONENTE: BlogCard ---
-const BlogCard = ({ post }: { post: BlogPost }) => (
-  <Link 
-    href={`/blog/${post.slug.current}`} // <-- URL dinámica
-    className="block group" 
-    data-cursor="-pointer-blog"
-  >
-    <div className="relative aspect-video w-full rounded-2xl overflow-hidden">
-      <Image
-        src={urlFor(post.mainImage).width(800).height(450).url()} // <-- Imagen de Sanity
-        alt={post.title || 'Artículo de blog'} 
-        fill
-        className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
-      />
-      <div className="absolute inset-0 w-full h-full bg-black/10 transition-opacity duration-300 group-hover:opacity-0" />
-    </div>
-    <div className="mt-4">
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-medium text-white line-clamp-2">
-        {post.title} 
-      </h3>
-    </div>
-  </Link>
-);
 
 // --- 4. ACTUALIZAR COMPONENTE PRINCIPAL: BlogSection ---
-// (Ahora acepta `posts` como prop)
 export const BlogSection = ({ posts }: { posts: BlogPost[] }) => {
   // ... (El código de refs de Swiper no cambia) ...
   const prevRef = useRef(null);
@@ -128,9 +105,10 @@ export const BlogSection = ({ posts }: { posts: BlogPost[] }) => {
               className="overflow-visible!"
             >
               {/* Mapea sobre los 'posts' de las props */}
-              {posts.map((post) => (
+              {posts.map((post, index) => (
                 <SwiperSlide key={post._id}>
-                  <BlogCard post={post} />
+                  {/* Usa el componente importado */}
+                  <BlogCard post={post} index={index} />
                 </SwiperSlide>
               ))}
             </Swiper>

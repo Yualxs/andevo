@@ -86,7 +86,7 @@ const SocialLink = ({ href, name }: { href: string; name: string }) => {
       <Container className="flex justify-between items-center py-6">
         <span 
           ref={textRef}
-          className="text-2xl md:text-3xl lg:text-4xl font-medium"
+          className="text-2xl md:text-3xl lg:text-4xl font-semibold"
           style={{ color: '#FFFFFF' }} // Estado inicial
         >
           {name}

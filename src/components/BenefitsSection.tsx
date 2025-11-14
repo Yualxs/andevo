@@ -45,7 +45,7 @@ const BenefitItem = ({ title, description }: BenefitItemProps) => (
       />
     </div>
     {/* Col 2: Título (Corregido) */}
-    <h3 className="text-xl md:text-2xl font-medium uppercase tracking-wider text-black">
+    <h3 className="text-xl md:text-2xl font-semibold uppercase tracking-wider text-black">
       {title}
     </h3>
     {/* Col 3: Descripción (Corregido) */}
@@ -74,7 +74,7 @@ export const BenefitsSection = ({ zIndex, showImage = true }: BenefitsSectionPro
       <Container>
         {/* Título Principal */}
         <AnimateOnScroll className="mb-24 max-w-5xl">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-semibold">
             <span className="italic">Beneficios</span> de<br/>trabajar con Andevo
           </h2>
         </AnimateOnScroll>

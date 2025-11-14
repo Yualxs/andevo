@@ -10,7 +10,7 @@ interface SectionTitleWithVideoProps {
   videoWebM: string;
   videoMp4: string;
   className?: string; // Para clases extra (como márgenes)
-  fontWeight?: 'font-light' | 'font-medium'; // Para flexibilidad
+  fontWeight?: 'font-light' | 'font-semibold'; // Para flexibilidad
 }
 
 export const SectionTitleWithVideo = ({
@@ -20,7 +20,7 @@ export const SectionTitleWithVideo = ({
   videoWebM,
   videoMp4,
   className,
-  fontWeight = 'font-medium' // Por defecto será 'medium'
+  fontWeight = 'font-semibold' // Por defecto será 'medium'
 }: SectionTitleWithVideoProps) => {
   return (
     // Aplicamos el fontWeight y las clases de tamaño de fuente base

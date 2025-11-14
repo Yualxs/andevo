@@ -56,7 +56,7 @@ export const FaqSection = () => {
       <Container>
         {/* Título (sin cambios) */}
         <AnimateOnScroll className="mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold">
             Preguntas frecuentes
           </h2>
         </AnimateOnScroll>
@@ -81,7 +81,7 @@ export const FaqSection = () => {
         <AnimateOnScroll delay={0.2}>
           <CtaBlock
             line1={<p className="text-xl text-black/70 mb-2">No seas un extraño, hablemos 👄</p>}
-            line2={<h3 className="text-3xl md:text-4xl font-medium">¿Tienes una idea en mente?</h3>}
+            line2={<h3 className="text-3xl md:text-4xl font-semibold">¿Tienes una idea en mente?</h3>}
           />
         </AnimateOnScroll>
       </Container>
