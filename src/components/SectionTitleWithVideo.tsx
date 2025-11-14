@@ -37,7 +37,7 @@ export const SectionTitleWithVideo = ({
       <span className="flex flex-wrap items-center justify-start gap-x-4 mt-2">
         
         {/* Píldora de Video (con altura dinámica) */}
-        <span className="inline-flex items-center justify-center h-[0.85em] aspect-[2/1] rounded-full overflow-hidden align-middle shrink-0">
+        <span className="hidden lg:inline-flex items-center justify-center h-[0.85em] aspect-[2/1] rounded-full overflow-hidden align-middle shrink-0">
           <video
             autoPlay
             loop

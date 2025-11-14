@@ -5,7 +5,6 @@ import "mouse-follower/dist/mouse-follower.min.css";
 
 // 1. Importa el NUEVO componente proveedor
 import { ClientProviders } from "@/components/ClientProviders";
-import Script from "next/script";
 
 const montFont = localFont({
   src: [
@@ -51,10 +50,6 @@ export default function RootLayout({
         <ClientProviders>
           {children}
         </ClientProviders>
-        <Script 
-          src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );
