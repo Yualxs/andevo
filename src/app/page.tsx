@@ -1,6 +1,7 @@
 // EN: src/app/page.tsx
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { sanityClient, homePostsQuery, BlogPost } from '@/lib/sanity.client';
 
 // Importaciones estáticas (ligeras)
 import { CustomerLogos } from "@/components/CustomerLogos";
@@ -28,8 +29,8 @@ const FaqSection = dynamic(() =>
   import('@/components/FaqSection').then(mod => mod.FaqSection)
 );
 
-export default function Home() {
-  
+export default async function Home() {
+  const homePosts = await sanityClient.fetch<BlogPost[]>(homePostsQuery);
   // 2. Ya no necesitamos las constantes de video aquí (se movieron)
   const introMedia = (
     <Image
@@ -90,7 +91,7 @@ export default function Home() {
         mediaContent={philosophyMedia}
         // (No pasamos props de botón, por lo que no se renderizará)
       />
-      <BlogSection />
+      <BlogSection posts={homePosts} />
       <FaqSection />
       
     </main>

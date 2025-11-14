@@ -6,7 +6,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.prod.website-files.com',
+        hostname: 'cdn.prod.website-files.com', // El de Webflow (lo dejamos)
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io', // <-- ¡AÑADE ESTE BLOQUE!
       },
     ],
   },

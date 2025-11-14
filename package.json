@@ -10,6 +10,9 @@
     "tailwind:init": "./node_modules/.bin/tailwindcss init -p --ts"
   },
   "dependencies": {
+    "@portabletext/react": "^5.0.0",
+    "@sanity/client": "^7.12.1",
+    "@sanity/image-url": "^1.2.0",
     "@types/react-google-recaptcha": "^2.1.9",
     "@vimeo/player": "^2.30.1",
     "clsx": "^2.1.1",

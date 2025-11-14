@@ -4,7 +4,10 @@ export default defineType({
   title: 'Block Content',
   name: 'blockContent',
   type: 'array',
+  
+  // Aquí definimos todos los "bloques" que puedes añadir:
   of: [
+    // 1. El bloque de texto estándar (Párrafos, H2, etc.)
     defineArrayMember({
       title: 'Block',
       type: 'block',
@@ -37,9 +40,37 @@ export default defineType({
         ],
       },
     }),
+    
+    // 2. El bloque de Imagen (que ya teníamos)
     defineArrayMember({
       type: 'image',
       options: {hotspot: true},
+    }),
+    
+    // --- ¡NUEVO! AÑADIDO PARA PDFS ---
+    // 3. El bloque de Archivo (para subir PDFs)
+    defineArrayMember({
+      title: 'Subir PDF',
+      name: 'pdfUpload',
+      type: 'file',
+      fields: [
+        {
+          name: 'description',
+          type: 'string',
+          title: 'Descripción (texto del enlace)',
+        },
+      ],
+    }),
+
+    // --- ¡NUEVO! AÑADIDO PARA VIDEOS/EMBEDS ---
+    // 4. El bloque de Código (para iframes, etc.)
+    defineArrayMember({
+      title: 'Embed HTML (Video, etc.)',
+      name: 'htmlEmbed',
+      type: 'code',
+      options: {
+        language: 'html', // Lo configuramos para HTML
+      },
     }),
   ],
 })
