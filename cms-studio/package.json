@@ -37,6 +37,9 @@
   "pnpm": {
     "allow-build": [
       "esbuild"
+    ],
+    "onlyBuiltDependencies": [
+      "esbuild"
     ]
   }
 }

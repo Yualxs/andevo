@@ -1,18 +1,15 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
+import {schemaTypes} from './schemaTypes/index'
 
 export default defineConfig({
   name: 'default',
   title: 'Andevo Website',
-
   projectId: 'g03oumwp',
   dataset: 'production',
-
   plugins: [structureTool(), visionTool()],
-
   schema: {
-    types: schemaTypes,
+    types: schemaTypes, 
   },
 })
