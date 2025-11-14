@@ -123,12 +123,13 @@ export default function Header() {
   return (
     // 'relative' en el header y 'fixed' en los elementos internos
     // da más control sobre las capas 'z-index'.
-    <header className="relative z-50 w-full text-black">
+    <header className="w-full text-black">
       
       {/* 1. La barra de navegación principal (Logo y Botón) */}
       <div className={clsx(
         "fixed top-0 left-0 right-0 z-85 transition-colors duration-500 flex items-center justify-between py-4 px-4 md:px-8",
-        "global-header-bar will-change-transform", // <-- AÑADE ESTO
+        "global-header-bar will-change-transform",
+        "isolation-isolate",
         isMenuOpen ? "bg-transparent" : "bg-white"
       )}>
         {/* Ya no hay un <Container> aquí */}
@@ -139,7 +140,8 @@ export default function Header() {
             aria-label="home" 
             className={clsx(
               "z-50 transition-opacity duration-500",
-              isMenuOpen ? "opacity-0" : "opacity-100"
+              isMenuOpen ? "opacity-0" : "opacity-100",
+              "no-cursor-pointer"
             )}
           >
             <Image 
@@ -175,7 +177,7 @@ export default function Header() {
 
       {/* 2. El Panel del Menú (Overlay) */}
       <nav 
-        className={`fixed top-0 right-0 bottom-0 w-full md:w-1/2 lg:w-[33%] h-screen bg-white z-40 
+        className={`fixed top-0 right-0 bottom-0 w-full md:w-1/2 lg:w-[33%] h-screen bg-white z-[100] 
                   transition duration-700 ease-in-out
                   ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
@@ -281,7 +283,7 @@ export default function Header() {
       {/* 3. El Fondo (Backdrop) */}
       <div 
         onClick={() => setIsMenuOpen(false)}
-        className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-30 transition-opacity duration-700
+        className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-95 transition-opacity duration-700
                   ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       ></div>
     </header>

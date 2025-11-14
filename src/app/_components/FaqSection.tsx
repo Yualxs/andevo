@@ -51,7 +51,7 @@ export const FaqSection = () => {
   return (
     <section 
       className="relative z-70 pt-16 pb-36 lg:pt-32 lg:pb-52 bg-white text-black 
-                 rounded-t-[5rem] -mt-20"
+                 rounded-t-[3rem] -mt-12 lg:rounded-t-[5rem] lg:-mt-20"
     >
       <Container>
         {/* Título (sin cambios) */}

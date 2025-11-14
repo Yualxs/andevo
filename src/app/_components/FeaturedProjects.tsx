@@ -45,7 +45,7 @@ export const FeaturedProjects = () => {
     // SECCIÓN: Fondo negro, "scoop", z-index 50 (más alto que Servicios)
     <section 
       className="relative z-50 pt-16 pb-36 lg:pt-32 lg:pb-52 bg-black text-white 
-                 rounded-t-[5rem] -mt-[5rem]"
+                 rounded-t-[3rem] -mt-12 lg:rounded-t-[5rem] lg:-mt-20"
     >
       <Container>
         {/* 3. Reemplaza el <div> y <h2> por esto: */}

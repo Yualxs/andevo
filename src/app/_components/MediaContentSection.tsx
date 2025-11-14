@@ -58,7 +58,7 @@ export const MediaContentSection = ({
     // 4. Usamos 'clsx' (sin cambios)
     <section 
       className={clsx(
-        "relative pt-16 pb-36 lg:pt-32 lg:pb-52 bg-white text-black rounded-t-[5rem] -mt-20", // <-- CAMBIO AQUÍ
+        "relative pt-16 pb-36 lg:pt-32 lg:pb-52 bg-white text-black rounded-t-[3rem] -mt-12 lg:rounded-t-[5rem] lg:-mt-20",
         zIndex 
       )}
     >

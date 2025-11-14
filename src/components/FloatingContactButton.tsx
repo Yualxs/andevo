@@ -32,7 +32,7 @@ export const FloatingContactButton = () => {
       href="/contact" 
       ref={buttonRef} // <-- 6. Asignar el ref
       className="fixed bottom-8 right-8 z-90 w-36 h-36 rounded-full overflow-hidden group hidden md:block
-                 opacity-0 scale-90" // <-- 7. Estado inicial (oculto)
+                 opacity-0 scale-90 no-cursor-pointer" // <-- 7. Estado inicial (oculto)
       aria-label="Ir a contacto"
     >
       {/* SVG Giratorio (fondo) */}

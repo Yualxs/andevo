@@ -264,3 +264,16 @@
 /* --- FIN: CORRECCIÓN DE Z-INDEX --- */
 
 /* --- FIN DE ESTILOS DE BOTONES DE FORMULARIO --- */
+
+/* --- INICIO: CORRECCIÓN DE Z-INDEX DE reCAPTCHA --- */
+
+/* Esto selecciona la insignia que Google inyecta.
+  La ponemos por encima de nuestro Footer (z-80) y 
+  Botón Flotante (z-90), pero por debajo de la 
+  cortina de transición (z-9999).
+*/
+.grecaptcha-badge {
+  z-index: 9990 !important;
+}
+
+/* --- FIN: CORRECCIÓN DE Z-INDEX DE reCAPTCHA --- */

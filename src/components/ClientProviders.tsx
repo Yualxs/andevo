@@ -29,6 +29,8 @@ export function ClientProviders({
   const pathname = usePathname();
   gsap.registerPlugin(ScrollTrigger);
 
+  const showFloatingButton = pathname !== '/contact';
+
   // --- LÓGICA DE RECAPTCHA ELIMINADA DE AQUÍ ---
 
   return (
@@ -36,7 +38,8 @@ export function ClientProviders({
     <CursorProvider>
       <GlobalScrollAnimations />
       <Header />
-      <FloatingContactButton />
+      {/* --- 2. APLICA LA CONDICIÓN AQUÍ --- */}
+      {showFloatingButton && <FloatingContactButton />}
 
       <AnimatePresence 
         mode="wait"

@@ -27,7 +27,7 @@ export const HeroSection = () => {
             
             {/* Título principal H1 */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-8 text-center">
-              Agencia de Branding y Desarrollo Web
+              Agencia de <span className="italic">Branding</span> y <span className="italic">Desarrollo Web</span>
               
               <span className="inline-flex items-center justify-center h-[0.85em] aspect-[2/1] rounded-full overflow-hidden align-middle mx-2 shrink-0">
                 <video

@@ -112,7 +112,7 @@ export const Footer = () => {
     // SECCIÓN: Fondo negro, "scoop", z-index 80 (el más alto)
     <footer 
       className="relative z-80 bg-black text-white 
-                 rounded-t-[5rem] -mt-20 pt-16 lg:pt-32"
+                 rounded-t-[3rem] -mt-12 lg:rounded-t-[5rem] lg:-mt-20 pt-16 lg:pt-32"
     >
       
       {/* 1. Marquee "Síguenos" */}

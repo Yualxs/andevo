@@ -47,6 +47,9 @@ export const AnimateOnScroll = ({
           start: 'top 85%',
           toggleActions: 'play none none none',
         },
+        onComplete: () => {
+          gsap.set(el, { clearProps: 'transform' });
+        }
       });
     }, 100); // 100ms de retraso seguro
 
