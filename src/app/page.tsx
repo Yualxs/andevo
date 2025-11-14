@@ -5,28 +5,28 @@ import { sanityClient, homePostsQuery, BlogPost } from '@/lib/sanity.client';
 
 // Importaciones estáticas (ligeras)
 import { CustomerLogos } from "@/components/CustomerLogos";
-import { MediaContentSection } from "@/components/MediaContentSection";
-import { ServicesSection } from "@/components/ServicesSection";
-import { HeroSection } from "@/components/HeroSection";
+import { MediaContentSection } from "@/app/_components/MediaContentSection";
+import { ServicesSection } from "@/app/_components/ServicesSection";
+import { HeroSection } from "@/app/_components/HeroSection";
 
 // --- IMPORTACIONES DINÁMICAS (PESADAS) ---
 // Estas se cargarán solo cuando estén cerca de ser visibles
 
 const VideoSection = dynamic(() => 
-  import('@/components/VideoSection').then(mod => mod.VideoSection),
+  import('@/app/_components/VideoSection').then(mod => mod.VideoSection),
   { loading: () => <div className="h-96" /> } // El 'loading' está bien
 );
 
 const FeaturedProjects = dynamic(() => 
-  import('@/components/FeaturedProjects').then(mod => mod.FeaturedProjects)
+  import('@/app/_components/FeaturedProjects').then(mod => mod.FeaturedProjects)
 );
 
 const BlogSection = dynamic(() => 
-  import('@/components/BlogSection').then(mod => mod.BlogSection)
+  import('@/app/_components/BlogSection').then(mod => mod.BlogSection)
 );
 
 const FaqSection = dynamic(() => 
-  import('@/components/FaqSection').then(mod => mod.FaqSection)
+  import('@/app/_components/FaqSection').then(mod => mod.FaqSection)
 );
 
 export default async function Home() {

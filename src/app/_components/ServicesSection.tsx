@@ -1,10 +1,10 @@
 // EN: src/components/ServicesSection.tsx
 'use client';
 
-import { Container } from "./Container";
-import { AnimatedButton } from "./AnimatedButton";
-import { HoverVideoCard } from "./HoverVideoCard"; // Asegúrate de que este esté importado
-import { AnimateOnScroll } from "./AnimateOnScroll";
+import { Container } from "@/components/Container";
+import { AnimatedButton } from "@/components/AnimatedButton";
+import { HoverVideoCard } from "./HoverVideoCard";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 // Data para los 3 servicios (sin cambios)
 const servicesData = [

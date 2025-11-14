@@ -2,21 +2,21 @@
 'use client'; 
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Container } from './Container';
-import { AnimatedButton } from './AnimatedButton';
+import { Container } from '@/components/Container';
+import { AnimatedButton } from '@/components/AnimatedButton';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperCore } from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { SectionTitleWithVideo } from './SectionTitleWithVideo';
-import { AnimateOnScroll } from './AnimateOnScroll';
+import { SectionTitleWithVideo } from '@/components/SectionTitleWithVideo';
+import { AnimateOnScroll } from '@/components/AnimateOnScroll';
 
 // --- 1. IMPORTAR TIPOS DE SANITY ---
 import { BlogPost } from '@/lib/sanity.client'; 
 // --- 2. ¡IMPORTAR EL COMPONENTE BlogCard! ---
-import { BlogCard } from '@/app/blog/_components/BlogCard';
+import { BlogCard } from '@/components/BlogCard';
 
 // --- 3. ELIMINAR `blogData` y la definición de `BlogCard` interna ---
 
@@ -107,8 +107,12 @@ export const BlogSection = ({ posts }: { posts: BlogPost[] }) => {
               {/* Mapea sobre los 'posts' de las props */}
               {posts.map((post, index) => (
                 <SwiperSlide key={post._id}>
-                  {/* Usa el componente importado */}
-                  <BlogCard post={post} index={index} />
+                  {/* ¡AQUÍ ESTÁ LA CORRECCIÓN! */}
+                  <BlogCard 
+                    post={post} 
+                    index={index} 
+                    textColor="text-white" // <-- Pasa la prop de color
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>

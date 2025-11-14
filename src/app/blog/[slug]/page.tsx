@@ -16,7 +16,7 @@ import {
 } from '@/lib/sanity.client';
 
 import { PortableTextComponent } from '../_components/PortableTextComponent';
-import { BlogCard } from '../_components/BlogCard';
+import { BlogCard } from '@/components/BlogCard';
 
 async function getPost(slug: string): Promise<BlogPost | null> {
   const post = await sanityClient.fetch(postQuery, { slug: slug });

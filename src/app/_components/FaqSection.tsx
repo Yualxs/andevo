@@ -1,11 +1,11 @@
 // EN: src/components/FaqSection.tsx
 'use client'; // <-- ¡IMPORTANTE! Se convierte en Componente de Cliente
 
-import { useState, useEffect, useRef } from 'react'; // <-- Importamos hooks
-import { Container } from "./Container";
-import { CtaBlock } from "./CtaBlock"; // Importamos el CTA
+import { useState, useEffect, useRef } from 'react';
+import { Container } from "@/components/Container";
+import { CtaBlock } from "@/components/CtaBlock";
 import { FaqItem } from "./FaqItem";
-import { AnimateOnScroll } from './AnimateOnScroll';
+import { AnimateOnScroll } from '@/components/AnimateOnScroll';
 
 // Data de las preguntas frecuentes (sin cambios)
 const faqData = [

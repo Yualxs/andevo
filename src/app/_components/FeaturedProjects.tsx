@@ -1,11 +1,11 @@
 // EN: src/components/FeaturedProjects.tsx
 'use client';
 
-import { Container } from "./Container";
-import { AnimatedButton } from "./AnimatedButton";
+import { Container } from "@/components/Container";
+import { AnimatedButton } from "@/components/AnimatedButton";
 import { HoverVideoCard } from "./HoverVideoCard";
-import { SectionTitleWithVideo } from './SectionTitleWithVideo';
-import { AnimateOnScroll } from "./AnimateOnScroll";
+import { SectionTitleWithVideo } from '@/components/SectionTitleWithVideo';
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 // Data extraída del HTML original de Andevo (Proyectos Destacados)
 const projectData = [

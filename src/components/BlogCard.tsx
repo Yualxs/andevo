@@ -5,13 +5,19 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { BlogPost, urlFor } from '@/lib/sanity.client'; 
 import { AnimateOnScroll } from '@/components/AnimateOnScroll';
+import clsx from 'clsx';
 
 interface BlogCardProps {
   post: BlogPost;
   index?: number;
+  textColor?: 'text-white' | 'text-black'; // <-- 2. Añade la nueva prop
 }
 
-export const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
+export const BlogCard = ({ 
+  post, 
+  index = 0, 
+  textColor = 'text-black' // <-- 3. Añade el valor por defecto
+}: BlogCardProps) => {
   return (
     <AnimateOnScroll delay={0.1 * index}>
       <Link href={`/blog/${post.slug.current}`} className="block group">
@@ -27,10 +33,16 @@ export const BlogCard = ({ post, index = 0 }: BlogCardProps) => {
           <div className="absolute inset-0 w-full h-full bg-black/10 transition-opacity duration-300 group-hover:opacity-0" />
         </div>
         <div className="mt-4">
-          <h3 className="text-2xl font-medium text-black line-clamp-2">
+          <h3 className={clsx(
+            "text-2xl font-medium line-clamp-2",
+            textColor // Se aplicará 'text-black' o 'text-white'
+          )}>
             {post.title || 'Artículo sin título'}
           </h3>
-          <div className="text-base text-black/60 capitalize mt-1">
+          <div className={clsx(
+            "text-base capitalize mt-1",
+            textColor === 'text-white' ? 'text-white/60' : 'text-black/60' // Damos opacidad al color
+          )}>
             {post.category || 'General'}
           </div>
         </div>

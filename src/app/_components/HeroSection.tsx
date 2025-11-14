@@ -1,8 +1,8 @@
 // EN: src/components/HeroSection.tsx
-import { Container } from "./Container";
-import { CtaBlock } from "./CtaBlock"; // Importamos el CTA
+import { Container } from "@/components/Container";
+import { CtaBlock } from "@/components/CtaBlock";
 import Link from 'next/link';
-import { StaggeredEntryAnimation } from './StaggeredEntryAnimation';
+import { StaggeredEntryAnimation } from '@/components/StaggeredEntryAnimation';
 
 export const HeroSection = () => {
   // Las constantes del video ahora viven dentro de este componente

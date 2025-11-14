@@ -5,10 +5,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 // 2. Importación de GSAP
 import { gsap } from 'gsap';
-import { Container } from './Container';
+import { Container } from '@/components/Container';
 import Player from '@vimeo/player';
 import { Volume2, Play, Pause } from 'lucide-react';
-import { AnimateOnScroll } from './AnimateOnScroll';
+import { AnimateOnScroll } from '@/components/AnimateOnScroll';
 
 export const VideoSection = () => {
   const videoContainerRef = useRef<HTMLDivElement>(null); 

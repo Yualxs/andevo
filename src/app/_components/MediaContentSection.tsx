@@ -1,9 +1,9 @@
 // EN: src/components/MediaContentSection.tsx
 'use client'; // <-- 1. Asegúrate de que sea un 'client component'
 
-import { Container } from "./Container";
-import { AnimatedButton } from "./AnimatedButton";
-import { AnimateOnScroll } from "./AnimateOnScroll";
+import { Container } from "@/components/Container";
+import { AnimatedButton } from "@/components/AnimatedButton";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import clsx from 'clsx';
 import React from 'react';
 

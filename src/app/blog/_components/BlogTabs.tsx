@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { BlogPost } from '@/lib/sanity.client'; 
-import { BlogCard } from './BlogCard'; // <-- 1. IMPORTA LA TARJETA
+import { BlogCard } from '@/components/BlogCard';
 import clsx from 'clsx';
 
 // --- El sub-componente BlogCard se ha MOVIDO ---
