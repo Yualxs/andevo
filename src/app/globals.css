@@ -25,7 +25,7 @@
   /* Ahora `bg-brand-green` SÍ funcionará */
 
   /* === Tipografía (fontFamily) -> Namespace: --font-* === */
-  --font-sans: "Matter", sans-serif;
+  --font-sans: "Mont", sans-serif;
 
   /* === Tamaño de Fuente (fontSize) -> Namespace: --text-* === */
   --text-sm: 0.75rem;

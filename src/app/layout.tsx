@@ -7,17 +7,27 @@ import "mouse-follower/dist/mouse-follower.min.css";
 import { ClientProviders } from "@/components/ClientProviders";
 import Script from "next/script";
 
-const matterFont = localFont({
+const montFont = localFont({
   src: [
     {
-      path: '../assets/fonts/Matter-Regular.woff2', 
-      weight: '400',
+      path: '../assets/fonts/Mont-Regular.woff2', 
+      weight: '400', // Regular
       style: 'normal',
     },
     {
-      path: '../assets/fonts/Matter-Medium.woff2',
-      weight: '500',
+      path: '../assets/fonts/Mont-RegularItalic.woff2',
+      weight: '400', // Regular
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/Mont-SemiBold.woff2',
+      weight: '600', // SemiBold
       style: 'normal',
+    },
+    {
+      path: '../assets/fonts/Mont-SemiBoldItalic.woff2',
+      weight: '600', // SemiBold
+      style: 'italic',
     },
   ],
   display: 'swap',
@@ -36,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={matterFont.className}>
+      <body className={montFont.className}>
         {/* 3. Envuelve {children} con el proveedor de cliente */}
         <ClientProviders>
           {children}
