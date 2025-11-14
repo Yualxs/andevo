@@ -26,7 +26,7 @@ const logoSectionTitle = (
     videoPoster="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/683f70cf2ee52d82544aeb54_Andevo%20Video%20Title%2002.webp"
     videoWebM="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683f7b75507630d948bae201_Andevo%20Video%20Title%2002-transcode.webm"
     videoMp4="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683bad78034dacf2e76aedf3_Andevo%20Video%20Title%2002-transcode.mp4"
-    fontWeight="font-medium" 
+    fontWeight="font-semibold" 
   />
 );
 
