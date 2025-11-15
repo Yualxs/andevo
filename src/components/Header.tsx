@@ -99,21 +99,42 @@ export default function Header() {
   // Estado para controlar si el menú móvil está abierto o cerrado.
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const contentGridRef = useRef(null);
+  const locationsRef = useRef(null);
+
   // Hook de efecto para bloquear el scroll del body cuando el menú está abierto.
   useEffect(() => {
+    const elements = [contentGridRef.current, locationsRef.current];
+
     if (isMenuOpen) {
-      // Agrega la clase al body para ocultar el scroll
       document.body.style.overflow = 'hidden';
+      
+      // --- AÑADE ESTE BLOQUE GSAP ---
+      // 1. Estado inicial (oculto abajo)
+      gsap.set(elements, { y: "100%" }); 
+      // 2. Animación de entrada
+      gsap.to(elements, {
+        y: "0%",
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.1, // Anima uno después del otro
+        delay: 0.4, // Espera 0.4s a que el panel se abra
+      });
+      // --- FIN DE AÑADIR ---
+
     } else {
-      // Remueve la clase para restaurar el scroll
       document.body.style.overflow = 'unset';
+
+      // --- AÑADE ESTE BLOQUE GSAP ---
+      // 1. Resetea la posición cuando se cierra
+      gsap.set(elements, { y: "100%" });
+      // --- FIN DE AÑADIR ---
     }
 
-    // Función de limpieza: se asegura de restaurar el scroll si el componente se desmonta.
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isMenuOpen]); // Este efecto se ejecuta cada vez que 'isMenuOpen' cambia.
+  }, [isMenuOpen]); // El 'dependency array' [isMenuOpen] es correcto
 
   // URLs de los assets (logos, banderas) tomadas del código original.
   const logoUrl = "/andevo.svg";
@@ -128,9 +149,13 @@ export default function Header() {
       {/* 1. La barra de navegación principal (Logo y Botón) */}
       <div className={clsx(
         "fixed top-0 left-0 right-0 z-85 transition-colors duration-500 flex items-center justify-between py-4 px-4 md:px-8",
-        "global-header-bar will-change-transform",
+        "global-header-bar",
         "isolation-isolate",
-        isMenuOpen ? "bg-transparent" : "bg-white"
+        isMenuOpen ? "bg-transparent" : "bg-white",
+        // --- ¡LA SOLUCIÓN! ---
+        // Si el menú está abierto, la barra (y el botón) sube a z-[110]
+        // Si está cerrado, vuelve a z-85
+        isMenuOpen ? "z-[110]" : "z-85"
       )}>
         {/* Ya no hay un <Container> aquí */}
           
@@ -157,18 +182,20 @@ export default function Header() {
           {/* Botón de Menú (Hamburguesa) */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className="z-50 flex items-center space-x-2"
+            className={clsx(
+              "z-50 flex items-center space-x-2", // Mantiene el layout
+              isMenuOpen && "is-active" // Clase 'is-active' para disparar el CSS
+            )}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
+            {/* El texto "Menu" sigue igual (oculto en móvil) */}
             <span className="text-sm font-medium uppercase hidden md:block">Menu</span>
-            <div className="flex flex-col space-y-1.5 justify-center w-6 h-6 menu-icon-trigger">
-              <span className={`block h-0.5 w-full bg-black transition duration-300 ease-in-out
-                              ${isMenuOpen ? 'rotate-45 translate-y-1' : ''}`}>
-              </span>
-              <span className={`block h-0.5 w-full bg-black transition duration-300 ease-in-out
-                              ${isMenuOpen ? '-rotate-45 -translate-y-1' : ''}`}>
-              </span>
+            
+            {/* Esta es la nueva estructura del icono (reemplaza el 'div' anterior) */}
+            <div className="cuberto-menu-icon menu-icon-trigger">
+              <span className="cuberto-menu-line-1"></span>
+              <span className="cuberto-menu-line-2"></span>
             </div>
           </button>
 
@@ -177,9 +204,15 @@ export default function Header() {
 
       {/* 2. El Panel del Menú (Overlay) */}
       <nav 
-        className={`fixed top-0 right-0 bottom-0 w-full md:w-1/2 lg:w-[33%] h-screen bg-white z-[100] 
-                  transition duration-700 ease-in-out
-                  ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={clsx(
+          "fixed top-0 right-0 bottom-0 h-screen bg-white z-[100]",
+          "transition duration-700 ease-in-out",
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full',
+          
+          // --- CAMBIO 1: Ancho Responsivo ---
+          // w-full en móvil/tablet, w-[500px] en desktop
+          "w-full lg:w-[600px]" 
+        )}
       >
         {/* Usamos un layout de flex-col para separar el contenido principal de las direcciones */}
         {/* --- Logo interno del Menú --- */}
@@ -201,11 +234,20 @@ export default function Header() {
         {/* --- Contenido principal del Menú --- */}
         <div className="relative z-0 h-full flex flex-col justify-start gap-16 md:gap-24 overflow-y-auto px-8 py-32 md:px-16 md:py-40">
           
-          {/* Contenido Superior: Menú y Redes */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* --- AÑADE LA MÁSCARA (overflow-hidden) AQUÍ --- */}
+          <div className="overflow-hidden">
+            {/* Aplica el 'ref' al grid */}
+            <div 
+              ref={contentGridRef}
+              className="grid grid-cols-1 md:grid-cols-2 gap-12"
+            >
             
             {/* Columna de Redes Sociales */}
-            <div>
+            <div 
+              // --- CAMBIO 3: Visibilidad Responsiva ---
+              // Oculto por defecto, visible solo en 'lg'
+              className="hidden md:block"
+            >
               <span className="text-xs uppercase text-gray-500 tracking-wider">Redes Sociales</span>
               {/* MODIFICACIÓN AQUÍ:
                 - Cambiamos <ul> por <li>
@@ -241,43 +283,48 @@ export default function Header() {
               */}
               <ul className="mt-4 space-y-1">
                 <li>
-                  <AnimatedLink href="/" text="Home" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="/" text="Home" className="text-2xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="/about" text="Nosotros" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="/about" text="Nosotros" className="text-2xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="#" text="Servicios" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="#" text="Servicios" className="text-2xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="/blog" text="Blog" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="/blog" text="Blog" className="text-2xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="/contact" text="Contacto" className="text-xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="/contact" text="Contacto" className="text-2xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
               </ul>
             </div>
           </div>
+
           
           {/* Contenido Inferior: Ubicaciones */}
-          <div className="mt-16">
-            <span className="text-xs uppercase text-gray-500 tracking-wider">Ubícanos</span>
-            <div className="mt-4 space-y-4 max-w-sm">
-              <AddressLink 
-                href="#" 
-                flagSrc={flagUsaUrl} 
-                flagAlt="USA Flag" 
-                text="5212 Avalon Gates, Trumbull, CT 06611, EE. UU." 
-              />
-              <AddressLink 
-                href="#" 
-                flagSrc={flagPeruUrl} 
-                flagAlt="Perú Flag" 
-                text="Av. Micaela Bastidas 829, Cusco 08002, Perú"
-              />
+          <div className="overflow-hidden">
+            {/* Aplica el 'ref' al bloque de Ubícanos */}
+            <div ref={locationsRef} className="mt-16">
+              <span className="text-xs uppercase text-gray-500 tracking-wider">Ubícanos</span>
+              <div className="mt-4 space-y-4 max-w-sm">
+                <AddressLink 
+                  href="#" 
+                  flagSrc={flagUsaUrl} 
+                  flagAlt="USA Flag" 
+                  text="5212 Avalon Gates, Trumbull, CT 06611, EE. UU." 
+                />
+                <AddressLink 
+                  href="#" 
+                  flagSrc={flagPeruUrl} 
+                  flagAlt="Perú Flag" 
+                  text="Av. Micaela Bastidas 829, Cusco 08002, Perú"
+                />
+              </div>
             </div>
           </div>
         </div>
+      </div>
       </nav>
 
       {/* 3. El Fondo (Backdrop) */}

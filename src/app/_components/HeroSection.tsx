@@ -45,7 +45,7 @@ export const HeroSection = () => {
             </h1>
 
             {/* Subtítulo inferior H2 */}
-            <h2 className="text-base sm:text-lg md:text-xl max-w-4xl mx-auto">
+            <h2 className="text-lg sm:text-lg md:text-xl max-w-4xl mx-auto">
               Somos especialistas en branding y desarrollo web; creamos marketing digital a tu medida, mezclando creatividad y datos para hacer crecer tu marca.
             </h2>
           </div>

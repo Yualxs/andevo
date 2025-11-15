@@ -39,7 +39,7 @@ export const MediaContentSection = ({
 
   const textColumn = (
     <div className="max-w-md">
-      <p className="text-base sm:text-lg md:text-xl mb-12 leading-relaxed text-black/70">
+      <p className="text-lg sm:text-lg md:text-xl mb-12 leading-relaxed text-black">
         {description}
       </p>
       

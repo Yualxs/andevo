@@ -56,7 +56,7 @@ export const ServicesSection = () => {
             
             {/* CÉLULA 1: Descripción */}
             <AnimateOnScroll className="md:pr-8" delay={0.1}>
-              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-black/70">
+              <p className="text-lg sm:text-lg md:text-xl leading-relaxed text-black/70">
                 Desde diseño de movimiento hasta productos impulsados por IA,
                 diseñamos y construimos interfaces para el futuro.
               </p>
