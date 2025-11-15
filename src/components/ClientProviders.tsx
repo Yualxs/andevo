@@ -11,6 +11,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
+
 // --- (Las 'variants' de la cortina y el contenido siguen aquí) ---
 const curtainVariants = {
   exit: { scaleY: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }},
@@ -27,7 +29,6 @@ export function ClientProviders({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  gsap.registerPlugin(ScrollTrigger);
 
   const showFloatingButton = pathname !== '/contact';
 

@@ -7,8 +7,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export const GlobalScrollAnimations = () => {
   
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     // --- Lógica de Rotación ---
     const rotatingImages = gsap.utils.toArray('.rotating-image');
     // 1. CORRECCIÓN DE TIPO: Debe ser 'Timeline'

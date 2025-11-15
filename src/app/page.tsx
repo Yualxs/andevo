@@ -8,6 +8,8 @@ import { CustomerLogos } from "@/components/CustomerLogos";
 import { MediaContentSection } from "@/app/_components/MediaContentSection";
 import { ServicesSection } from "@/app/_components/ServicesSection";
 import { HeroSection } from "@/app/_components/HeroSection";
+import { DynamicMascotViewer } from '@/components/DynamicMascotViewer';
+import { MascotPhilosophySection } from '@/app/_components/MascotPhilosophySection';
 
 // --- IMPORTACIONES DINÁMICAS (PESADAS) ---
 // Estas se cargarán solo cuando estén cerca de ser visibles
@@ -76,7 +78,7 @@ export default async function Home() {
         zIndex="z-20"
         title="Construimos Marcas"
         description="Tu marca tiene una historia única y el mundo necesita escucharla. En Andevo combinamos estrategia, creatividad y tecnología para conectar con las personas correctas y generar impacto real."
-        mediaContent={introMedia}
+        mediaContent={introMedia} // <-- Pasa la imagen rotante
         buttonHref="/nosotros"
         buttonText="Conócenos"
         buttonAriaLabel="Conoce más sobre Andevo"
@@ -84,13 +86,7 @@ export default async function Home() {
       <VideoSection />
       <ServicesSection />
       <FeaturedProjects />
-      <MediaContentSection
-        zIndex="z-50"
-        title="Nuestra filosofía"
-        description="Estamos impulsados por el diseño centrado en el usuario que impulsa la productividad y aumenta los ingresos. Nuestra experiencia e ingenio son notables, pero siempre nos esforzamos en mejorar en cada proyecto."
-        mediaContent={philosophyMedia}
-        // (No pasamos props de botón, por lo que no se renderizará)
-      />
+      <MascotPhilosophySection />
       <BlogSection posts={homePosts} />
       <FaqSection />
       

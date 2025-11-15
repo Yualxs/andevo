@@ -6,6 +6,7 @@ import { AnimatedButton } from "@/components/AnimatedButton";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import clsx from 'clsx';
 import React from 'react';
+import { DynamicMascotViewer } from "@/components/DynamicMascotViewer";
 
 // 1. Definimos las Props (MODIFICADO)
 interface MediaContentSectionProps {
@@ -17,6 +18,7 @@ interface MediaContentSectionProps {
   buttonHref?: string;
   buttonText?: string;
   buttonAriaLabel?: string;
+  useMascotViewer?: boolean;
 }
 
 export const MediaContentSection = ({
@@ -27,7 +29,8 @@ export const MediaContentSection = ({
   mediaPosition = 'left',
   buttonHref,
   buttonText,
-  buttonAriaLabel
+  buttonAriaLabel,
+  useMascotViewer = false
 }: MediaContentSectionProps) => {
 
   // 2. Definimos las columnas (sin cambios)
@@ -74,16 +77,23 @@ export const MediaContentSection = ({
         {/* 4. ENVUELVE EL GRID DE 2 COLUMNAS */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           
-          {/* 5. ENVUELVE LA COLUMNA DE MEDIA 
-              (con un delay condicional) */}
+          {/* --- INICIO DE LA CORRECCIÓN --- */}
+          
+          {/* 1. El wrapper AnimateOnScroll (ya no tiene clases de layout) */}
           <AnimateOnScroll 
             className={clsx(
               "relative z-0",
               mediaPosition === 'right' && 'md:order-last'
             )}
-            delay={mediaPosition === 'left' ? 0.1 : 0.2} // Se anima un poco después del texto si está a la derecha
+            delay={mediaPosition === 'left' ? 0.1 : 0.2} 
           >
-            {mediaColumn}
+            {/* 2. Restauramos el <div> de layout que da el tamaño */}
+            <div className="flex items-center justify-center h-64 md:h-96">
+              
+              {/* 3. La lógica condicional (esto estaba bien) */}
+              {useMascotViewer ? <DynamicMascotViewer /> : mediaContent}
+            
+            </div>
           </AnimateOnScroll>
           
           {/* 6. ENVUELVE LA COLUMNA DE TEXTO 

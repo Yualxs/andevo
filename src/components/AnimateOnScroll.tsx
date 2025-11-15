@@ -6,8 +6,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import clsx from 'clsx';
 
-gsap.registerPlugin(ScrollTrigger);
-
 interface AnimateOnScrollProps {
   children: React.ReactNode;
   className?: string; // Para pasar clases de layout (ej. 'mb-12')
