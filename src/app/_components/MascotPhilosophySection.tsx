@@ -42,16 +42,12 @@ export const MascotPhilosophySection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           
           {/* Columna de Media (3D) */}
-          <AnimateOnScroll 
-            // --- CORRECCIÓN AQUÍ ---
-            // Eliminamos la lógica de 'mediaPosition'
-            className="relative z-0"
-            delay={0.1} 
-          >
+          <div className="relative z-0">
             <div className="flex items-center justify-center h-64 md:h-96">
+              {/* 2. Renderizamos el 3D directamente */}
               <DynamicMascotViewer />
             </div>
-          </AnimateOnScroll>
+          </div>
           
           {/* Columna de Texto */}
           <AnimateOnScroll 

@@ -4,13 +4,12 @@
 import { Canvas, useFrame } from '@react-three/fiber'; 
 import { Environment } from '@react-three/drei';
 import { MascotScene } from './MascotScene';
-// --- 1. CAMBIO AQUÍ: Importa 'useLayoutEffect' ---
-import { Suspense, useRef, useLayoutEffect, RefObject } from 'react'; 
+import { Suspense, useRef, useEffect, RefObject } from 'react'; // <-- Usa 'useEffect'
 import { Group } from 'three'; 
 import { gsap } from 'gsap'; 
 import { ScrollTrigger } from 'gsap/ScrollTrigger'; 
 
-// Componente interno (sin cambios)
+// Componente interno (con los ajustes de centrado)
 const ModelAnimator = ({ animationProps }: { animationProps: RefObject<{ rotationY: number }> }) => {
   const sceneRef = useRef<Group>(null);
 
@@ -21,7 +20,7 @@ const ModelAnimator = ({ animationProps }: { animationProps: RefObject<{ rotatio
   });
 
   return (
-    <group ref={sceneRef} scale={1.5}> 
+    <group ref={sceneRef} scale={2.2} position={[0, -0.4, 0]}> 
       <MascotScene />
     </group>
   );
@@ -33,15 +32,15 @@ export const MascotViewer = () => {
   const containerRef = useRef<HTMLDivElement>(null); 
   const animationProps = useRef({ rotationY: 0 }); 
 
-  // --- 2. CAMBIO AQUÍ: de 'useEffect' a 'useLayoutEffect' ---
-  // Esto se ejecuta ANTES de que el navegador pinte,
-  // previniendo el "flash" y el bug de Strict Mode.
-  useLayoutEffect(() => {
+  // Usa 'useEffect' (no useLayoutEffect)
+  useEffect(() => {
     
-    // 3. El contexto de GSAP (esto estaba bien)
-    const ctx = gsap.context(() => {
+    let anim: gsap.core.Tween | null = null;
+
+    // Usa el 'setTimeout' para vencer a StrictMode
+    const timeout = setTimeout(() => {
       
-      gsap.to(animationProps.current, { 
+      anim = gsap.to(animationProps.current, { 
         rotationY: Math.PI * 2,
         ease: 'none',   
         scrollTrigger: {
@@ -51,13 +50,16 @@ export const MascotViewer = () => {
           scrub: 1, 
         },
       });
+      
+    }, 100); // 100ms de retraso
 
-    }, containerRef); 
-
-    // 4. La limpieza (esto estaba bien)
-    return () => ctx.revert(); 
+    // Limpieza (solo limpia el timeout y la anim)
+    return () => {
+      clearTimeout(timeout);
+      anim?.kill(); 
+    };
     
-  }, []); // El array de dependencias [] es correcto
+  }, []); 
 
   return (
     <div ref={containerRef} className="w-full h-full">

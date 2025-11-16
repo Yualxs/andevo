@@ -4,14 +4,12 @@
 import { useGLTF } from '@react-three/drei';
 import React from 'react';
 
-// Asegúrate de que esta ruta sea correcta
+// 1. Apunta al nuevo archivo optimizado
 useGLTF.preload('/models/mascota-opt.glb'); 
 
 export const MascotScene = () => {
-  // Carga el modelo .glb
+  // 2. Carga el nuevo archivo optimizado
   const { scene } = useGLTF('/models/mascota-opt.glb');
 
-  // Clonamos y devolvemos la escena
-  // (Esta es la forma más robusta de cargar)
   return <primitive object={scene.clone()} />;
 };
