@@ -34,7 +34,7 @@ export const AboutHeroSection = () => {
             </p>
             
             {/* Título Principal (H1) */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold">
               <span className="italic">Rompe las reglas</span>, 
               piensa en grande, haz las cosas bien.
             </h1>

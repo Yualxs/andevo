@@ -369,7 +369,7 @@ export default function ContactPage() {
           {/* Título (Correcto) */}
           <StaggeredEntryAnimation delay={0.1}>
             <div className="mb-24">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold">
                 <span className="italic">¡Hola!</span> Cuéntanoslo todo 👋
               </h1>
             </div>
@@ -382,12 +382,12 @@ export default function ContactPage() {
               {/* 1. El bloque de "filtro de calidad" (UNA SOLA VEZ) */}
               <StaggeredEntryAnimation delay={0.2}>
                 <div className="mb-16 max-w-3xl">
-                  <h2 className="text-2xl md:text-3xl font-medium mb-4">Un filtro de calidad</h2>
-                  <p className="text-base md:text-lg text-black/70 mb-4">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4">Un filtro de calidad</h2>
+                  <p className="text-lg sm:text-lg md:text-xl text-black mb-4">
                     Para garantizar la inmersión total y los resultados excepcionales que definen nuestro trabajo, 
-                    nuestro equipo de especialistas solo acepta un <span className="font-medium">número limitado de proyectos</span> simultáneamente.
+                    nuestro equipo de especialistas solo acepta un <span className="font-semibold">número limitado de proyectos</span> simultáneamente.
                   </p>
-                  <p className="text-base md:text-lg text-black/70 font-medium">
+                  <p className="text-lg sm:text-lg md:text-xl text-black font-semibold">
                     Nuestras colaboraciones de branding inician desde S/. 2,500 y las de desarrollo web desde S/. 3,500.
                     Actualmente, estamos agendando los últimos espacios para el próximo trimestre.
                   </p>
@@ -404,7 +404,7 @@ export default function ContactPage() {
                   
                   {/* --- Tu JSX de formulario (que ya estaba correcto) --- */}
                   <div className="form_field">
-                    <label className="mb-6 block text-2xl font-medium">
+                    <label className="mb-6 block text-2xl font-semibold">
                       Estamos interesados en...
                     </label>
                     <div className="form_group flex flex-wrap gap-4">
@@ -475,7 +475,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="form_field">
-                    <label className="mb-6 block text-2xl font-medium">
+                    <label className="mb-6 block text-2xl font-semibold">
                       ¿Cuándo planeas iniciar?
                     </label>
                     <div className="form_group flex flex-wrap gap-4">
@@ -494,7 +494,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="form_field">
-                    <label className="mb-6 block text-2xl font-medium">
+                    <label className="mb-6 block text-2xl font-semibold">
                       Añadir archivo adjunto
                     </label>
                     <FilepondInput />

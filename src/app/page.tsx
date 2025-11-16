@@ -8,7 +8,6 @@ import { CustomerLogos } from "@/components/CustomerLogos";
 import { MediaContentSection } from "@/app/_components/MediaContentSection";
 import { ServicesSection } from "@/app/_components/ServicesSection";
 import { HeroSection } from "@/app/_components/HeroSection";
-import { DynamicMascotViewer } from '@/components/DynamicMascotViewer';
 import { MascotPhilosophySection } from '@/app/_components/MascotPhilosophySection';
 
 // --- IMPORTACIONES DINÁMICAS (PESADAS) ---
@@ -44,20 +43,6 @@ export default async function Home() {
     />
   );
 
-  const philosophyMedia = (
-    <video
-      autoPlay
-      loop
-      muted
-      playsInline
-      poster="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd/683f74cd134ebd745b447606_Andevo%20Video%203D.webp"
-      className="w-full h-full object-contain"
-    >
-      <source src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F683f7b894ac34ccefcb02bee_Andevo%20Video%203D-transcode.webm" type="video/webm" />
-      <source src="https://cdn.prod.website-files.com/65e7d2ecaa6371ad74acb2dd%2F67cf689adf6efcbb3ed11493_2-transcode.mp4" type="video/mp4" />
-    </video>
-  );
-
   return (
     <main className="overflow-x-hidden">
          
@@ -67,7 +52,7 @@ export default async function Home() {
       {/* El resto de tus secciones (sin cambios) */}
       <CustomerLogos 
         title={
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold">
             Hemos trabajado con
           </h2>
         }

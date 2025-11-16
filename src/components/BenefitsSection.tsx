@@ -45,11 +45,11 @@ const BenefitItem = ({ title, description }: BenefitItemProps) => (
       />
     </div>
     {/* Col 2: Título (Corregido) */}
-    <h3 className="text-xl md:text-2xl font-semibold uppercase tracking-wider text-black">
+    <h3 className="text-base sm:text-lg md:text-xl font-semibold uppercase tracking-wider text-black">
       {title}
     </h3>
     {/* Col 3: Descripción (Corregido) */}
-    <p className="text-lg text-black/70">
+    <p className="text-lg sm:text-lg md:text-xl text-black">
       {description}
     </p>
   </div>

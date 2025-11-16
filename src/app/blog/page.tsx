@@ -57,7 +57,7 @@ export default async function BlogPage() {
               <p className="text-lg sm:text-xl md:text-2xl mb-4">
                 Nuestro Blog 😎️
               </p>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold">
                 Somos una <span className="italic">agencia digital creativa</span> en potencia
               </h1>
             </div>

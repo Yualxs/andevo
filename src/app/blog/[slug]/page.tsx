@@ -120,7 +120,7 @@ export default async function BlogPostPage({ params: paramsPromise }: { params: 
               <span className="text-white truncate max-w-xs">{postTitle}</span>
             </div>
             {postDate && <div className="text-base text-white/80 mb-4">{postDate}</div>}
-            <h1 className="text-4xl md:text-6xl font-medium">{postTitle}</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold">{postTitle}</h1>
             {post.author && (
               <div className="flex items-center justify-center gap-4 mt-8">
                 {post.author.image && (
@@ -132,7 +132,7 @@ export default async function BlogPostPage({ params: paramsPromise }: { params: 
                     className="rounded-full"
                   />
                 )}
-                <span className="text-lg font-medium">{postAuthorName}</span>
+                <span className="text-lg font-semibold">{postAuthorName}</span>
               </div>
             )}
           </StaggeredEntryAnimation>
@@ -155,7 +155,7 @@ export default async function BlogPostPage({ params: paramsPromise }: { params: 
       {/* 4. CTA (Limpio) */}
       <section className="py-24 lg:py-32 bg-gray-50 rounded-t-[5rem] -mt-20">
         <Container className="max-w-3xl text-center">
-          <h2 className="text-3xl md:text-5xl font-medium mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6">
             Lleva a tu agencia turística al siguiente nivel
           </h2>
           <p className="text-lg text-black/70 mb-8">
@@ -173,7 +173,7 @@ export default async function BlogPostPage({ params: paramsPromise }: { params: 
       {relatedPosts.length > 0 && (
         <section className="py-24 lg:py-32 bg-white">
           <Container>
-            <h2 className="text-5xl md:text-7xl font-medium mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-16">
               <span className="italic">Artículos</span><br/>relacionados
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">

@@ -190,7 +190,7 @@ export default function Header() {
             aria-expanded={isMenuOpen}
           >
             {/* El texto "Menu" sigue igual (oculto en móvil) */}
-            <span className="text-sm font-medium uppercase hidden md:block">Menu</span>
+            <span className="text-sm font-semibold uppercase hidden md:block">Menu</span>
             
             {/* Esta es la nueva estructura del icono (reemplaza el 'div' anterior) */}
             <div className="cuberto-menu-icon menu-icon-trigger">
@@ -211,7 +211,8 @@ export default function Header() {
           
           // --- CAMBIO 1: Ancho Responsivo ---
           // w-full en móvil/tablet, w-[500px] en desktop
-          "w-full lg:w-[600px]" 
+          "w-full lg:w-auto",
+          "flex flex-col"
         )}
       >
         {/* Usamos un layout de flex-col para separar el contenido principal de las direcciones */}
@@ -232,7 +233,7 @@ export default function Header() {
         </div>
 
         {/* --- Contenido principal del Menú --- */}
-        <div className="relative z-0 h-full flex flex-col justify-start gap-16 md:gap-24 overflow-y-auto px-8 py-32 md:px-16 md:py-40">
+        <div className="relative z-0 flex-1 overflow-y-auto px-8 pt-32 pb-0 md:px-16 md:pt-40">
           
           {/* --- AÑADE LA MÁSCARA (overflow-hidden) AQUÍ --- */}
           <div className="overflow-hidden">
@@ -256,19 +257,19 @@ export default function Header() {
               */}
               <ul className="mt-4 space-y-1">
                 <li>
-                  <AnimatedLink href="https://www.tiktok.com/@teamandevo" text="TikTok" className="text-base sm:text-lg md:text-xl font-medium" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="https://www.tiktok.com/@teamandevo" text="TikTok" className="text-base sm:text-lg md:text-xl font-semibold" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.instagram.com/teamandevo/" text="Instagram" className="text-base sm:text-lg md:text-xl font-medium" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="https://www.instagram.com/teamandevo/" text="Instagram" className="text-base sm:text-lg md:text-xl font-semibold" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.facebook.com/teamandevo/" text="Facebook" className="text-base sm:text-lg md:text-xl font-medium" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="https://www.facebook.com/teamandevo/" text="Facebook" className="text-base sm:text-lg md:text-xl font-semibold" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.youtube.com/@teamandevo" text="YouTube" className="text-base sm:text-lg md:text-xl font-medium" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="https://www.youtube.com/@teamandevo" text="YouTube" className="text-base sm:text-lg md:text-xl font-semibold" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="https://www.linkedin.com/company/andevo" text="LinkedIn" className="text-base sm:text-lg md:text-xl font-medium" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="https://www.linkedin.com/company/andevo" text="LinkedIn" className="text-base sm:text-lg md:text-xl font-semibold" onClick={() => setIsMenuOpen(false)} />
                 </li>
               </ul>
             </div>
@@ -283,29 +284,31 @@ export default function Header() {
               */}
               <ul className="mt-4 space-y-1">
                 <li>
-                  <AnimatedLink href="/" text="Home" className="text-2xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="/" text="Home" className="text-2xl sm:text-2xl md:text-3xl font-semibold" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="/about" text="Nosotros" className="text-2xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="/about" text="Nosotros" className="text-2xl sm:text-2xl md:text-3xl font-semibold" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="#" text="Servicios" className="text-2xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="#" text="Servicios" className="text-2xl sm:text-2xl md:text-3xl font-semibold" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="/blog" text="Blog" className="text-2xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="/blog" text="Blog" className="text-2xl sm:text-2xl md:text-3xl font-semibold" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="/contact" text="Contacto" className="text-2xl sm:text-2xl md:text-3xl font-medium" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="/contact" text="Contacto" className="text-2xl sm:text-2xl md:text-3xl font-semibold" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
               </ul>
             </div>
           </div>
-
+        </div>
           
-          {/* Contenido Inferior: Ubicaciones */}
+        </div> {/* <--- ESTE es el </div> que cierra "Contenido principal" */}
+
+        {/* --- 4. NUEVO BLOQUE DE FOOTER PEGADO ABAJO --- */}
+        <div className="flex-none px-8 pb-16 md:px-16 md:pb-24">
           <div className="overflow-hidden">
-            {/* Aplica el 'ref' al bloque de Ubícanos */}
-            <div ref={locationsRef} className="mt-16">
+            <div ref={locationsRef}>
               <span className="text-xs uppercase text-gray-500 tracking-wider">Ubícanos</span>
               <div className="mt-4 space-y-4 max-w-sm">
                 <AddressLink 
@@ -324,7 +327,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-      </div>
+        
       </nav>
 
       {/* 3. El Fondo (Backdrop) */}

@@ -36,7 +36,7 @@ export const BlogTabs = ({ posts }: { posts: BlogPost[] }) => {
               activeTab === tab.value ? "text-black" : "text-black/50 hover:text-black"
             )}
           >
-            <h2 className="text-2xl md:text-3xl font-medium">{tab.name}</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold">{tab.name}</h2>
             <span
               className={clsx(
                 "absolute bottom-0 left-0 block h-0.5 w-full bg-black transition-transform duration-300",

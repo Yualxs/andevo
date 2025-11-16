@@ -54,9 +54,9 @@ export const PortableTextComponent = ({ value }: { value: any[] }) => {
 
     // Definimos cómo renderizar los "bloques" de texto estándar
     block: {
-      h2: ({ children }: any) => <h2 className="text-3xl md:text-4xl font-medium mt-12 mb-4">{children}</h2>,
-      h3: ({ children }: any) => <h3 className="text-2xl md:text-3xl font-medium mt-10 mb-4">{children}</h3>,
-      h4: ({ children }: any) => <h4 className="text-xl md:text-2xl font-medium mt-8 mb-4">{children}</h4>,
+      h2: ({ children }: any) => <h2 className="text-3xl md:text-4xl font-semibold mt-12 mb-4">{children}</h2>,
+      h3: ({ children }: any) => <h3 className="text-2xl md:text-3xl font-semibold mt-10 mb-4">{children}</h3>,
+      h4: ({ children }: any) => <h4 className="text-xl md:text-2xl font-semibold mt-8 mb-4">{children}</h4>,
       blockquote: ({ children }: any) => (
         <blockquote className="border-l-4 border-black/20 pl-4 italic text-black/80 my-8">
           {children}

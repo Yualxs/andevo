@@ -12,7 +12,7 @@ export const AboutDetailsSection = () => {
         
         {/* 1. Título Principal (H2) */}
         <AnimateOnScroll className="mb-24 max-w-5xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium">
+          <h2 className="ext-2xl sm:text-3xl md:text-4xl font-semibold">
             <span className="italic">Nos atrevemos<br/>a hacer</span>
             <br/>lo que otros<br/>no hacen
           </h2>
@@ -23,7 +23,7 @@ export const AboutDetailsSection = () => {
           
           {/* Columna Izquierda (Título secundario) */}
           <AnimateOnScroll delay={0.1}>
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-medium uppercase tracking-wider text-black">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold uppercase tracking-wider text-black">
               En pocas palabras, nos encanta lo que hacemos
             </h3>
           </AnimateOnScroll>
@@ -59,7 +59,7 @@ export const AboutDetailsSection = () => {
                 
                 {/* Stat 1 */}
                 <div>
-                  <span className="block text-5xl md:text-7xl font-medium">10+</span>
+                  <span className="block text-5xl md:text-7xl font-semibold">10+</span>
                   <span className="block text-base sm:text-lg md:text-xl text-black/70 mt-2">
                     Creativos y Analistas
                   </span>
@@ -67,7 +67,7 @@ export const AboutDetailsSection = () => {
                 
                 {/* Stat 2 */}
                 <div>
-                  <span className="block text-5xl md:text-7xl font-medium">60+</span>
+                  <span className="block text-5xl md:text-7xl font-semibold">60+</span>
                   <span className="block text-base sm:text-lg md:text-xl text-black/70 mt-2">
                     Proyectos<br/>Completados
                   </span>
@@ -75,7 +75,7 @@ export const AboutDetailsSection = () => {
                 
                 {/* Stat 3 */}
                 <div>
-                  <span className="block text-5xl md:text-7xl font-medium">8+</span>
+                  <span className="block text-5xl md:text-7xl font-semibold">8+</span>
                   <span className="block text-base sm:text-lg md:text-xl text-black/70 mt-2">
                     Años de Experiencia
                   </span>

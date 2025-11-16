@@ -20,7 +20,7 @@ const ModelAnimator = ({ animationProps }: { animationProps: RefObject<{ rotatio
   });
 
   return (
-    <group ref={sceneRef} scale={2.2} position={[0, -0.4, 0]}> 
+    <group ref={sceneRef} scale={1.8} position={[0, -0.2, 0]}> 
       <MascotScene />
     </group>
   );

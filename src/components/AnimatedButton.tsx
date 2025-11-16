@@ -28,9 +28,9 @@ export const AnimatedButton = ({
 
   // Clases base del botón
   const buttonClasses = `
-    relative inline-block px-12 py-5 rounded-full font-medium cursor-pointer 
+    relative block w-full sm:inline-block sm:w-auto px-12 py-5 rounded-full font-semibold cursor-pointer 
     overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.34,5.56,0.64,1)]
-    group hover:scale-x-[1.02] text-base sm:text-lg md:text-xl
+    group hover:scale-x-[1.02] text-lg sm:text-lg md:text-xl
     text-center
     ${isSecondary ? 'bg-black text-white' : 'bg-white text-black'}
     no-cursor-pointer

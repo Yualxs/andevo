@@ -320,14 +320,14 @@
   top: calc(50% - 1px); /* Mueve al centro */
   transform: rotate(45deg);
   /* (clip-path se maneja en la animación) */
-  animation: cuberto-menu-open-top 0.75s;
+  animation: cuberto-menu-open-top 1s;
 }
 
 .is-active .cuberto-menu-line-2 {
   top: calc(50% - 1px); /* Mueve al centro */
   transform: rotate(-45deg);
   /* (clip-path se maneja en la animación) */
-  animation: cuberto-menu-open-bottom 0.75s;
+  animation: cuberto-menu-open-bottom 1s;
 }
 
 /* 5. Keyframes de "Limpieza y Revelado" (Copiados de Cuberto) */

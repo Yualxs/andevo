@@ -17,7 +17,7 @@ export const MascotPhilosophySection = () => {
 
   const textColumn = (
     <div className="max-w-md">
-      <p className="text-base sm:text-lg md:text-xl mb-12 leading-relaxed text-black/70">
+      <p className="text-lg sm:text-lg md:text-xl mb-12 leading-relaxed text-black">
         {description}
       </p>
     </div>
@@ -34,7 +34,7 @@ export const MascotPhilosophySection = () => {
         
         {/* Título */}
         <AnimateOnScroll className="mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold">
             {title}
           </h2>
         </AnimateOnScroll>
