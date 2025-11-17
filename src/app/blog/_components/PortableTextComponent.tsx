@@ -54,23 +54,24 @@ export const PortableTextComponent = ({ value }: { value: any[] }) => {
 
     // Definimos cómo renderizar los "bloques" de texto estándar
     block: {
-      h2: ({ children }: any) => <h2 className="text-3xl md:text-4xl font-semibold mt-12 mb-4">{children}</h2>,
-      h3: ({ children }: any) => <h3 className="text-2xl md:text-3xl font-semibold mt-10 mb-4">{children}</h3>,
-      h4: ({ children }: any) => <h4 className="text-xl md:text-2xl font-semibold mt-8 mb-4">{children}</h4>,
+      h2: ({ children }: any) => <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mt-12 mb-4">{children}</h2>,
+      h3: ({ children }: any) => <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mt-10 mb-4">{children}</h3>,
+      h4: ({ children }: any) => <h4 className="text-lg sm:text-xl md:text-2xl font-semibold mt-8 mb-4">{children}</h4>,
       blockquote: ({ children }: any) => (
-        <blockquote className="border-l-4 border-black/20 pl-4 italic text-black/80 my-8">
+        <blockquote className="border-l-4 border-black/20 pl-4 italic my-8">
           {children}
         </blockquote>
       ),
-      normal: ({ children }: any) => <p className="text-lg text-black/80 leading-relaxed mb-6">{children}</p>,
+      // Se eliminó 'text-black/80' de 'normal'
+      normal: ({ children }: any) => <p className="text-lg sm:text-lg md:text-xl leading-relaxed mb-6">{children}</p>,
     },
     
-    // Definimos cómo renderizar las listas
     list: {
       bullet: ({ children }: any) => <ul className="list-disc list-outside pl-8 my-6 space-y-2">{children}</ul>,
     },
     listItem: {
-      bullet: ({ children }: any) => <li className="text-lg text-black/80 leading-relaxed">{children}</li>,
+      // Se eliminó 'text-black/80' de 'bullet'
+      bullet: ({ children }: any) => <li className="text-lg sm:text-lg md:text-xl leading-relaxed">{children}</li>,
     },
     
     // Definimos cómo renderizar los "marks" (links)

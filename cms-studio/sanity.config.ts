@@ -27,8 +27,12 @@ export default defineConfig({
         {id: 'es', title: 'Español'},
         {id: 'en', title: 'English'},
       ],
-      schemaTypes: ['post'], // Tipos que se pueden traducir
+      // --- ¡CORRECCIÓN 1 AQUÍ! (Se eliminó la coma extra) ---
+      schemaTypes: ['post', 'service'], // Tipos que se pueden traducir
     }),
+    
+    // --- ¡CORRECCIÓN 2 AQUÍ! (Se eliminó la coma suelta) ---
+    // (La coma correcta va después del '}')
     
     // 4. Añade el plugin de código
     codeInput(),

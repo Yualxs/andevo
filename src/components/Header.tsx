@@ -290,7 +290,7 @@ export default function Header() {
                   <AnimatedLink href="/about" text="Nosotros" className="text-2xl sm:text-2xl md:text-3xl font-semibold" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
-                  <AnimatedLink href="#" text="Servicios" className="text-2xl sm:text-2xl md:text-3xl font-semibold" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
+                  <AnimatedLink href="/services" text="Servicios" className="text-2xl sm:text-2xl md:text-3xl font-semibold" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />
                 </li>
                 <li>
                   <AnimatedLink href="/blog" text="Blog" className="text-2xl sm:text-2xl md:text-3xl font-semibold" data-cursor="-pointer-large" onClick={() => setIsMenuOpen(false)} />

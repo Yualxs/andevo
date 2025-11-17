@@ -3,21 +3,25 @@
 
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import clsx from 'clsx'; // <-- 1. Importa clsx
 
-export const ElasticDivider = () => {
+// 2. Añade la interfaz de props
+interface ElasticDividerProps {
+  className?: string;
+}
+
+// 3. Acepta 'className' y pon 'text-black' como valor POR DEFECTO
+export const ElasticDivider = ({ className = "text-black" }: ElasticDividerProps) => {
   const pathRef = useRef<SVGPathElement>(null);
   const triggerRef = useRef<SVGRectElement>(null);
 
   const morphProps = useRef({
-    x: 600, // Coordenada X (horizontal)
-    y: 30,  // Coordenada Y (vertical/profundidad)
+    x: 600, 
+    y: 30,  
   }).current;
 
-  // quickTo para el seguimiento horizontal (X)
   const quickToX = useRef<gsap.QuickToFunc | null>(null);
 
-  // --- 1. FUNCIÓN DE DIBUJADO (ACTUALIZADA) ---
-  // La línea recta ahora vive en y=30 (cerca del tope del nuevo lienzo)
   const updatePath = () => {
     if (!pathRef.current) return;
     const { x, y } = morphProps;
@@ -30,55 +34,48 @@ export const ElasticDivider = () => {
     const path = pathRef.current;
     if (!trigger || !path) return;
 
-    // 2. Seguimiento X (Resorte "Pesado")
     quickToX.current = gsap.quickTo(morphProps, "x", {
       duration: 1.5, 
       ease: "elastic.out(1, 1.5)", 
       onUpdate: updatePath, 
     });
     
-    // 3. Estado inicial (Recta)
     gsap.set(path, { attr: { d: "M0,30 Q600,30 1200,30" } });
 
-    // 4. Animación de entrada (onMouseEnter)
     const onMouseEnter = () => {
       gsap.to(morphProps, {
-        y: 140, // <-- La curva profunda (¡ahora visible!)
+        y: 140, 
         duration: 2.0, 
         ease: 'elastic.out(1, 0.5)', 
         onUpdate: updatePath,
       });
     };
 
-    // 5. Animación de salida (onMouseLeave)
     const onMouseLeave = () => {
       gsap.to(morphProps, {
-        y: 30, // De vuelta a la recta (y=30)
-        x: 600, // De vuelta al centro
+        y: 30, 
+        x: 600, 
         duration: 1.0, 
         ease: 'elastic.out(1, 0.6)', 
         onUpdate: updatePath,
       });
     };
 
-    // 6. Animación de Movimiento (onMouseMove)
     const onMouseMove = (e: MouseEvent) => {
       const rect = trigger.getBoundingClientRect();
       const mouseX = e.clientX - rect.left; 
       const relativeX = mouseX / rect.width;
-      const svgX = relativeX * 1200; // Coordenada SVG
+      const svgX = relativeX * 1200; 
       
       if (quickToX.current) {
         quickToX.current(svgX); 
       }
     };
 
-    // 7. Asignar los 3 listeners
     trigger.addEventListener('mouseenter', onMouseEnter);
     trigger.addEventListener('mouseleave', onMouseLeave);
     trigger.addEventListener('mousemove', onMouseMove);
 
-    // Limpieza
     return () => {
       trigger.removeEventListener('mouseenter', onMouseEnter);
       trigger.removeEventListener('mouseleave', onMouseLeave);
@@ -89,8 +86,8 @@ export const ElasticDivider = () => {
   return (
     <svg
       width="100%"
-      height="60" // <-- ALTURA FÍSICA (lo que ocupa en el layout)
-      viewBox="0 0 1200 150" // <-- LIENZO INTERNO (más alto)
+      height="60" 
+      viewBox="0 0 1200 150" 
       preserveAspectRatio="none"
       className="w-full"
     >
@@ -99,12 +96,14 @@ export const ElasticDivider = () => {
         stroke="currentColor"
         strokeWidth="1"
         fill="none"
-        className="text-black" // Negro sólido
+        // --- 4. ¡CAMBIO AQUÍ! ---
+        // Ahora solo aplica el 'className' que recibe (que por defecto es 'text-black')
+        className={clsx(className)} 
       />
       <rect
         ref={triggerRef}
         width="1200"
-        height="150" // <-- GATILLO (cubre todo el lienzo)
+        height="150" 
         fill="transparent"
         className="cursor-pointer"
       />

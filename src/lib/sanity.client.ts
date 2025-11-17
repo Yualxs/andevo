@@ -14,7 +14,7 @@ export function urlFor(source: any) {
   return builder.image(source)
 }
 
-// Interfaz de tipo (más robusta)
+// --- Interfaz del Blog (sin cambios) ---
 export interface BlogPost {
   _id: string;
   title?: string;
@@ -37,53 +37,110 @@ export interface BlogPost {
   _createdAt?: string;
 }
 
-// Query para la PÁGINA DE LISTADO (/blog)
+// --- Queries del Blog (sin cambios) ---
 export const postsQuery = `
   *[_type == "post" && language == "es"] | order(_createdAt desc) {
-    _id,
-    title,
-    slug,
-    mainImage,
-    category,
-    "author": author->{name}
+    _id, title, slug, mainImage, category, "author": author->{name}
   }
 `;
-
-// Query para la PÁGINA INTERNA ([slug])
 export const postQuery = `
   *[_type == "post" && slug.current == $slug && language == "es"][0] {
-    _id,
-    title,
-    slug,
-    mainImage,
-    category,
-    "author": author->{name, image},
-    body,
-    summary,
-    _createdAt
+    _id, title, slug, mainImage, category, "author": author->{name, image}, body, summary, _createdAt
   }
 `;
-
-// Query para POSTS RELACIONADOS
 export const relatedPostsQuery = `
   *[_type == "post" && language == "es" && slug.current != $currentSlug && category == $category] | order(_createdAt desc) [0...3] {
-    _id,
-    title,
-    slug,
-    mainImage,
-    category,
-    "author": author->{name}
+    _id, title, slug, mainImage, category, "author": author->{name}
+  }
+`;
+export const homePostsQuery = `
+  *[_type == "post" && language == "es"] | order(_createdAt desc) [0...4] {
+    _id, title, slug, mainImage, category
   }
 `;
 
-// --- ¡NUEVA QUERY AÑADIDA! ---
-// Query para la SECCIÓN DE BLOG EN EL HOME
-export const homePostsQuery = `
-  *[_type == "post" && language == "es"] | order(_createdAt desc) [0...4] {
+// --- Interfaz para la Tarjeta de Servicio (sin cambios) ---
+export interface ServiceCard {
+  _id: string;
+  title?: string;
+  description?: string; 
+  slug: {
+    current: string;
+  };
+  category?: 'general' | 'cusco';
+}
+
+// --- Query para la Página de /services (sin cambios) ---
+export const servicesQuery = `
+  *[_type == "service" && language == "es"] | order(title asc) {
+    _id, title, "description": seoDescription, slug, category
+  }
+`;
+
+// --- Interfaz para la Página de Servicio (sin cambios) ---
+export interface ServicePageData {
+  _id: string;
+  title: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  ogImage?: any;
+  noIndex?: boolean;
+  pageBuilder?: any[];
+}
+
+// --- ¡QUERY CORREGIDA Y COMPLETA! ---
+// Query para la PÁGINA DE SERVICIO INDIVIDUAL ([slug])
+export const servicePageQuery = `
+  *[_type == "service" && slug.current == $slug && language == "es"][0] {
     _id,
     title,
-    slug,
-    mainImage,
-    category
+    seoTitle,
+    seoDescription,
+    ogImage,
+    noIndex,
+    
+    // Esto "expande" el Page Builder y obtiene todos los datos anidados
+    pageBuilder[] {
+      _key,
+      _type,
+      
+      // Expande 'resultsBlock' (el antiguo iconGridBlock)
+      _type == "resultsBlock" => { 
+        ...,
+        items[] {
+          _key, title, description, icon
+        }
+      },
+
+      // Expande 'processBlock' (el otro iconGridBlock)
+      _type == "processBlock" => { 
+        ...,
+        items[] {
+          _key, title, description, icon
+        }
+      },
+      
+      // Expande 'logoCarouselBlock'
+      _type == "logoCarouselBlock" => {
+        ...,
+        slides[] {
+          _key, mainImage, clientLogo
+        }
+      },
+      
+      // Expande 'faqBlock'
+      _type == "faqBlock" => {
+        ...,
+        faqs[] {
+          _key, question, answer
+        }
+      },
+
+      // ¡LA LÍNEA QUE FALTABA!
+      // Para todos los demás bloques (Hero, Video, Garantia, etc.)
+      // que no tienen referencias anidadas, 
+      // simplemente trae todos sus datos.
+      ... 
+    }
   }
 `;
